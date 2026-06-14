@@ -101,6 +101,9 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     border-bottom: 1px solid var(--border);
+    max-width: 640px;
+    margin: 0 auto;
+    width: 100%;
   }
 
   .nav-main-tab {
@@ -127,10 +130,13 @@
   .nav-sub {
     display: grid;
     padding: 0 4px;
+    max-width: 640px;
+    margin: 0 auto;
+    width: 100%;
   }
 
   .nav-sub-info { grid-template-columns: repeat(4, 1fr); }
-  .nav-sub-appliance { grid-template-columns: repeat(5, 1fr); }
+  .nav-sub-appliance { grid-template-columns: repeat(4, 1fr); }
 
   .nav-sub-tab {
     padding: 10px 4px;
@@ -475,7 +481,7 @@
 <!-- 헤더 -->
 <header class="header">
   <div class="header-inner">
-    <div class="logo"><span style="color:#111827">당당홈</span> <span style="color:#5C6E2E">가이드</span> <span style="color:#5C6E2E">가이드</span> <span data-lang="ko">가이드</span><span data-lang="en">Guide</span><span data-lang="ja">ガイド</span></div>
+    <div class="logo"><span style="color:#111827">당당홈</span> <span style="color:#5C6E2E">가이드</span></div>
     <div class="lang-switcher">
       <button class="lang-btn active" onclick="setLang('ko')">한</button>
       <button class="lang-btn" onclick="setLang('en')">EN</button>
@@ -512,7 +518,6 @@
   </div>
   <!-- 중분류: 가전제품 -->
   <div class="nav-sub nav-sub-appliance" id="sub-appliance" style="display:none">
-    <button class="nav-sub-tab" id="tab-wifi" onclick="setPanel('wifi')">#wifi</button>
     <button class="nav-sub-tab" id="tab-washer" onclick="setPanel('washer')">
       <span data-lang="ko">#세탁기</span><span data-lang="en">#Washer</span><span data-lang="ja">#洗濯機</span>
     </button>
@@ -769,69 +774,6 @@
     </div>
 
 
-    <div class="card">
-      <div class="card-body" style="text-align:center; padding: 14px 18px;">
-        <div style="font-size:12px; color: var(--sub);">
-          <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
-          <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
-          <span data-lang="ja">ご質問・ご要望は33M2アプリのチャットをご利用ください</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-    <!-- Wi-Fi -->
-  <div class="panel" id="panel-wifi">
-    <div class="card">
-      <div class="card-head">
-        <div class="card-label">Wi-Fi</div>
-      </div>
-      <div class="card-body">
-        <div class="qr-placeholder">
-          <svg class="qr-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <rect x="3" y="3" width="7" height="7" rx="1"/>
-            <rect x="14" y="3" width="7" height="7" rx="1"/>
-            <rect x="3" y="14" width="7" height="7" rx="1"/>
-            <rect x="5" y="5" width="3" height="3" fill="currentColor" stroke="none"/>
-            <rect x="16" y="5" width="3" height="3" fill="currentColor" stroke="none"/>
-            <rect x="5" y="16" width="3" height="3" fill="currentColor" stroke="none"/>
-            <rect x="14" y="14" width="3" height="3" fill="currentColor" stroke="none"/>
-            <rect x="17" y="17" width="3" height="3" fill="currentColor" stroke="none"/>
-            <rect x="14" y="17" width="3" height="3" fill="currentColor" stroke="none"/>
-            <rect x="17" y="14" width="3" height="3" fill="currentColor" stroke="none"/>
-          </svg>
-          <div class="qr-text"><span data-lang="ko">QR 코드 삽입 예정</span><span data-lang="en">QR Code — insert here</span><span data-lang="ja">QRコードをここに挿入</span></div>
-        </div>
-        <div class="wifi-grid">
-          <div class="wifi-cell">
-            <div class="wifi-label"><span data-lang="ko">네트워크 이름</span><span data-lang="en">Network Name</span><span data-lang="ja">ネットワーク名</span></div>
-            <div class="wifi-value" style="color:#9CA3AF; font-style:italic; font-size:13px;"><span data-lang="ko">입력 필요</span><span data-lang="en">Enter here</span><span data-lang="ja">入力してください</span></div>
-          </div>
-          <div class="wifi-cell">
-            <div class="wifi-label"><span data-lang="ko">비밀번호</span><span data-lang="en">Password</span><span data-lang="ja">パスワード</span></div>
-            <div class="wifi-value" style="color:#9CA3AF; font-style:italic; font-size:13px;"><span data-lang="ko">입력 필요</span><span data-lang="en">Enter here</span><span data-lang="ja">入력してください</span></div>
-          </div>
-        </div>
-        <div class="rule-list" style="margin-top:4px;">
-          <div class="rule-item">
-            <div class="rule-dot"></div>
-            <div class="rule-text" style="font-size:13px;">
-              <span data-lang="ko">연결 안 되면 Wi-Fi를 껐다가 다시 켜보세요</span>
-              <span data-lang="en">If it doesn't connect, toggle Wi-Fi off and on</span>
-              <span data-lang="ja">接続できない場合はWi-Fiをオフにして再接続してください</span>
-            </div>
-          </div>
-          <div class="rule-item">
-            <div class="rule-dot"></div>
-            <div class="rule-text" style="font-size:13px;">
-              <span data-lang="ko">공유기는 화장실 옆에 있어요. 문제 지속 시 삼삼엠투 앱으로 문의해주세요</span>
-              <span data-lang="en">Router is next to the bathroom. For issues, contact via the 33M2 app</span>
-              <span data-lang="ja">ルーターはバスルームの隣にあります。問題が続く場合は33M2アプリでお問い合わせください</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="card">
       <div class="card-body" style="text-align:center; padding: 14px 18px;">
         <div style="font-size:12px; color: var(--sub);">
@@ -1116,7 +1058,7 @@
     document.getElementById('sub-appliance').style.display = (tab === 'appliance') ? '' : 'none';
     // 해당 대분류의 첫 패널로 이동
     if (tab === 'info') setPanel('info');
-    else setPanel('wifi');
+    else setPanel('washer');
   }
 
   function setLang(lang) {
@@ -1138,7 +1080,7 @@
 
   function initFromHash() {
     const hash = location.hash.replace('#', '');
-    const valid = ['info','waste','transit','facilities','wifi','washer','induction','airpurifier','dehumidifier'];
+    const valid = ['info','waste','transit','facilities','washer','induction','airpurifier','dehumidifier'];
     if (valid.includes(hash)) setPanel(hash);
   }
 
