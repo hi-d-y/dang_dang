@@ -514,6 +514,42 @@
   @media (max-width: 480px) {
     .pdf-viewer-wrap iframe { height: 360px !important; }
   }
+
+  /* ── 지하철 호선 뱃지 ── */
+  .subway-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: white;
+  }
+  .s3 { background: #EF7C1C; }
+  .s7 { background: #747F00; }
+
+  /* ── 버스 뱃지 ── */
+  .bus-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: white;
+    white-space: nowrap;
+  }
+  .bus-airport { background: #1B4F9B; }
+  .bus-express { background: #D20F28; }
+  .bus-branch  { background: #3BAD3E; }
+  .bus-trunk   { background: #1B67C9; }
 </style>
 </head>
 <body class="lang-ko">
@@ -910,16 +946,12 @@
       </div>
     </div>
     <div class="card">
-      <div class="card-head"><div class="card-label"><span data-lang="ko">사용설명서</span><span data-lang="en">Manual</span></div></div>
+      <div class="card-head"><div class="card-label"><span data-lang="ko">필터 관리 안내</span><span data-lang="en">Filter Care</span></div></div>
       <div class="card-body">
-        <a class="link-btn" href="https://www.lge.co.kr/support/product-manuals" target="_blank">
-          <div class="link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#5C6E2E" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg></div>
-          <div class="link-text">
-            <div class="link-title"><span data-lang="ko">LG전자 사용설명서 다운로드</span><span data-lang="en">LG Electronics Manual Download</span></div>
-            <div class="link-sub">lge.co.kr · 모델명: LBR422S8KO 검색</div>
-          </div>
-          <div class="link-arrow">→</div>
-        </a>
+        <div class="alert">
+          <span data-lang="ko">공기청정기에 <b>필터교체 표시등이 켜지면</b> 삼삼엠투 앱 채팅창으로 호스트에게 알려주세요. 필터 교체는 호스트가 진행해 드려요</span>
+          <span data-lang="en">If the <b>filter replacement indicator</b> lights up, please notify the host via the 33M2 app chat. The host will take care of the filter replacement</span>
+        </div>
       </div>
     </div>
     <div class="card">
@@ -959,15 +991,21 @@
     </div>
     <div class="card">
       <div class="card-head"><div class="card-label"><span data-lang="ko">사용설명서</span><span data-lang="en">Manual</span></div></div>
-      <div class="card-body">
-        <a class="link-btn" href="https://www.winix.com/kr/customer/manual" target="_blank">
-          <div class="link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#5C6E2E" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg></div>
-          <div class="link-text">
-            <div class="link-title"><span data-lang="ko">위닉스 공식 사용설명서</span><span data-lang="en">Winix Official Manual</span></div>
-            <div class="link-sub">winix.com · DXAW120-NYK</div>
-          </div>
-          <div class="link-arrow">→</div>
-        </a>
+      <div class="card-body" style="padding: 14px;">
+        <div style="border-radius:8px; overflow:hidden; background:#f3f4f6;">
+          <iframe
+            src="dehumidifier.pdf"
+            width="100%"
+            height="480px"
+            style="display:block; border:none;"
+            title="제습기 사용설명서">
+          </iframe>
+        </div>
+        <div style="margin-top:10px; text-align:center;">
+          <a href="dehumidifier.pdf" target="_blank" class="link-btn" style="display:inline-flex; justify-content:center; font-size:12px; padding:9px 20px;">
+            <span data-lang="ko">새 탭에서 열기</span><span data-lang="en">Open in new tab</span>
+          </a>
+        </div>
       </div>
     </div>
     <div class="card">
@@ -982,44 +1020,67 @@
 
   <!-- 교통편 -->
   <div class="panel" id="panel-transit">
+
+    <!-- 지하철 카드 -->
     <div class="card">
-      <div class="card-head">
-        <div class="card-label"><span data-lang="ko">지하철 · 버스</span><span data-lang="en">Transit</span></div>
-      </div>
-      <div class="card-body" style="padding:0 18px 4px;">
+      <div class="card-head"><div class="card-label"><span data-lang="ko">지하철</span><span data-lang="en">Subway</span></div></div>
+      <div class="card-body" style="padding: 0 18px 4px;">
+
         <div class="info-item">
-          <span class="info-badge badge-check"><span data-lang="ko">지하철</span><span data-lang="en">Subway</span></span>
+          <span class="subway-badge s3"><span data-lang="ko">③</span><span data-lang="en">L3</span></span>
           <div>
-            <div class="info-text"><span data-lang="ko">신사역 (3호선) 도보 5분</span><span data-lang="en">Sinsa Station (Line 3) — 5 min walk</span></div>
-            <div class="info-text" style="margin-top:4px;"><span data-lang="ko">논현역 (7호선) 도보 10분</span><span data-lang="en">Nonhyeon Station (Line 7) — 10 min walk</span></div>
-            <div class="info-text" style="margin-top:4px;"><span data-lang="ko">잠원역 (3호선) 도보 10분</span><span data-lang="en">Jamwon Station (Line 3) — 10 min walk</span></div>
+            <div class="info-text"><span data-lang="ko"><b>신사역</b> 5번출구 도보 5분</span><span data-lang="en"><b>Sinsa Station</b> Exit 5 — 5 min walk</span></div>
+            <div class="info-text" style="margin-top:5px;"><span data-lang="ko"><b>잠원역</b> 도보 10분</span><span data-lang="en"><b>Jamwon Station</b> — 10 min walk</span></div>
           </div>
         </div>
+
         <div class="info-item" style="border-bottom:none; padding-bottom:14px;">
-          <span class="info-badge badge-check"><span data-lang="ko">버스</span><span data-lang="en">Bus</span></span>
-          <div class="info-text"><span data-lang="ko">건물 근처 버스 정류장 이용 가능</span><span data-lang="en">Bus stop near the building</span></div>
+          <span class="subway-badge s7"><span data-lang="ko">⑦</span><span data-lang="en">L7</span></span>
+          <div>
+            <div class="info-text"><span data-lang="ko"><b>논현역</b> 도보 15분</span><span data-lang="en"><b>Nonhyeon Station</b> — 15 min walk</span></div>
+          </div>
         </div>
-      </div>
-      <div class="card">
-      <div class="card-body" style="text-align:center; padding: 14px 18px;">
-        <div style="font-size:12px; color: var(--sub);">
-          <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
-          <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
-          
-        </div>
+
       </div>
     </div>
 
+    <!-- 버스 카드 -->
+    <div class="card">
+      <div class="card-head"><div class="card-label"><span data-lang="ko">버스</span><span data-lang="en">Bus</span></div></div>
+      <div class="card-body" style="padding: 0 18px 4px;">
+
+        <div class="info-item">
+          <span class="bus-badge bus-airport"><span data-lang="ko">공항</span><span data-lang="en">Airport</span></span>
+          <div class="info-text"><span data-lang="ko">공항버스 정류장 도보 5분 이내</span><span data-lang="en">Airport bus stop within 5 min walk</span></div>
+        </div>
+
+        <div class="info-item">
+          <span class="bus-badge bus-express"><span data-lang="ko">광역</span><span data-lang="en">Express</span></span>
+          <div class="info-text"><span data-lang="ko">광역버스 정류장 근처 이용 가능</span><span data-lang="en">Express bus stop available nearby</span></div>
+        </div>
+
+        <div class="info-item">
+          <span class="bus-badge bus-branch"><span data-lang="ko">지선</span><span data-lang="en">Branch</span></span>
+          <div class="info-text"><span data-lang="ko">지선버스 건물 앞 정류장 이용 가능</span><span data-lang="en">Branch bus stop in front of building</span></div>
+        </div>
+
+        <div class="info-item" style="border-bottom:none; padding-bottom:14px;">
+          <span class="bus-badge bus-trunk"><span data-lang="ko">간선</span><span data-lang="en">Trunk</span></span>
+          <div class="info-text"><span data-lang="ko">간선버스 정류장 도보 3분 이내</span><span data-lang="en">Trunk bus stop within 3 min walk</span></div>
+        </div>
+
+      </div>
+    </div>
 
     <div class="card">
       <div class="card-body" style="text-align:center; padding: 14px 18px;">
         <div style="font-size:12px; color: var(--sub);">
           <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
           <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
-          
         </div>
       </div>
     </div>
+
   </div>
 
     <!-- 편의시설 -->
