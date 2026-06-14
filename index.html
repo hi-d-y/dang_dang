@@ -855,7 +855,7 @@
   <div class="panel" id="panel-washer">
     <div class="card">
       <div class="card-head">
-        <div class="card-label"><span data-lang="ko">삼성 아기사랑 세탁기 23년형</span><span data-lang="en">Samsung Baby Care Washer (2023)</span></div>
+        <div class="card-label"><span data-lang="ko">사용 방법</span><span data-lang="en">How to Use</span></div>
       </div>
       <div class="card-body">
         <div class="steps">
@@ -894,8 +894,14 @@
 
   <!-- 인덕션 -->
   <div class="panel" id="panel-induction">
+
+    <!-- 이미지 카드 -->
+    <div class="card" style="overflow:hidden; padding:0;">
+      <img src="induction.png" alt="인덕션/하이라이트" style="width:100%; display:block; border-radius:var(--radius);">
+    </div>
+
     <div class="card">
-      <div class="card-head"><div class="card-label"><span data-lang="ko">키친아트 하이브리드 더블레인지 KWS-2050</span><span data-lang="en">Kitchen Art Hybrid Double Range KWS-2050</span></div></div>
+      <div class="card-head"></div>
       <div class="card-body">
         <div class="steps">
           <div class="step"><div class="step-num">1</div><div class="step-text"><span data-lang="ko">전원 버튼을 <b>길게</b> 눌러 켜기</span><span data-lang="en"><b>Hold</b> the power button to turn on</span></div></div>
@@ -943,7 +949,7 @@
   <!-- 공기청정기 -->
   <div class="panel" id="panel-airpurifier">
     <div class="card">
-      <div class="card-head"><div class="card-label"><span data-lang="ko">LG 공기청정기 LBR422S8KO</span><span data-lang="en">LG Air Purifier LBR422S8KO</span></div></div>
+      <div class="card-head"><div class="card-label"><span data-lang="ko">사용 방법</span><span data-lang="en">How to Use</span></div></div>
       <div class="card-body">
         <div class="steps">
           <div class="step"><div class="step-num">1</div><div class="step-text"><span data-lang="ko"><b>전원</b> 버튼을 눌러 켜기</span><span data-lang="en">Press the <b>power</b> button to turn on</span></div></div>
@@ -981,7 +987,7 @@
   <!-- 제습기 -->
   <div class="panel" id="panel-dehumidifier">
     <div class="card">
-      <div class="card-head"><div class="card-label"><span data-lang="ko">위닉스 뽀송 제습기 12L (DXAW120-NYK)</span><span data-lang="en">Winix Dehumidifier 12L (DXAW120-NYK)</span></div></div>
+      <div class="card-head"><div class="card-label"><span data-lang="ko">사용 방법</span><span data-lang="en">How to Use</span></div></div>
       <div class="card-body">
         <div class="steps">
           <div class="step"><div class="step-num">1</div><div class="step-text"><span data-lang="ko"><b>전원</b> 눌러 켜기 — <b>자동 운전</b> 모드 권장</span><span data-lang="en">Press <b>power</b> — <b>Auto mode</b> recommended</span></div></div>
@@ -989,7 +995,10 @@
           <div class="step"><div class="step-num">3</div><div class="step-text"><span data-lang="ko"><b>물통 표시등</b>에 불이 들어오면 물통을 꺼내 비워주세요</span><span data-lang="en">When the <b>tank indicator</b> lights up, remove and empty the tank</span></div></div>
           <div class="step"><div class="step-num">4</div><div class="step-text"><span data-lang="ko">물통 다시 끼우면 자동 재작동</span><span data-lang="en">Reinsert the tank to resume</span></div></div>
         </div>
-        <div class="alert"><span data-lang="ko">반지하 특성상 제습기를 꾸준히 켜두시면 훨씬 쾌적해요</span><span data-lang="en">Keep it running for comfort — semi-basement rooms can get humid</span></div>
+        <div class="alert">
+          <div style="margin-bottom:6px;"><span data-lang="ko">번거롭더라도 <b>물통이 차면 꼭 물을 비워주세요.</b> 물통이 가득 차면 제습이 멈춰요</span><span data-lang="en">It may be a hassle, but <b>please empty the tank when it's full.</b> The unit stops working when the tank is full</span></div>
+          <div><span data-lang="ko">반지하 특성상 제습기를 꾸준히 켜두시면 훨씬 쾌적해요</span><span data-lang="en">Keep it running for comfort — semi-basement rooms can get humid</span></div>
+        </div>
       </div>
     </div>
     <div class="card">
@@ -1135,10 +1144,10 @@
       btn.classList.toggle('active', ['ko','en'][i] === lang);
     });
   }
-ㅇ
+
   function setPanel(id) {
     document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.nav-sub-tab').forEach(t => t.classList.remove('active'));
     document.getElementById('panel-' + id).classList.add('active');
     document.getElementById('tab-' + id).classList.add('active');
     history.replaceState(null, '', '#' + id);
