@@ -509,6 +509,11 @@
     color: var(--sub);
     line-height: 1.5;
   }
+
+  /* ── PDF 뷰어 ── */
+  @media (max-width: 480px) {
+    .pdf-viewer-wrap iframe { height: 360px !important; }
+  }
 </style>
 </head>
 <body class="lang-ko">
@@ -867,15 +872,21 @@
     </div>
     <div class="card">
       <div class="card-head"><div class="card-label"><span data-lang="ko">사용설명서</span><span data-lang="en">Manual</span></div></div>
-      <div class="card-body">
-        <a class="link-btn" href="https://www.samsungsvc.co.kr/solution/39611" target="_blank">
-          <div class="link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#5C6E2E" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-          <div class="link-text">
-            <div class="link-title"><span data-lang="ko">삼성전자 세탁기 사용 안내</span><span data-lang="en">Samsung Washer Guide</span></div>
-            <div class="link-sub">samsungsvc.co.kr</div>
-          </div>
-          <div class="link-arrow">→</div>
-        </a>
+      <div class="card-body" style="padding: 14px;">
+        <div style="border-radius:8px; overflow:hidden; background:#f3f4f6;">
+          <iframe
+            src="washer.pdf"
+            width="100%"
+            height="480px"
+            style="display:block; border:none;"
+            title="세탁기 사용설명서">
+          </iframe>
+        </div>
+        <div style="margin-top:10px; text-align:center;">
+          <a href="washer.pdf" target="_blank" class="link-btn" style="display:inline-flex; justify-content:center; font-size:12px; padding:9px 20px;">
+            <span data-lang="ko">새 탭에서 열기</span><span data-lang="en">Open in new tab</span>
+          </a>
+        </div>
       </div>
     </div>
     <div class="card">
