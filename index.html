@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>홈 가이드 · 당당홈</title>
+<title>당당홈 가이드</title>
 <style>
   :root {
     --olive: #5C6E2E;
@@ -412,6 +412,30 @@
     border-top: 1px solid var(--border);
     background: var(--white);
   }
+
+  /* ── 반응형 ── */
+  @media (max-width: 480px) {
+    .header { padding: 12px 16px; }
+    .logo { font-size: 15px; }
+    .lang-btn { padding: 4px 8px; font-size: 11px; }
+    .nav-tab { padding: 11px 12px; font-size: 12px; }
+    .content { padding: 14px 12px 60px; }
+    .card-body { padding: 14px; }
+    .wifi-grid { grid-template-columns: 1fr; }
+    .zone-grid { grid-template-columns: 1fr 1fr; }
+    .prohibit-row { gap: 0; }
+    .prohibit-item { padding: 14px 4px; }
+    .p-svg { width: 38px; height: 38px; }
+    .p-label { font-size: 10px; }
+    .step-text { font-size: 13px; }
+    .rule-text { font-size: 13px; }
+  }
+
+  @media (min-width: 768px) {
+    .content { padding: 28px 20px 80px; }
+    .card-body { padding: 22px; }
+    .step-text { font-size: 15px; }
+  }
 </style>
 </head>
 <body class="lang-ko">
@@ -419,7 +443,7 @@
 <!-- 헤더 -->
 <header class="header">
   <div class="header-inner">
-    <div class="logo">당당홈 <span>·</span> <span data-lang="ko">홈 가이드</span><span data-lang="en">Home Guide</span><span data-lang="ja">ホームガイド</span></div>
+    <div class="logo">당당홈 가이드 <span data-lang="ko">가이드</span><span data-lang="en">Guide</span><span data-lang="ja">ガイド</span></div>
     <div class="lang-switcher">
       <button class="lang-btn active" onclick="setLang('ko')">한</button>
       <button class="lang-btn" onclick="setLang('en')">EN</button>
@@ -447,6 +471,9 @@
     <button class="nav-tab" onclick="setPanel('dehumidifier')" id="tab-dehumidifier">
       <span data-lang="ko">#제습기</span><span data-lang="en">#Dehumidifier</span><span data-lang="ja">#除湿機</span>
     </button>
+    <button class="nav-tab" onclick="setPanel('nearby')" id="tab-nearby">
+      <span data-lang="ko">주변 편의시설</span><span data-lang="en">Nearby</span><span data-lang="ja">周辺施設</span>
+    </button>
   </div>
 </nav>
 
@@ -454,10 +481,9 @@
 
   <!-- 안내사항 -->
   <div class="panel active" id="panel-info">
+
+    <!-- 금지 아이콘 (헤더 없이 바로) -->
     <div class="card">
-      <div class="card-head">
-        <div class="card-label"><span data-lang="ko">금지사항</span><span data-lang="en">Prohibited</span><span data-lang="ja">禁止事項</span></div>
-      </div>
       <div class="card-body" style="padding:0">
         <div class="prohibit-row">
           <div class="prohibit-item">
@@ -485,23 +511,39 @@
           <div class="prohibit-item">
             <svg class="p-svg" viewBox="0 0 44 44" fill="none">
               <circle cx="22" cy="22" r="20" stroke="#374151" stroke-width="1.8"/>
-              <rect x="14" y="22" width="17" height="14" rx="2" fill="#374151"/>
-              <rect x="11" y="18" width="22" height="5" rx="1.5" fill="#374151"/>
-              <rect x="17" y="13" width="10" height="5" rx="1.5" fill="#374151" opacity="0.7"/>
-              <line x1="5" y1="5" x2="39" y2="39" stroke="#374151" stroke-width="2.2" stroke-linecap="round"/>
+              <!-- 재활용 화살표 심볼 -->
+              <path d="M22 13 L26 18 L24 18 C24 23 27 25 30 24 L29 27 C25 29 21 26 20 21 L18 21 Z" fill="#374151"/>
+              <path d="M22 31 L18 26 L20 26 C20 21 17 19 14 20 L15 17 C19 15 23 18 24 23 L26 23 Z" fill="#374151"/>
             </svg>
-            <div class="p-label"><span data-lang="ko">무단투기 금지</span><span data-lang="en">No Littering</span><span data-lang="ja">不法投棄禁止</span></div>
+            <div class="p-label"><span data-lang="ko">분리수거 필수</span><span data-lang="en">Sort Waste</span><span data-lang="ja">ゴミ分別必須</span></div>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- 주요 안내사항 -->
     <div class="card">
       <div class="card-head">
-        <div class="card-label"><span data-lang="ko">안내</span><span data-lang="en">Guidelines</span><span data-lang="ja">ご案内</span></div>
+        <div class="card-label"><span data-lang="ko">주요 안내사항</span><span data-lang="en">Important Guidelines</span><span data-lang="ja">重要なご案内</span></div>
       </div>
       <div class="card-body">
         <div class="rule-list">
+          <div class="rule-item">
+            <div class="rule-dot"></div>
+            <div class="rule-text">
+              <span data-lang="ko"><b>실내 흡연 절대 금지.</b> 적발 시 원상복구 비용(도배 등) 전액 청구됩니다</span>
+              <span data-lang="en"><b>Absolutely no smoking indoors.</b> If caught, full restoration costs (wallpaper etc.) will be charged</span>
+              <span data-lang="ja"><b>室内での喫煙は厳禁です。</b>発覚した場合、原状回復費用（壁紙など）を全額請求します</span>
+            </div>
+          </div>
+          <div class="rule-item">
+            <div class="rule-dot"></div>
+            <div class="rule-text">
+              <span data-lang="ko"><b>반려동물 동반 절대 금지.</b> 적발 시 청소·복구 비용 전액 청구됩니다</span>
+              <span data-lang="en"><b>No pets allowed.</b> If caught, full cleaning and restoration costs will be charged</span>
+              <span data-lang="ja"><b>ペットの同伴は厳禁です。</b>発覚した場合、清掃・復旧費用を全額請求します</span>
+            </div>
+          </div>
           <div class="rule-item">
             <div class="rule-dot"></div>
             <div class="rule-text">
@@ -521,47 +563,67 @@
           <div class="rule-item">
             <div class="rule-dot"></div>
             <div class="rule-text">
-              <span data-lang="ko"><b>분리수거 필수!</b> 일반 쓰레기 / 음식물 / 재활용을 분리해서 건물 입구 오른쪽 수거함에 버려주세요</span>
-              <span data-lang="en"><b>Waste sorting is required!</b> Separate general / food / recyclables and dispose in the bins on the right side of the entrance</span>
-              <span data-lang="ja"><b>ゴミの分別は必須です！</b>一般ゴミ／生ゴミ／リサイクルを分別し、建物入口右側のゴミ箱に捨ててください</span>
+              <span data-lang="ko">물건 훼손·오염 시 수리·청소 비용은 본인 부담이에요</span>
+              <span data-lang="en">Damage or excessive cleaning will be charged to the guest</span>
+              <span data-lang="ja">備品の破損・汚損は修理・清掃費用をご負担いただきます</span>
             </div>
           </div>
           <div class="rule-item">
             <div class="rule-dot"></div>
             <div class="rule-text">
-              <span data-lang="ko">물건 훼손·오염 시 수리·청소 비용은 본인 부담이에요</span>
-              <span data-lang="en">Damage or excessive cleaning will be charged to the guest</span>
-              <span data-lang="ja">備品の破損・汚損は修理・清掃費用をご負担いただきます</span>
+              <span data-lang="ko"><b>퇴실 청소비</b> — 1~3주 거주 시 3만원 / 1달 이상 5만원 (퇴실 시 청구)</span>
+              <span data-lang="en"><b>Checkout cleaning fee</b> — 1–3 weeks: ₩30,000 / Over 1 month: ₩50,000</span>
+              <span data-lang="ja"><b>退室清掃費</b> — 1〜3週間: 30,000ウォン / 1か月以上: 50,000ウォン</span>
             </div>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- 분리수거 안내 -->
     <div class="card">
       <div class="card-head">
-        <div class="card-label"><span data-lang="ko">관리비 포함</span><span data-lang="en">Included in Fees</span><span data-lang="ja">管理費込み</span></div>
+        <div class="card-label"><span data-lang="ko">분리수거 안내</span><span data-lang="en">Waste Sorting Guide</span><span data-lang="ja">ゴミ分別案内</span></div>
       </div>
-      <div class="card-body" style="padding: 0 18px;">
+      <div class="card-body" style="padding: 0 18px 4px;">
+
         <div class="info-item">
-          <span class="info-badge badge-inc"><span data-lang="ko">포함</span><span data-lang="en">Incl.</span><span data-lang="ja">込み</span></span>
-          <div class="info-text"><span data-lang="ko">가스 · 수도 · 전기 · Wi-Fi</span><span data-lang="en">Gas · Water · Electricity · Wi-Fi</span><span data-lang="ja">ガス・水道・電気・Wi-Fi</span></div>
-        </div>
-        <div class="info-item">
-          <span class="info-badge badge-out"><span data-lang="ko">퇴실청소비</span><span data-lang="en">Cleaning</span><span data-lang="ja">清掃費</span></span>
-          <div class="info-text">
-            <span data-lang="ko">1~3주 거주 시 3만원 / 1달 이상 5만원</span>
-            <span data-lang="en">1–3 weeks: ₩30,000 / Over 1 month: ₩50,000</span>
-            <span data-lang="ja">1〜3週間: 30,000ウォン / 1か月以上: 50,000ウォン</span>
+          <span class="info-badge badge-check"><span data-lang="ko">일반쓰레기</span><span data-lang="en">General</span><span data-lang="ja">一般ゴミ</span></span>
+          <div>
+            <div class="info-text"><span data-lang="ko">1주일 당 <b>20L 봉투 1장</b> 제공</span><span data-lang="en"><b>One 20L bag</b> provided per week</span><span data-lang="ja">1週間あたり<b>20L袋1枚</b>提供</span></div>
+            <div class="info-sub"><span data-lang="ko">추가 구입처: 근처 편의점·마트</span><span data-lang="en">Extra bags available at nearby convenience stores/marts</span><span data-lang="ja">追加購入: 近くのコンビニ・スーパー</span></div>
           </div>
         </div>
+
         <div class="info-item">
-          <span class="info-badge badge-check"><span data-lang="ko">보증금</span><span data-lang="en">Deposit</span><span data-lang="ja">敷金</span></span>
-          <div class="info-text">
-            <span data-lang="ko">330,000원 — 퇴실 점검 후 이상 없을 시 전액 환불</span>
-            <span data-lang="en">₩330,000 — Fully refunded after checkout inspection</span>
-            <span data-lang="ja">330,000ウォン — 退室点検後に問題なければ全額返金</span>
+          <span class="info-badge badge-check"><span data-lang="ko">음식물</span><span data-lang="en">Food</span><span data-lang="ja">生ゴミ</span></span>
+          <div>
+            <div class="info-text"><span data-lang="ko">1주일 당 <b>2L 봉투 1장</b> 제공</span><span data-lang="en"><b>One 2L bag</b> provided per week</span><span data-lang="ja">1週間あたり<b>2L袋1枚</b>提供</span></div>
+            <div class="info-sub"><span data-lang="ko">모자라면 호스트에게 요청해 주세요</span><span data-lang="en">Request more from the host if needed</span><span data-lang="ja">不足の場合はホストにご連絡ください</span></div>
           </div>
+        </div>
+
+        <div class="info-item" style="border-bottom:none; padding-bottom:14px;">
+          <span class="info-badge badge-inc"><span data-lang="ko">보관장소</span><span data-lang="en">Location</span><span data-lang="ja">保管場所</span></span>
+          <div class="info-text"><span data-lang="ko">쓰레기봉투는 <b>왼쪽 신발장 안</b>에 있어요</span><span data-lang="en">Trash bags are in the <b>left shoe cabinet</b></span><span data-lang="ja">ゴミ袋は<b>左側のシューズボックス内</b>にあります</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 재활용 배출 위치 -->
+    <div class="card">
+      <div class="card-head">
+        <div class="card-label"><span data-lang="ko">재활용 배출 위치</span><span data-lang="en">Recycling Location</span><span data-lang="ja">リサイクル排出場所</span></div>
+      </div>
+      <div class="card-body" style="padding: 0 18px 4px;">
+        <div class="info-item">
+          <span class="info-badge badge-out"><span data-lang="ko">오른쪽</span><span data-lang="en">Right</span><span data-lang="ja">右側</span></span>
+          <div class="info-text"><span data-lang="ko">공동현관 나와서 바로 오른쪽 — <b>음식물쓰레기함</b> 및 <b>종이</b> 배출</span><span data-lang="en">Exit main entrance, turn right — <b>food waste bin</b> and <b>paper</b></span><span data-lang="ja">共用玄関を出てすぐ右 — <b>生ゴミ箱</b>と<b>紙類</b></span></div>
+        </div>
+        <div class="info-item" style="border-bottom:none; padding-bottom:14px;">
+          <span class="info-badge badge-out"><span data-lang="ko">맞은편</span><span data-lang="en">Across</span><span data-lang="ja">向かい側</span></span>
+          <div class="info-text"><span data-lang="ko">맞은편 — <b>일반쓰레기봉투</b>, <b>유리·고철·캔</b>, <b>페트</b>, <b>비닐</b></span><span data-lang="en">Across — <b>general waste bags</b>, <b>glass·metal·cans</b>, <b>PET bottles</b>, <b>plastic film</b></span><span data-lang="ja">向かい側 — <b>一般ゴミ袋</b>、<b>ガラス・金属・缶</b>、<b>ペットボトル</b>、<b>ビニール</b></span></div>
         </div>
       </div>
     </div>
@@ -569,9 +631,9 @@
     <div class="card">
       <div class="card-body" style="text-align:center; padding: 14px 18px;">
         <div style="font-size:12px; color: var(--sub);">
-          <span data-lang="ko">문의는 삼삼엠투 앱으로 해주세요</span>
-          <span data-lang="en">Contact us via the 33M2 app</span>
-          <span data-lang="ja">お問い合わせは33M2アプリからお願いします</span>
+          <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
+          <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
+          <span data-lang="ja">ご質問・ご要望は33M2アプリのチャットをご利用ください</span>
         </div>
       </div>
     </div>
@@ -768,10 +830,58 @@
     </div>
   </div>
 
+  <!-- 주변 편의시설 -->
+  <div class="panel" id="panel-nearby">
+    <div class="card">
+      <div class="card-head">
+        <div class="card-label"><span data-lang="ko">지하철 · 버스</span><span data-lang="en">Transit</span><span data-lang="ja">交通</span></div>
+      </div>
+      <div class="card-body" style="padding:0 18px 4px;">
+        <div class="info-item">
+          <span class="info-badge badge-check"><span data-lang="ko">지하철</span><span data-lang="en">Subway</span><span data-lang="ja">地下鉄</span></span>
+          <div>
+            <div class="info-text"><span data-lang="ko">신사역 (3호선) 도보 5분</span><span data-lang="en">Sinsa Station (Line 3) — 5 min walk</span><span data-lang="ja">新沙駅（3号線）徒歩5分</span></div>
+            <div class="info-text" style="margin-top:4px;"><span data-lang="ko">논현역 (7호선) 도보 10분</span><span data-lang="en">Nonhyeon Station (Line 7) — 10 min walk</span><span data-lang="ja">論峴駅（7号線）徒歩10分</span></div>
+            <div class="info-text" style="margin-top:4px;"><span data-lang="ko">잠원역 (3호선) 도보 10분</span><span data-lang="en">Jamwon Station (Line 3) — 10 min walk</span><span data-lang="ja">蚕院駅（3号線）徒歩10分</span></div>
+          </div>
+        </div>
+        <div class="info-item" style="border-bottom:none; padding-bottom:14px;">
+          <span class="info-badge badge-check"><span data-lang="ko">버스</span><span data-lang="en">Bus</span><span data-lang="ja">バス</span></span>
+          <div class="info-text"><span data-lang="ko">건물 근처 버스 정류장 이용 가능</span><span data-lang="en">Bus stop near the building</span><span data-lang="ja">建物近くにバス停あり</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-label"><span data-lang="ko">편의시설</span><span data-lang="en">Facilities</span><span data-lang="ja">周辺施設</span></div>
+      </div>
+      <div class="card-body" style="padding:0 18px 4px;">
+        <div class="info-item">
+          <span class="info-badge badge-inc"><span data-lang="ko">편의점</span><span data-lang="en">Conv.</span><span data-lang="ja">コンビニ</span></span>
+          <div class="info-text"><span data-lang="ko">도보 5분 이내 GS25, CU 등</span><span data-lang="en">GS25, CU etc. within 5 min walk</span><span data-lang="ja">GS25、CUなど徒歩5分以内</span></div>
+        </div>
+        <div class="info-item">
+          <span class="info-badge badge-inc"><span data-lang="ko">마트</span><span data-lang="en">Mart</span><span data-lang="ja">スーパー</span></span>
+          <div class="info-text"><span data-lang="ko">근처 슈퍼·마트 도보 이용 가능</span><span data-lang="en">Local supermarket within walking distance</span><span data-lang="ja">近くのスーパーが徒歩圏内</span></div>
+        </div>
+        <div class="info-item">
+          <span class="info-badge badge-inc"><span data-lang="ko">다이소</span><span data-lang="en">Daiso</span><span data-lang="ja">ダイソー</span></span>
+          <div class="info-text"><span data-lang="ko">근처 다이소 이용 가능</span><span data-lang="en">Daiso (100-yen style store) nearby</span><span data-lang="ja">近くにダイソーあり</span></div>
+        </div>
+        <div class="info-item" style="border-bottom:none; padding-bottom:14px;">
+          <span class="info-badge badge-inc"><span data-lang="ko">빨래방</span><span data-lang="en">Laundry</span><span data-lang="ja">コインランドリー</span></span>
+          <div class="info-text"><span data-lang="ko">근처 셀프 빨래방 이용 가능</span><span data-lang="en">Self-service laundromat nearby</span><span data-lang="ja">近くにコインランドリーあり</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 </main>
 
 <footer class="footer">
-  당당홈 · 서초구 강남대로107길 17-7 · 문의: 삼삼엠투 앱
+  문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요 · Questions or requests? Please use the chat in the 33M2 app
 </footer>
 
 <script>
@@ -796,7 +906,7 @@
 
   function initFromHash() {
     const hash = location.hash.replace('#', '');
-    const valid = ['info','wifi','washer','induction','airpurifier','dehumidifier'];
+    const valid = ['info','wifi','washer','induction','airpurifier','dehumidifier','nearby'];
     if (valid.includes(hash)) setPanel(hash);
   }
 
