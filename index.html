@@ -96,21 +96,45 @@
     z-index: 100;
   }
 
-  .nav-inner {
-    max-width: 640px;
-    margin: 0 auto;
-    display: flex;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    padding: 0 12px;
+  /* 대분류 탭 */
+  .nav-main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--border);
   }
-  .nav-inner::-webkit-scrollbar { display: none; }
 
-  .nav-tab {
-    flex-shrink: 0;
-    padding: 12px 14px;
+  .nav-main-tab {
+    padding: 13px 8px;
     font-size: 13px;
+    font-weight: 600;
+    color: var(--sub);
+    background: none;
+    border: none;
+    border-bottom: 2.5px solid transparent;
+    cursor: pointer;
+    font-family: inherit;
+    text-align: center;
+    transition: all 0.15s;
+  }
+
+  .nav-main-tab.active {
+    color: var(--olive);
+    border-bottom-color: var(--olive);
+    background: var(--olive-light);
+  }
+
+  /* 중분류 탭 */
+  .nav-sub {
+    display: grid;
+    padding: 0 4px;
+  }
+
+  .nav-sub-info { grid-template-columns: repeat(4, 1fr); }
+  .nav-sub-appliance { grid-template-columns: repeat(5, 1fr); }
+
+  .nav-sub-tab {
+    padding: 10px 4px;
+    font-size: 12px;
     font-weight: 500;
     color: var(--sub);
     background: none;
@@ -118,14 +142,22 @@
     border-bottom: 2px solid transparent;
     cursor: pointer;
     font-family: inherit;
+    text-align: center;
     white-space: nowrap;
     transition: all 0.15s;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  .nav-tab.active {
+  .nav-sub-tab.active {
     color: var(--olive);
     border-bottom-color: var(--olive);
     font-weight: 600;
+  }
+
+  @media (max-width: 380px) {
+    .nav-sub-tab { font-size: 10px; padding: 9px 2px; }
+    .nav-main-tab { font-size: 12px; }
   }
 
   /* ── 본문 ── */
@@ -443,7 +475,7 @@
 <!-- 헤더 -->
 <header class="header">
   <div class="header-inner">
-    <div class="logo"><span style="color:#111827">당당홈</span> <span style="color:#5C6E2E">가이드</span> <span data-lang="ko">가이드</span><span data-lang="en">Guide</span><span data-lang="ja">ガイド</span></div>
+    <div class="logo"><span style="color:#111827">당당홈</span> <span style="color:#5C6E2E">가이드</span> <span style="color:#5C6E2E">가이드</span> <span data-lang="ko">가이드</span><span data-lang="en">Guide</span><span data-lang="ja">ガイド</span></div>
     <div class="lang-switcher">
       <button class="lang-btn active" onclick="setLang('ko')">한</button>
       <button class="lang-btn" onclick="setLang('en')">EN</button>
@@ -454,25 +486,44 @@
 
 <!-- 탭 네비 -->
 <nav class="nav-wrap">
-  <div class="nav-inner">
-    <button class="nav-tab active" onclick="setPanel('info')" id="tab-info">
+  <!-- 대분류 -->
+  <div class="nav-main">
+    <button class="nav-main-tab active" id="main-tab-info" onclick="setMainTab('info')">
       <span data-lang="ko">안내사항</span><span data-lang="en">Info</span><span data-lang="ja">案内</span>
     </button>
-    <button class="nav-tab" onclick="setPanel('wifi')" id="tab-wifi">#wifi</button>
-    <button class="nav-tab" onclick="setPanel('washer')" id="tab-washer">
+    <button class="nav-main-tab" id="main-tab-appliance" onclick="setMainTab('appliance')">
+      <span data-lang="ko">가전제품 사용법</span><span data-lang="en">Appliances</span><span data-lang="ja">家電ガイド</span>
+    </button>
+  </div>
+  <!-- 중분류: 안내사항 -->
+  <div class="nav-sub nav-sub-info" id="sub-info">
+    <button class="nav-sub-tab active" id="tab-info" onclick="setPanel('info')">
+      <span data-lang="ko">주요 사항</span><span data-lang="en">Rules</span><span data-lang="ja">主な案内</span>
+    </button>
+    <button class="nav-sub-tab" id="tab-waste" onclick="setPanel('waste')">
+      <span data-lang="ko">분리수거</span><span data-lang="en">Waste</span><span data-lang="ja">ゴミ分別</span>
+    </button>
+    <button class="nav-sub-tab" id="tab-transit" onclick="setPanel('transit')">
+      <span data-lang="ko">교통편</span><span data-lang="en">Transit</span><span data-lang="ja">交通</span>
+    </button>
+    <button class="nav-sub-tab" id="tab-facilities" onclick="setPanel('facilities')">
+      <span data-lang="ko">편의시설</span><span data-lang="en">Nearby</span><span data-lang="ja">周辺施設</span>
+    </button>
+  </div>
+  <!-- 중분류: 가전제품 -->
+  <div class="nav-sub nav-sub-appliance" id="sub-appliance" style="display:none">
+    <button class="nav-sub-tab" id="tab-wifi" onclick="setPanel('wifi')">#wifi</button>
+    <button class="nav-sub-tab" id="tab-washer" onclick="setPanel('washer')">
       <span data-lang="ko">#세탁기</span><span data-lang="en">#Washer</span><span data-lang="ja">#洗濯機</span>
     </button>
-    <button class="nav-tab" onclick="setPanel('induction')" id="tab-induction">
-      <span data-lang="ko">#인덕션(하이라이트)</span><span data-lang="en">#Cooktop</span><span data-lang="ja">#IHコンロ</span>
+    <button class="nav-sub-tab" id="tab-induction" onclick="setPanel('induction')">
+      <span data-lang="ko">#인덕션</span><span data-lang="en">#Cooktop</span><span data-lang="ja">#IH</span>
     </button>
-    <button class="nav-tab" onclick="setPanel('airpurifier')" id="tab-airpurifier">
+    <button class="nav-sub-tab" id="tab-airpurifier" onclick="setPanel('airpurifier')">
       <span data-lang="ko">#공기청정기</span><span data-lang="en">#AirPurifier</span><span data-lang="ja">#空気清浄機</span>
     </button>
-    <button class="nav-tab" onclick="setPanel('dehumidifier')" id="tab-dehumidifier">
+    <button class="nav-sub-tab" id="tab-dehumidifier" onclick="setPanel('dehumidifier')">
       <span data-lang="ko">#제습기</span><span data-lang="en">#Dehumidifier</span><span data-lang="ja">#除湿機</span>
-    </button>
-    <button class="nav-tab" onclick="setPanel('nearby')" id="tab-nearby">
-      <span data-lang="ko">주변 편의시설</span><span data-lang="en">Nearby</span><span data-lang="ja">周辺施設</span>
     </button>
   </div>
 </nav>
@@ -480,7 +531,8 @@
 <main class="content">
 
   <!-- 안내사항 -->
-  <div class="panel active" id="panel-info">
+    <div class="panel active" id="panel-info">
+
 
     <!-- 금지 아이콘 (헤더 없이 바로) -->
     <div class="card">
@@ -646,6 +698,21 @@
       </div>
     </div>
 
+
+    <div class="card">
+      <div class="card-body" style="text-align:center; padding: 14px 18px;">
+        <div style="font-size:12px; color: var(--sub);">
+          <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
+          <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
+          <span data-lang="ja">ご質問・ご要望は33M2アプリのチャットをご利用ください</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 분리수거 -->
+  <div class="panel" id="panel-waste">
+
     <!-- 분리수거 안내 -->
     <div class="card">
       <div class="card-head">
@@ -701,6 +768,7 @@
       </div>
     </div>
 
+
     <div class="card">
       <div class="card-body" style="text-align:center; padding: 14px 18px;">
         <div style="font-size:12px; color: var(--sub);">
@@ -712,7 +780,7 @@
     </div>
   </div>
 
-  <!-- Wi-Fi -->
+    <!-- Wi-Fi -->
   <div class="panel" id="panel-wifi">
     <div class="card">
       <div class="card-head">
@@ -948,8 +1016,8 @@
     </div>
   </div>
 
-  <!-- 주변 편의시설 -->
-  <div class="panel" id="panel-nearby">
+  <!-- 교통편 -->
+  <div class="panel" id="panel-transit">
     <div class="card">
       <div class="card-head">
         <div class="card-label"><span data-lang="ko">지하철 · 버스</span><span data-lang="en">Transit</span><span data-lang="ja">交通</span></div>
@@ -977,8 +1045,21 @@
         </div>
       </div>
     </div>
+
+
+    <div class="card">
+      <div class="card-body" style="text-align:center; padding: 14px 18px;">
+        <div style="font-size:12px; color: var(--sub);">
+          <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
+          <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
+          <span data-lang="ja">ご質問・ご要望は33M2アプリのチャットをご利用ください</span>
+        </div>
+      </div>
+    </div>
   </div>
 
+    <!-- 편의시설 -->
+  <div class="panel" id="panel-facilities">
     <div class="card">
       <div class="card-head">
         <div class="card-label"><span data-lang="ko">편의시설</span><span data-lang="en">Facilities</span><span data-lang="ja">周辺施設</span></div>
@@ -1002,9 +1083,20 @@
         </div>
       </div>
     </div>
+
+
+    <div class="card">
+      <div class="card-body" style="text-align:center; padding: 14px 18px;">
+        <div style="font-size:12px; color: var(--sub);">
+          <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
+          <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
+          <span data-lang="ja">ご質問・ご要望は33M2アプリのチャットをご利用ください</span>
+        </div>
+      </div>
+    </div>
   </div>
 
-
+  
 </main>
 
 <footer class="footer">
@@ -1013,6 +1105,19 @@
 
 <script>
   let currentLang = 'ko';
+
+  function setMainTab(tab) {
+    // 대분류 탭 활성화
+    document.querySelectorAll('.nav-main-tab').forEach((btn, i) => {
+      btn.classList.toggle('active', ['info','appliance'][i] === tab);
+    });
+    // 중분류 탭 표시
+    document.getElementById('sub-info').style.display = (tab === 'info') ? '' : 'none';
+    document.getElementById('sub-appliance').style.display = (tab === 'appliance') ? '' : 'none';
+    // 해당 대분류의 첫 패널로 이동
+    if (tab === 'info') setPanel('info');
+    else setPanel('wifi');
+  }
 
   function setLang(lang) {
     currentLang = lang;
@@ -1033,7 +1138,7 @@
 
   function initFromHash() {
     const hash = location.hash.replace('#', '');
-    const valid = ['info','wifi','washer','induction','airpurifier','dehumidifier','nearby'];
+    const valid = ['info','waste','transit','facilities','wifi','washer','induction','airpurifier','dehumidifier'];
     if (valid.includes(hash)) setPanel(hash);
   }
 
