@@ -123,7 +123,6 @@
   .nav-main-tab.active {
     color: var(--olive);
     border-bottom-color: var(--olive);
-    background: var(--olive-light);
   }
 
   /* 중분류 탭 */
@@ -440,7 +439,6 @@
   /* 언어 제어 */
   body:not(.lang-ko) [data-lang="ko"] { display: none !important; }
   body:not(.lang-en) [data-lang="en"] { display: none !important; }
-  body:not(.lang-ja) [data-lang="ja"] { display: none !important; }
 
   .footer {
     text-align: center;
@@ -474,6 +472,43 @@
     .card-body { padding: 22px; }
     .step-text { font-size: 15px; }
   }
+
+  /* ── 분리수거 표 ── */
+  .waste-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .waste-table th {
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--sub);
+    padding: 0 8px 10px 0;
+    border-bottom: 1.5px solid var(--border);
+    letter-spacing: 0.3px;
+  }
+
+  .waste-table th:first-child { padding-left: 0; }
+
+  .waste-table td {
+    padding: 11px 8px 11px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .waste-table td:first-child { padding-left: 0; font-weight: 500; white-space: nowrap; }
+
+  .waste-table tr:last-child td { border-bottom: none; }
+
+  .waste-note {
+    font-size: 11px;
+    color: var(--sub);
+    line-height: 1.5;
+  }
 </style>
 </head>
 <body class="lang-ko">
@@ -485,7 +520,6 @@
     <div class="lang-switcher">
       <button class="lang-btn active" onclick="setLang('ko')">한</button>
       <button class="lang-btn" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" onclick="setLang('ja')">日</button>
     </div>
   </div>
 </header>
@@ -495,40 +529,40 @@
   <!-- 대분류 -->
   <div class="nav-main">
     <button class="nav-main-tab active" id="main-tab-info" onclick="setMainTab('info')">
-      <span data-lang="ko">안내사항</span><span data-lang="en">Info</span><span data-lang="ja">案内</span>
+      <span data-lang="ko">안내사항</span><span data-lang="en">Info</span>
     </button>
     <button class="nav-main-tab" id="main-tab-appliance" onclick="setMainTab('appliance')">
-      <span data-lang="ko">가전제품 사용법</span><span data-lang="en">Appliances</span><span data-lang="ja">家電ガイド</span>
+      <span data-lang="ko">가전제품 사용법</span><span data-lang="en">Appliances</span>
     </button>
   </div>
   <!-- 중분류: 안내사항 -->
   <div class="nav-sub nav-sub-info" id="sub-info">
     <button class="nav-sub-tab active" id="tab-info" onclick="setPanel('info')">
-      <span data-lang="ko">주요 사항</span><span data-lang="en">Rules</span><span data-lang="ja">主な案内</span>
+      <span data-lang="ko">주요 사항</span><span data-lang="en">Rules</span>
     </button>
     <button class="nav-sub-tab" id="tab-waste" onclick="setPanel('waste')">
-      <span data-lang="ko">분리수거</span><span data-lang="en">Waste</span><span data-lang="ja">ゴミ分別</span>
+      <span data-lang="ko">분리수거</span><span data-lang="en">Waste</span>
     </button>
     <button class="nav-sub-tab" id="tab-transit" onclick="setPanel('transit')">
-      <span data-lang="ko">교통편</span><span data-lang="en">Transit</span><span data-lang="ja">交通</span>
+      <span data-lang="ko">교통편</span><span data-lang="en">Transit</span>
     </button>
     <button class="nav-sub-tab" id="tab-facilities" onclick="setPanel('facilities')">
-      <span data-lang="ko">편의시설</span><span data-lang="en">Nearby</span><span data-lang="ja">周辺施設</span>
+      <span data-lang="ko">편의시설</span><span data-lang="en">Nearby</span>
     </button>
   </div>
   <!-- 중분류: 가전제품 -->
   <div class="nav-sub nav-sub-appliance" id="sub-appliance" style="display:none">
     <button class="nav-sub-tab" id="tab-washer" onclick="setPanel('washer')">
-      <span data-lang="ko">#세탁기</span><span data-lang="en">#Washer</span><span data-lang="ja">#洗濯機</span>
+      <span data-lang="ko">#세탁기</span><span data-lang="en">#Washer</span>
     </button>
     <button class="nav-sub-tab" id="tab-induction" onclick="setPanel('induction')">
-      <span data-lang="ko">#인덕션</span><span data-lang="en">#Cooktop</span><span data-lang="ja">#IH</span>
+      <span data-lang="ko">#인덕션</span><span data-lang="en">#Cooktop</span>
     </button>
     <button class="nav-sub-tab" id="tab-airpurifier" onclick="setPanel('airpurifier')">
-      <span data-lang="ko">#공기청정기</span><span data-lang="en">#AirPurifier</span><span data-lang="ja">#空気清浄機</span>
+      <span data-lang="ko">#공기청정기</span><span data-lang="en">#AirPurifier</span>
     </button>
     <button class="nav-sub-tab" id="tab-dehumidifier" onclick="setPanel('dehumidifier')">
-      <span data-lang="ko">#제습기</span><span data-lang="en">#Dehumidifier</span><span data-lang="ja">#除湿機</span>
+      <span data-lang="ko">#제습기</span><span data-lang="en">#Dehumidifier</span>
     </button>
   </div>
 </nav>
@@ -551,7 +585,7 @@
               <path d="M25 15 Q27 10 29.5 13" stroke="#374151" stroke-width="1.3" fill="none" stroke-linecap="round"/>
               <line x1="5" y1="5" x2="39" y2="39" stroke="#374151" stroke-width="2.2" stroke-linecap="round"/>
             </svg>
-            <div class="p-label"><span data-lang="ko">흡연 금지</span><span data-lang="en">No Smoking</span><span data-lang="ja">禁煙</span></div>
+            <div class="p-label"><span data-lang="ko">흡연 금지</span><span data-lang="en">No Smoking</span></div>
           </div>
           <div class="prohibit-item">
             <svg class="p-svg" viewBox="0 0 44 44" fill="none">
@@ -563,7 +597,7 @@
               <ellipse cx="25.5" cy="16" rx="2.2" ry="2.7" fill="#374151"/>
               <line x1="5" y1="5" x2="39" y2="39" stroke="#374151" stroke-width="2.2" stroke-linecap="round"/>
             </svg>
-            <div class="p-label"><span data-lang="ko">반려동물 금지</span><span data-lang="en">No Pets</span><span data-lang="ja">ペット禁止</span></div>
+            <div class="p-label"><span data-lang="ko">반려동물 금지</span><span data-lang="en">No Pets</span></div>
           </div>
           <div class="prohibit-item">
             <svg class="p-svg" viewBox="0 0 44 44" fill="none">
@@ -574,7 +608,7 @@
               <path d="M27 16 Q31 22 27 28" stroke="#374151" stroke-width="2" fill="none" stroke-linecap="round"/>
               <line x1="5" y1="5" x2="39" y2="39" stroke="#374151" stroke-width="2.2" stroke-linecap="round"/>
             </svg>
-            <div class="p-label"><span data-lang="ko">새벽소음 금지</span><span data-lang="en">No Late Noise</span><span data-lang="ja">深夜騒音禁止</span></div>
+            <div class="p-label"><span data-lang="ko">새벽소음 금지</span><span data-lang="en">No Late Noise</span></div>
           </div>
         </div>
       </div>
@@ -583,7 +617,7 @@
     <!-- 주요 안내사항 -->
     <div class="card">
       <div class="card-head">
-        <div class="card-label"><span data-lang="ko">주요 안내사항</span><span data-lang="en">Important Guidelines</span><span data-lang="ja">重要なご案内</span></div>
+        <div class="card-label"><span data-lang="ko">주요 안내사항</span><span data-lang="en">Important Guidelines</span></div>
       </div>
       <div class="card-body">
         <div class="rule-list">
@@ -599,10 +633,7 @@
                 <b>Smoking indoors is strictly prohibited.</b><br>
                 If caught, restoration costs (wallpaper etc.) will be charged and the contract may be terminated immediately.
               </span>
-              <span data-lang="ja">
-                <b>室内での喫煙は厳禁です。</b><br>
-                発覚した場合、原状回復費用（壁紙など）を請求し、契約が即時解除となる場合があります。
-              </span>
+              
             </div>
           </div>
 
@@ -617,10 +648,7 @@
                 <b>Pets are strictly prohibited.</b><br>
                 If caught, cleaning and restoration costs will be charged and the contract may be terminated immediately.
               </span>
-              <span data-lang="ja">
-                <b>ペットの同伴は厳禁です。</b><br>
-                発覚した場合、清掃・復旧費用を請求し、契約が即時解除となる場合があります。
-              </span>
+              
             </div>
           </div>
 
@@ -635,10 +663,7 @@
                 <b>Please keep quiet after 10 PM.</b><br>
                 This is a very quiet neighborhood — noise complaints may result in contract termination.
               </span>
-              <span data-lang="ja">
-                <b>夜10時以降はお静かにお願いします。</b><br>
-                非常に静かな住宅地のため、騒音苦情が発生した場合、契約解除となる場合があります。
-              </span>
+              
             </div>
           </div>
 
@@ -655,11 +680,7 @@
                 Due to the semi-basement level, please always check the screen before opening.<br>
                 The air purifier and dehumidifier keep the room comfortable without opening windows.
               </span>
-              <span data-lang="ja">
-                <b>窓を開けると虫が入ることがあります。</b><br>
-                半地下の特性上、必ず防虫網を確認してから開けてください。<br>
-                空気清浄機・除湿機を使えば窓を開けなくても快適に過ごせます。
-              </span>
+              
             </div>
           </div>
 
@@ -674,10 +695,7 @@
                 <b>Any damage or excessive soiling</b> will result in repair or cleaning charges.<br>
                 Please treat the space with care.
               </span>
-              <span data-lang="ja">
-                <b>備品の破損・汚損</b>は修理・清掃費用をご負担いただきます。<br>
-                大切にお使いいただけると幸いです。
-              </span>
+              
             </div>
           </div>
 
@@ -692,10 +710,7 @@
                 <b>A checkout cleaning fee</b> applies.<br>
                 1–3 weeks: ₩30,000 / Over 1 month: ₩50,000
               </span>
-              <span data-lang="ja">
-                <b>退室清掃費</b>が別途発生します。<br>
-                1〜3週間: 30,000ウォン / 1か月以上: 50,000ウォン
-              </span>
+              
             </div>
           </div>
 
@@ -709,7 +724,7 @@
         <div style="font-size:12px; color: var(--sub);">
           <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
           <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
-          <span data-lang="ja">ご質問・ご要望は33M2アプリのチャットをご利用ください</span>
+          
         </div>
       </div>
     </div>
@@ -718,55 +733,106 @@
   <!-- 분리수거 -->
   <div class="panel" id="panel-waste">
 
-    <!-- 분리수거 안내 -->
+    <!-- 카드1: 쓰레기 봉투 안내 -->
     <div class="card">
-      <div class="card-head">
-        <div class="card-label"><span data-lang="ko">분리수거 안내</span><span data-lang="en">Waste Sorting Guide</span><span data-lang="ja">ゴミ分別案内</span></div>
+      <div class="card-body">
+        <table class="waste-table">
+          <thead>
+            <tr>
+              <th><span data-lang="ko">종류</span><span data-lang="en">Type</span></th>
+              <th><span data-lang="ko">제공</span><span data-lang="en">Provided</span></th>
+              <th><span data-lang="ko">안내</span><span data-lang="en">Note</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span data-lang="ko">일반쓰레기</span><span data-lang="en">General</span></td>
+              <td><span data-lang="ko"><b>20L 1장/주</b></span><span data-lang="en"><b>20L × 1/wk</b></span></td>
+              <td class="waste-note"><span data-lang="ko">추가 구입: 근처 편의점·마트</span><span data-lang="en">Buy extra at convenience store</span></td>
+            </tr>
+            <tr>
+              <td><span data-lang="ko">음식물쓰레기</span><span data-lang="en">Food Waste</span></td>
+              <td><span data-lang="ko"><b>2L 1장/주</b></span><span data-lang="en"><b>2L × 1/wk</b></span></td>
+              <td class="waste-note"><span data-lang="ko">부족하면 호스트에게 요청해 주세요</span><span data-lang="en">Request more from host if needed</span></td>
+            </tr>
+            <tr>
+              <td><span data-lang="ko">재활용쓰레기</span><span data-lang="en">Recycling</span></td>
+              <td><span data-lang="ko">—</span><span data-lang="en">—</span></td>
+              <td class="waste-note"><span data-lang="ko">깨끗이 씻어 말린 후 분리 배출</span><span data-lang="en">Rinse, dry, then sort by type</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="margin-top:12px; padding-top:12px; border-top:1px solid var(--border); font-size:13px; color:var(--text);">
+          <span data-lang="ko">쓰레기봉투는 <b>왼쪽 신발장 안</b>에 있어요</span>
+          <span data-lang="en">Trash bags are in the <b>left shoe cabinet</b></span>
+        </div>
       </div>
+    </div>
+
+    <!-- 카드2: 배출 장소 및 수거 시간 -->
+    <div class="card">
       <div class="card-body" style="padding: 0 18px 4px;">
+        <div class="info-item">
+          <span class="info-badge badge-out" style="white-space:nowrap"><span data-lang="ko">배출장소</span><span data-lang="en">Location</span></span>
+          <div class="info-text">
+            <span data-lang="ko">공동현관 나와 <b>바로 오른쪽 분리수거 공간</b>에서 버려주세요</span>
+            <span data-lang="en">Exit the main entrance and dispose at the <b>recycling area immediately to the right</b></span>
+          </div>
+        </div>
+        <div class="info-item" style="border-bottom:none; padding-bottom:14px;">
+          <span class="info-badge badge-out" style="white-space:nowrap"><span data-lang="ko">수거시간</span><span data-lang="en">Collection</span></span>
+          <div>
+            <div class="info-text"><span data-lang="ko">쓰레기 수거는 <b>새벽</b>에 이루어져요</span><span data-lang="en">Waste is collected in the <b>early morning</b></span></div>
+            <div class="info-sub"><span data-lang="ko">공휴일로 넘어가는 새벽에는 수거하지 않으니 참고해 주세요</span><span data-lang="en">No collection on the morning before public holidays</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body" style="text-align:center; padding: 14px 18px;">
+        <div style="font-size:12px; color: var(--sub);">
+          <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
+          <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
         <div class="info-item">
-          <span class="info-badge badge-check" style="white-space:nowrap"><span data-lang="ko">일반쓰레기</span><span data-lang="en">General</span><span data-lang="ja">一般ゴミ</span></span>
+          <span class="info-badge badge-check" style="white-space:nowrap"><span data-lang="ko">음식물</span><span data-lang="en">Food</span></span>
           <div>
-            <div class="info-text"><span data-lang="ko">1주일 당 <b>20L 봉투 1장</b> 제공해 드려요</span><span data-lang="en"><b>One 20L bag</b> provided per week</span><span data-lang="ja">1週間あたり<b>20L袋1枚</b>提供</span></div>
-            <div class="info-sub"><span data-lang="ko">추가 구입: 근처 편의점·마트에서 구입 가능해요</span><span data-lang="en">Extra bags available at nearby convenience stores or marts</span><span data-lang="ja">追加購入: 近くのコンビニ・スーパーで購入可能</span></div>
+            <div class="info-text"><span data-lang="ko">1주일 당 <b>2L 봉투 1장</b> 제공해 드려요</span><span data-lang="en"><b>One 2L bag</b> provided per week</span></div>
+            <div class="info-sub"><span data-lang="ko">부족하시면 호스트에게 편하게 요청해 주세요</span><span data-lang="en">Request more from the host if needed</span></div>
           </div>
         </div>
 
         <div class="info-item">
-          <span class="info-badge badge-check" style="white-space:nowrap"><span data-lang="ko">음식물</span><span data-lang="en">Food</span><span data-lang="ja">生ゴミ</span></span>
+          <span class="info-badge badge-check" style="white-space:nowrap"><span data-lang="ko">재활용</span><span data-lang="en">Recycling</span></span>
           <div>
-            <div class="info-text"><span data-lang="ko">1주일 당 <b>2L 봉투 1장</b> 제공해 드려요</span><span data-lang="en"><b>One 2L bag</b> provided per week</span><span data-lang="ja">1週間あたり<b>2L袋1枚</b>提供</span></div>
-            <div class="info-sub"><span data-lang="ko">부족하시면 호스트에게 편하게 요청해 주세요</span><span data-lang="en">Request more from the host if needed</span><span data-lang="ja">不足の場合はホストにご連絡ください</span></div>
+            <div class="info-text"><span data-lang="ko">깨끗하게 <b>씻어서 말린 뒤</b> 종류별로 분리해서 버려주세요</span><span data-lang="en"><b>Rinse and dry</b> items before sorting by type</span></div>
           </div>
         </div>
 
         <div class="info-item">
-          <span class="info-badge badge-check" style="white-space:nowrap"><span data-lang="ko">재활용</span><span data-lang="en">Recycling</span><span data-lang="ja">リサイクル</span></span>
-          <div>
-            <div class="info-text"><span data-lang="ko">깨끗하게 <b>씻어서 말린 뒤</b> 종류별로 분리해서 버려주세요</span><span data-lang="en"><b>Rinse and dry</b> items before sorting by type</span><span data-lang="ja">きれいに<b>洗って乾かしてから</b>種類別に分別してください</span></div>
-          </div>
+          <span class="info-badge badge-inc" style="white-space:nowrap"><span data-lang="ko">봉투위치</span><span data-lang="en">Bags</span></span>
+          <div class="info-text"><span data-lang="ko">쓰레기봉투는 <b>왼쪽 신발장 안</b>에 있어요</span><span data-lang="en">Trash bags are in the <b>left shoe cabinet</b></span></div>
         </div>
 
         <div class="info-item">
-          <span class="info-badge badge-inc" style="white-space:nowrap"><span data-lang="ko">봉투위치</span><span data-lang="en">Bags</span><span data-lang="ja">袋の場所</span></span>
-          <div class="info-text"><span data-lang="ko">쓰레기봉투는 <b>왼쪽 신발장 안</b>에 있어요</span><span data-lang="en">Trash bags are in the <b>left shoe cabinet</b></span><span data-lang="ja">ゴミ袋は<b>左側のシューズボックス内</b>にあります</span></div>
-        </div>
-
-        <div class="info-item">
-          <span class="info-badge badge-out" style="white-space:nowrap"><span data-lang="ko">배출장소</span><span data-lang="en">Bin Location</span><span data-lang="ja">排出場所</span></span>
+          <span class="info-badge badge-out" style="white-space:nowrap"><span data-lang="ko">배출장소</span><span data-lang="en">Bin Location</span></span>
           <div class="info-text">
             <span data-lang="ko">공동현관을 나와 <b>바로 오른쪽 분리수거 공간</b>에서 버려주세요</span>
             <span data-lang="en">Exit the main entrance and dispose at the <b>recycling area immediately to the right</b></span>
-            <span data-lang="ja">共用玄関を出てすぐ<b>右側の分別ゴミスペース</b>に捨ててください</span>
+            
           </div>
         </div>
 
         <div class="info-item" style="border-bottom:none; padding-bottom: 14px;">
-          <span class="info-badge badge-out" style="white-space:nowrap"><span data-lang="ko">수거시간</span><span data-lang="en">Collection</span><span data-lang="ja">収集時間</span></span>
+          <span class="info-badge badge-out" style="white-space:nowrap"><span data-lang="ko">수거시간</span><span data-lang="en">Collection</span></span>
           <div>
-            <div class="info-text"><span data-lang="ko">쓰레기 수거는 <b>새벽</b>에 이루어져요</span><span data-lang="en">Waste is collected in the <b>early morning</b></span><span data-lang="ja">ゴミ収集は<b>早朝</b>に行われます</span></div>
-            <div class="info-sub"><span data-lang="ko">공휴일로 넘어가는 새벽에는 수거하지 않으니 참고해 주세요</span><span data-lang="en">No collection on the morning before public holidays</span><span data-lang="ja">祝日前の早朝は収集がありませんのでご注意ください</span></div>
+            <div class="info-text"><span data-lang="ko">쓰레기 수거는 <b>새벽</b>에 이루어져요</span><span data-lang="en">Waste is collected in the <b>early morning</b></span></div>
+            <div class="info-sub"><span data-lang="ko">공휴일로 넘어가는 새벽에는 수거하지 않으니 참고해 주세요</span><span data-lang="en">No collection on the morning before public holidays</span></div>
           </div>
         </div>
 
@@ -779,7 +845,7 @@
         <div style="font-size:12px; color: var(--sub);">
           <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
           <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
-          <span data-lang="ja">ご質問・ご要望は33M2アプリのチャットをご利用ください</span>
+          
         </div>
       </div>
     </div>
@@ -789,35 +855,35 @@
   <div class="panel" id="panel-washer">
     <div class="card">
       <div class="card-head">
-        <div class="card-label"><span data-lang="ko">삼성 아기사랑 세탁기 23년형</span><span data-lang="en">Samsung Baby Care Washer (2023)</span><span data-lang="ja">サムスン ベビーケア洗濯機 2023年型</span></div>
+        <div class="card-label"><span data-lang="ko">삼성 아기사랑 세탁기 23년형</span><span data-lang="en">Samsung Baby Care Washer (2023)</span></div>
       </div>
       <div class="card-body">
         <div class="steps">
-          <div class="step"><div class="step-num">1</div><div class="step-text"><span data-lang="ko">세탁물을 넣고 문을 <b>딸깍</b> 소리 나도록 닫기</span><span data-lang="en">Load laundry and close the door until it <b>clicks</b></span><span data-lang="ja">洗濯物を入れ、<b>カチッ</b>と音がするまでドアを閉める</span></div></div>
-          <div class="step"><div class="step-num">2</div><div class="step-text"><span data-lang="ko">서랍 <b>왼쪽 칸</b>에 세제 넣기</span><span data-lang="en">Put detergent in the <b>left compartment</b></span><span data-lang="ja">引き出しの<b>左側</b>に洗剤を入れる</span></div></div>
-          <div class="step"><div class="step-num">3</div><div class="step-text"><span data-lang="ko">전원 켜고 <b>표준</b> 선택 후 시작</span><span data-lang="en">Power on → select <b>Standard</b> → Start</span><span data-lang="ja">電源を入れ<b>標準</b>を選択してスタート</span></div></div>
-          <div class="step"><div class="step-num">4</div><div class="step-text"><span data-lang="ko">완료 후 <b>즉시</b> 꺼내기</span><span data-lang="en">Remove laundry <b>immediately</b> after cycle ends</span><span data-lang="ja">終了後は<b>すぐに</b>取り出す</span></div></div>
+          <div class="step"><div class="step-num">1</div><div class="step-text"><span data-lang="ko">세탁물을 넣고 문을 <b>딸깍</b> 소리 나도록 닫기</span><span data-lang="en">Load laundry and close the door until it <b>clicks</b></span></div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-text"><span data-lang="ko">서랍 <b>왼쪽 칸</b>에 세제 넣기</span><span data-lang="en">Put detergent in the <b>left compartment</b></span></div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-text"><span data-lang="ko">전원 켜고 <b>표준</b> 선택 후 시작</span><span data-lang="en">Power on → select <b>Standard</b> → Start</span></div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-text"><span data-lang="ko">완료 후 <b>즉시</b> 꺼내기</span><span data-lang="en">Remove laundry <b>immediately</b> after cycle ends</span></div></div>
         </div>
-        <div class="alert"><span data-lang="ko">사용 후 문을 열어두면 냄새 방지에 좋아요</span><span data-lang="en">Leave the door open after use to prevent odor</span><span data-lang="ja">使用後はドアを開けておくと臭いの防止になります</span></div>
+        <div class="alert"><span data-lang="ko">사용 후 문을 열어두면 냄새 방지에 좋아요</span><span data-lang="en">Leave the door open after use to prevent odor</span></div>
       </div>
       <div class="card">
       <div class="card-body" style="text-align:center; padding: 14px 18px;">
         <div style="font-size:12px; color: var(--sub);">
           <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
           <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
-          <span data-lang="ja">ご質問・ご要望は33M2アプリのチャットをご利用ください</span>
+          
         </div>
       </div>
     </div>
   </div>
 
     <div class="card">
-      <div class="card-head"><div class="card-label"><span data-lang="ko">사용설명서</span><span data-lang="en">Manual</span><span data-lang="ja">取扱説明書</span></div></div>
+      <div class="card-head"><div class="card-label"><span data-lang="ko">사용설명서</span><span data-lang="en">Manual</span></div></div>
       <div class="card-body">
         <a class="link-btn" href="https://www.samsungsvc.co.kr/solution/39611" target="_blank">
           <div class="link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#5C6E2E" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
           <div class="link-text">
-            <div class="link-title"><span data-lang="ko">삼성전자 세탁기 사용 안내</span><span data-lang="en">Samsung Washer Guide</span><span data-lang="ja">サムスン洗濯機ガイド</span></div>
+            <div class="link-title"><span data-lang="ko">삼성전자 세탁기 사용 안내</span><span data-lang="en">Samsung Washer Guide</span></div>
             <div class="link-sub">samsungsvc.co.kr</div>
           </div>
           <div class="link-arrow">→</div>
@@ -829,43 +895,43 @@
   <!-- 인덕션 -->
   <div class="panel" id="panel-induction">
     <div class="card">
-      <div class="card-head"><div class="card-label"><span data-lang="ko">키친아트 하이브리드 더블레인지 KWS-2050</span><span data-lang="en">Kitchen Art Hybrid Double Range KWS-2050</span><span data-lang="ja">キッチンアート ハイブリッドダブルレンジ KWS-2050</span></div></div>
+      <div class="card-head"><div class="card-label"><span data-lang="ko">키친아트 하이브리드 더블레인지 KWS-2050</span><span data-lang="en">Kitchen Art Hybrid Double Range KWS-2050</span></div></div>
       <div class="card-body">
         <div class="steps">
-          <div class="step"><div class="step-num">1</div><div class="step-text"><span data-lang="ko">전원 버튼을 <b>길게</b> 눌러 켜기</span><span data-lang="en"><b>Hold</b> the power button to turn on</span><span data-lang="ja">電源ボタンを<b>長押し</b>してオン</span></div></div>
-          <div class="step"><div class="step-num">2</div><div class="step-text"><span data-lang="ko">냄비 올리고 <b>+/−</b> 로 화력 조절</span><span data-lang="en">Place pot and adjust with <b>+/−</b></span><span data-lang="ja">鍋を置いて<b>+/−</b>で火力調節</span></div></div>
-          <div class="step"><div class="step-num">3</div><div class="step-text"><span data-lang="ko">사용 후 전원 버튼 <b>길게</b> 눌러 끄기</span><span data-lang="en"><b>Hold</b> power button to turn off</span><span data-lang="ja">電源ボタンを<b>長押し</b>してオフ</span></div></div>
+          <div class="step"><div class="step-num">1</div><div class="step-text"><span data-lang="ko">전원 버튼을 <b>길게</b> 눌러 켜기</span><span data-lang="en"><b>Hold</b> the power button to turn on</span></div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-text"><span data-lang="ko">냄비 올리고 <b>+/−</b> 로 화력 조절</span><span data-lang="en">Place pot and adjust with <b>+/−</b></span></div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-text"><span data-lang="ko">사용 후 전원 버튼 <b>길게</b> 눌러 끄기</span><span data-lang="en"><b>Hold</b> power button to turn off</span></div></div>
         </div>
         <div class="zone-grid">
           <div class="zone-box induction">
-            <div class="zone-name"><span data-lang="ko">인덕션 구역</span><span data-lang="en">Induction Zone</span><span data-lang="ja">IHゾーン</span></div>
-            <div class="zone-desc"><span data-lang="ko">코일 마크 냄비만 사용 가능</span><span data-lang="en">IH-compatible pots only</span><span data-lang="ja">IH対応鍋のみ使用可</span></div>
+            <div class="zone-name"><span data-lang="ko">인덕션 구역</span><span data-lang="en">Induction Zone</span></div>
+            <div class="zone-desc"><span data-lang="ko">코일 마크 냄비만 사용 가능</span><span data-lang="en">IH-compatible pots only</span></div>
           </div>
           <div class="zone-box">
-            <div class="zone-name"><span data-lang="ko">하이라이트 구역</span><span data-lang="en">Highlight Zone</span><span data-lang="ja">ハイライトゾーン</span></div>
-            <div class="zone-desc"><span data-lang="ko">일반 냄비도 사용 가능</span><span data-lang="en">Regular pots also work</span><span data-lang="ja">普通の鍋も使用可能</span></div>
+            <div class="zone-name"><span data-lang="ko">하이라이트 구역</span><span data-lang="en">Highlight Zone</span></div>
+            <div class="zone-desc"><span data-lang="ko">일반 냄비도 사용 가능</span><span data-lang="en">Regular pots also work</span></div>
           </div>
         </div>
-        <div class="alert"><b><span data-lang="ko">하이라이트 구역은 사용 후에도 열이 오래 남습니다.</span><span data-lang="en">Highlight zone stays hot after use.</span><span data-lang="ja">ハイライトゾーンは使用後も長時間熱いです。</span></b> <span data-lang="ko">바로 만지면 화상 위험!</span><span data-lang="en">Do not touch immediately — burn hazard!</span><span data-lang="ja">すぐに触ると火傷の危険があります！</span></div>
+        <div class="alert"><b><span data-lang="ko">하이라이트 구역은 사용 후에도 열이 오래 남습니다.</span><span data-lang="en">Highlight zone stays hot after use.</span></b> <span data-lang="ko">바로 만지면 화상 위험!</span><span data-lang="en">Do not touch immediately — burn hazard!</span></div>
       </div>
       <div class="card">
       <div class="card-body" style="text-align:center; padding: 14px 18px;">
         <div style="font-size:12px; color: var(--sub);">
           <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
           <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
-          <span data-lang="ja">ご質問・ご要望は33M2アプリのチャットをご利用ください</span>
+          
         </div>
       </div>
     </div>
   </div>
 
     <div class="card">
-      <div class="card-head"><div class="card-label"><span data-lang="ko">사용설명서</span><span data-lang="en">Manual</span><span data-lang="ja">取扱説明書</span></div></div>
+      <div class="card-head"><div class="card-label"><span data-lang="ko">사용설명서</span><span data-lang="en">Manual</span></div></div>
       <div class="card-body">
         <a class="link-btn" href="https://m.kitchenart.co.kr/" target="_blank">
           <div class="link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#5C6E2E" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg></div>
           <div class="link-text">
-            <div class="link-title"><span data-lang="ko">키친아트 공식 홈페이지</span><span data-lang="en">Kitchen Art Official Site</span><span data-lang="ja">キッチンアート公式サイト</span></div>
+            <div class="link-title"><span data-lang="ko">키친아트 공식 홈페이지</span><span data-lang="en">Kitchen Art Official Site</span></div>
             <div class="link-sub">kitchenart.co.kr</div>
           </div>
           <div class="link-arrow">→</div>
@@ -877,33 +943,33 @@
   <!-- 공기청정기 -->
   <div class="panel" id="panel-airpurifier">
     <div class="card">
-      <div class="card-head"><div class="card-label"><span data-lang="ko">LG 공기청정기 LBR422S8KO</span><span data-lang="en">LG Air Purifier LBR422S8KO</span><span data-lang="ja">LG 空気清浄機 LBR422S8KO</span></div></div>
+      <div class="card-head"><div class="card-label"><span data-lang="ko">LG 공기청정기 LBR422S8KO</span><span data-lang="en">LG Air Purifier LBR422S8KO</span></div></div>
       <div class="card-body">
         <div class="steps">
-          <div class="step"><div class="step-num">1</div><div class="step-text"><span data-lang="ko"><b>전원</b> 버튼을 눌러 켜기</span><span data-lang="en">Press the <b>power</b> button to turn on</span><span data-lang="ja"><b>電源</b>ボタンを押してオン</span></div></div>
-          <div class="step"><div class="step-num">2</div><div class="step-text"><span data-lang="ko"><b>자동 운전</b> 모드 권장 — 공기질에 따라 자동으로 조절돼요</span><span data-lang="en"><b>Auto mode</b> recommended — adjusts automatically by air quality</span><span data-lang="ja"><b>自動運転</b>モード推奨 — 空気質に応じて自動調整</span></div></div>
-          <div class="step"><div class="step-num">3</div><div class="step-text"><span data-lang="ko">취침 시 <b>수면 모드</b> 사용 권장 (저소음)</span><span data-lang="en">Use <b>Sleep mode</b> at night for quiet operation</span><span data-lang="ja">就寝時は<b>スリープモード</b>推奨（低騒音）</span></div></div>
+          <div class="step"><div class="step-num">1</div><div class="step-text"><span data-lang="ko"><b>전원</b> 버튼을 눌러 켜기</span><span data-lang="en">Press the <b>power</b> button to turn on</span></div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-text"><span data-lang="ko"><b>자동 운전</b> 모드 권장 — 공기질에 따라 자동으로 조절돼요</span><span data-lang="en"><b>Auto mode</b> recommended — adjusts automatically by air quality</span></div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-text"><span data-lang="ko">취침 시 <b>수면 모드</b> 사용 권장 (저소음)</span><span data-lang="en">Use <b>Sleep mode</b> at night for quiet operation</span></div></div>
         </div>
-        <div class="alert"><span data-lang="ko">반지하 특성상 공기청정기를 꾸준히 켜두시면 훨씬 쾌적해요</span><span data-lang="en">Keeping it running helps maintain air quality in this semi-basement room</span><span data-lang="ja">半地下のため、常時運転がおすすめです</span></div>
+        <div class="alert"><span data-lang="ko">반지하 특성상 공기청정기를 꾸준히 켜두시면 훨씬 쾌적해요</span><span data-lang="en">Keeping it running helps maintain air quality in this semi-basement room</span></div>
       </div>
       <div class="card">
       <div class="card-body" style="text-align:center; padding: 14px 18px;">
         <div style="font-size:12px; color: var(--sub);">
           <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
           <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
-          <span data-lang="ja">ご質問・ご要望は33M2アプリのチャットをご利用ください</span>
+          
         </div>
       </div>
     </div>
   </div>
 
     <div class="card">
-      <div class="card-head"><div class="card-label"><span data-lang="ko">사용설명서</span><span data-lang="en">Manual</span><span data-lang="ja">取扱説明書</span></div></div>
+      <div class="card-head"><div class="card-label"><span data-lang="ko">사용설명서</span><span data-lang="en">Manual</span></div></div>
       <div class="card-body">
         <a class="link-btn" href="https://www.lge.co.kr/support/product-manuals" target="_blank">
           <div class="link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#5C6E2E" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg></div>
           <div class="link-text">
-            <div class="link-title"><span data-lang="ko">LG전자 사용설명서 다운로드</span><span data-lang="en">LG Electronics Manual Download</span><span data-lang="ja">LG電子 取扱説明書ダウンロード</span></div>
+            <div class="link-title"><span data-lang="ko">LG전자 사용설명서 다운로드</span><span data-lang="en">LG Electronics Manual Download</span></div>
             <div class="link-sub">lge.co.kr · 모델명: LBR422S8KO 검색</div>
           </div>
           <div class="link-arrow">→</div>
@@ -915,19 +981,19 @@
   <!-- 제습기 -->
   <div class="panel" id="panel-dehumidifier">
     <div class="card">
-      <div class="card-head"><div class="card-label"><span data-lang="ko">위닉스 뽀송 제습기 12L (DXAW120-NYK)</span><span data-lang="en">Winix Dehumidifier 12L (DXAW120-NYK)</span><span data-lang="ja">WINIX 除湿機 12L (DXAW120-NYK)</span></div></div>
+      <div class="card-head"><div class="card-label"><span data-lang="ko">위닉스 뽀송 제습기 12L (DXAW120-NYK)</span><span data-lang="en">Winix Dehumidifier 12L (DXAW120-NYK)</span></div></div>
       <div class="card-body">
         <div class="steps">
-          <div class="step"><div class="step-num">1</div><div class="step-text"><span data-lang="ko"><b>전원</b> 눌러 켜기 — <b>자동 운전</b> 모드 권장</span><span data-lang="en">Press <b>power</b> — <b>Auto mode</b> recommended</span><span data-lang="ja"><b>電源</b>を押してオン — <b>自動運転</b>モード推奨</span></div></div>
-          <div class="step"><div class="step-num">2</div><div class="step-text"><span data-lang="ko">물통이 차면 자동으로 멈춰요</span><span data-lang="en">Stops automatically when the tank is full</span><span data-lang="ja">タンクがいっぱいになると自動停止します</span></div></div>
-          <div class="step"><div class="step-num">3</div><div class="step-text"><span data-lang="ko"><b>물통 표시등</b>에 불이 들어오면 물통을 꺼내 비워주세요</span><span data-lang="en">When the <b>tank indicator</b> lights up, remove and empty the tank</span><span data-lang="ja"><b>タンクランプ</b>が点灯したらタンクを取り出して水を捨てる</span></div></div>
-          <div class="step"><div class="step-num">4</div><div class="step-text"><span data-lang="ko">물통 다시 끼우면 자동 재작동</span><span data-lang="en">Reinsert the tank to resume</span><span data-lang="ja">タンクを戻すと自動的に再起動します</span></div></div>
+          <div class="step"><div class="step-num">1</div><div class="step-text"><span data-lang="ko"><b>전원</b> 눌러 켜기 — <b>자동 운전</b> 모드 권장</span><span data-lang="en">Press <b>power</b> — <b>Auto mode</b> recommended</span></div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-text"><span data-lang="ko">물통이 차면 자동으로 멈춰요</span><span data-lang="en">Stops automatically when the tank is full</span></div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-text"><span data-lang="ko"><b>물통 표시등</b>에 불이 들어오면 물통을 꺼내 비워주세요</span><span data-lang="en">When the <b>tank indicator</b> lights up, remove and empty the tank</span></div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-text"><span data-lang="ko">물통 다시 끼우면 자동 재작동</span><span data-lang="en">Reinsert the tank to resume</span></div></div>
         </div>
-        <div class="alert"><span data-lang="ko">반지하 특성상 제습기를 꾸준히 켜두시면 훨씬 쾌적해요</span><span data-lang="en">Keep it running for comfort — semi-basement rooms can get humid</span><span data-lang="ja">半地下のため、常時運転がおすすめです</span></div>
+        <div class="alert"><span data-lang="ko">반지하 특성상 제습기를 꾸준히 켜두시면 훨씬 쾌적해요</span><span data-lang="en">Keep it running for comfort — semi-basement rooms can get humid</span></div>
       </div>
     </div>
     <div class="card">
-      <div class="card-head"><div class="card-label"><span data-lang="ko">영상 안내</span><span data-lang="en">Video Guide</span><span data-lang="ja">動画ガイド</span></div></div>
+      <div class="card-head"><div class="card-label"><span data-lang="ko">영상 안내</span><span data-lang="en">Video Guide</span></div></div>
       <div class="card-body">
         <div class="yt-wrap">
           <iframe src="https://www.youtube.com/embed/tRrwQ7_xoeU" allowfullscreen loading="lazy"></iframe>
@@ -935,12 +1001,12 @@
       </div>
     </div>
     <div class="card">
-      <div class="card-head"><div class="card-label"><span data-lang="ko">사용설명서</span><span data-lang="en">Manual</span><span data-lang="ja">取扱説明書</span></div></div>
+      <div class="card-head"><div class="card-label"><span data-lang="ko">사용설명서</span><span data-lang="en">Manual</span></div></div>
       <div class="card-body">
         <a class="link-btn" href="https://www.winix.com/kr/customer/manual" target="_blank">
           <div class="link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#5C6E2E" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg></div>
           <div class="link-text">
-            <div class="link-title"><span data-lang="ko">위닉스 공식 사용설명서</span><span data-lang="en">Winix Official Manual</span><span data-lang="ja">WINIX 公式取扱説明書</span></div>
+            <div class="link-title"><span data-lang="ko">위닉스 공식 사용설명서</span><span data-lang="en">Winix Official Manual</span></div>
             <div class="link-sub">winix.com · DXAW120-NYK</div>
           </div>
           <div class="link-arrow">→</div>
@@ -952,7 +1018,7 @@
         <div style="font-size:12px; color: var(--sub);">
           <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
           <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
-          <span data-lang="ja">ご質問・ご要望は33M2アプリのチャットをご利用ください</span>
+          
         </div>
       </div>
     </div>
@@ -962,20 +1028,20 @@
   <div class="panel" id="panel-transit">
     <div class="card">
       <div class="card-head">
-        <div class="card-label"><span data-lang="ko">지하철 · 버스</span><span data-lang="en">Transit</span><span data-lang="ja">交通</span></div>
+        <div class="card-label"><span data-lang="ko">지하철 · 버스</span><span data-lang="en">Transit</span></div>
       </div>
       <div class="card-body" style="padding:0 18px 4px;">
         <div class="info-item">
-          <span class="info-badge badge-check"><span data-lang="ko">지하철</span><span data-lang="en">Subway</span><span data-lang="ja">地下鉄</span></span>
+          <span class="info-badge badge-check"><span data-lang="ko">지하철</span><span data-lang="en">Subway</span></span>
           <div>
-            <div class="info-text"><span data-lang="ko">신사역 (3호선) 도보 5분</span><span data-lang="en">Sinsa Station (Line 3) — 5 min walk</span><span data-lang="ja">新沙駅（3号線）徒歩5分</span></div>
-            <div class="info-text" style="margin-top:4px;"><span data-lang="ko">논현역 (7호선) 도보 10분</span><span data-lang="en">Nonhyeon Station (Line 7) — 10 min walk</span><span data-lang="ja">論峴駅（7号線）徒歩10分</span></div>
-            <div class="info-text" style="margin-top:4px;"><span data-lang="ko">잠원역 (3호선) 도보 10분</span><span data-lang="en">Jamwon Station (Line 3) — 10 min walk</span><span data-lang="ja">蚕院駅（3号線）徒歩10分</span></div>
+            <div class="info-text"><span data-lang="ko">신사역 (3호선) 도보 5분</span><span data-lang="en">Sinsa Station (Line 3) — 5 min walk</span></div>
+            <div class="info-text" style="margin-top:4px;"><span data-lang="ko">논현역 (7호선) 도보 10분</span><span data-lang="en">Nonhyeon Station (Line 7) — 10 min walk</span></div>
+            <div class="info-text" style="margin-top:4px;"><span data-lang="ko">잠원역 (3호선) 도보 10분</span><span data-lang="en">Jamwon Station (Line 3) — 10 min walk</span></div>
           </div>
         </div>
         <div class="info-item" style="border-bottom:none; padding-bottom:14px;">
-          <span class="info-badge badge-check"><span data-lang="ko">버스</span><span data-lang="en">Bus</span><span data-lang="ja">バス</span></span>
-          <div class="info-text"><span data-lang="ko">건물 근처 버스 정류장 이용 가능</span><span data-lang="en">Bus stop near the building</span><span data-lang="ja">建物近くにバス停あり</span></div>
+          <span class="info-badge badge-check"><span data-lang="ko">버스</span><span data-lang="en">Bus</span></span>
+          <div class="info-text"><span data-lang="ko">건물 근처 버스 정류장 이용 가능</span><span data-lang="en">Bus stop near the building</span></div>
         </div>
       </div>
       <div class="card">
@@ -983,7 +1049,7 @@
         <div style="font-size:12px; color: var(--sub);">
           <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
           <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
-          <span data-lang="ja">ご質問・ご要望は33M2アプリのチャットをご利用ください</span>
+          
         </div>
       </div>
     </div>
@@ -994,7 +1060,7 @@
         <div style="font-size:12px; color: var(--sub);">
           <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
           <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
-          <span data-lang="ja">ご質問・ご要望は33M2アプリのチャットをご利用ください</span>
+          
         </div>
       </div>
     </div>
@@ -1004,24 +1070,24 @@
   <div class="panel" id="panel-facilities">
     <div class="card">
       <div class="card-head">
-        <div class="card-label"><span data-lang="ko">편의시설</span><span data-lang="en">Facilities</span><span data-lang="ja">周辺施設</span></div>
+        <div class="card-label"><span data-lang="ko">편의시설</span><span data-lang="en">Facilities</span></div>
       </div>
       <div class="card-body" style="padding:0 18px 4px;">
         <div class="info-item">
-          <span class="info-badge badge-inc"><span data-lang="ko">편의점</span><span data-lang="en">Conv.</span><span data-lang="ja">コンビニ</span></span>
-          <div class="info-text"><span data-lang="ko">도보 5분 이내 GS25, CU 등</span><span data-lang="en">GS25, CU etc. within 5 min walk</span><span data-lang="ja">GS25、CUなど徒歩5分以内</span></div>
+          <span class="info-badge badge-inc"><span data-lang="ko">편의점</span><span data-lang="en">Conv.</span></span>
+          <div class="info-text"><span data-lang="ko">도보 5분 이내 GS25, CU 등</span><span data-lang="en">GS25, CU etc. within 5 min walk</span></div>
         </div>
         <div class="info-item">
-          <span class="info-badge badge-inc"><span data-lang="ko">마트</span><span data-lang="en">Mart</span><span data-lang="ja">スーパー</span></span>
-          <div class="info-text"><span data-lang="ko">근처 슈퍼·마트 도보 이용 가능</span><span data-lang="en">Local supermarket within walking distance</span><span data-lang="ja">近くのスーパーが徒歩圏内</span></div>
+          <span class="info-badge badge-inc"><span data-lang="ko">마트</span><span data-lang="en">Mart</span></span>
+          <div class="info-text"><span data-lang="ko">근처 슈퍼·마트 도보 이용 가능</span><span data-lang="en">Local supermarket within walking distance</span></div>
         </div>
         <div class="info-item">
-          <span class="info-badge badge-inc"><span data-lang="ko">다이소</span><span data-lang="en">Daiso</span><span data-lang="ja">ダイソー</span></span>
-          <div class="info-text"><span data-lang="ko">근처 다이소 이용 가능</span><span data-lang="en">Daiso (100-yen style store) nearby</span><span data-lang="ja">近くにダイソーあり</span></div>
+          <span class="info-badge badge-inc"><span data-lang="ko">다이소</span><span data-lang="en">Daiso</span></span>
+          <div class="info-text"><span data-lang="ko">근처 다이소 이용 가능</span><span data-lang="en">Daiso (100-yen style store) nearby</span></div>
         </div>
         <div class="info-item" style="border-bottom:none; padding-bottom:14px;">
-          <span class="info-badge badge-inc"><span data-lang="ko">빨래방</span><span data-lang="en">Laundry</span><span data-lang="ja">コインランドリー</span></span>
-          <div class="info-text"><span data-lang="ko">근처 셀프 빨래방 이용 가능</span><span data-lang="en">Self-service laundromat nearby</span><span data-lang="ja">近くにコインランドリーあり</span></div>
+          <span class="info-badge badge-inc"><span data-lang="ko">빨래방</span><span data-lang="en">Laundry</span></span>
+          <div class="info-text"><span data-lang="ko">근처 셀프 빨래방 이용 가능</span><span data-lang="en">Self-service laundromat nearby</span></div>
         </div>
       </div>
     </div>
@@ -1032,7 +1098,7 @@
         <div style="font-size:12px; color: var(--sub);">
           <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
           <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
-          <span data-lang="ja">ご質問・ご要望は33M2アプリのチャットをご利用ください</span>
+          
         </div>
       </div>
     </div>
@@ -1063,10 +1129,10 @@
 
   function setLang(lang) {
     currentLang = lang;
-    document.body.classList.remove('lang-ko', 'lang-en', 'lang-ja');
+    document.body.classList.remove('lang-ko', 'lang-en');
     document.body.classList.add('lang-' + lang);
     document.querySelectorAll('.lang-btn').forEach((btn, i) => {
-      btn.classList.toggle('active', ['ko','en','ja'][i] === lang);
+      btn.classList.toggle('active', ['ko','en'][i] === lang);
     });
   }
 
