@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>당당홈 가전 안내</title>
+<style>
+  :root {
+    --olive: #6B7A3F;
+    --olive-light: #F0F2E6;
+    --olive-mid: #9AAB5C;
+    --text: #2C2C2C;
+    --muted: #888;
+    --border: #E2E4D8;
+    --bg: #FAFAF6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, 'Noto Sans KR', 'Hiragino Kaku Gothic Pro', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ── 헤더 ── */
+  .site-header {
+    background: var(--olive);
+    padding: 20px 20px 16px;
+    text-align: center;
+  }
+  .site-title {
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+  }
+  .site-sub {
+    color: rgba(255,255,255,0.6);
+    font-size: 12px;
+    margin-top: 3px;
+  }
+
+  /* ── 언어 탭 ── */
+  .lang-bar {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .lang-btn {
+    padding: 12px 28px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    background: none;
+    border: none;
+    border-bottom: 2.5px solid transparent;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+  }
+  .lang-btn.active {
+    color: var(--olive);
+    border-bottom-color: var(--olive);
+  }
+
+  /* ── 가전 탭 ── */
+  .appliance-tabs {
+    display: flex;
+    overflow-x: auto;
+    gap: 8px;
+    padding: 16px 16px 0;
+    scrollbar-width: none;
+  }
+  .appliance-tabs::-webkit-scrollbar { display: none; }
+
+  .app-tab {
+    flex-shrink: 0;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+  }
+  .app-tab.active {
+    background: var(--olive);
+    color: white;
+    border-color: var(--olive);
+  }
+
+  /* ── 콘텐츠 ── */
+  .content {
+    padding: 20px 16px 40px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .appliance-panel { display: none; }
+  .appliance-panel.active { display: block; }
+
+  /* ── 카드 ── */
+  .card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 14px;
+  }
+
+  .card-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  /* ── 스텝 ── */
+  .steps { display: flex; flex-direction: column; gap: 12px; }
+
+  .step { display: flex; gap: 12px; align-items: flex-start; }
+
+  .step-num {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--olive-light);
+    border: 1.5px solid var(--olive-mid);
+    color: var(--olive);
+    font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .step-text {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text);
+  }
+  .step-text b { color: var(--olive); font-weight: 700; }
+
+  /* ── 경고 ── */
+  .warn {
+    background: var(--olive-light);
+    border-left: 3px solid var(--olive);
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px;
+    font-size: 13px;
+    line-height: 1.55;
+    margin-top: 14px;
+  }
+  .warn b { color: var(--olive); }
+
+  /* ── 인덕션 존 ── */
+  .zone-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .zone-box {
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 12px;
+    text-align: center;
+  }
+  .zone-box.induction {
+    background: var(--olive-light);
+    border-color: var(--olive-mid);
+  }
+  .zone-name {
+    font-size: 14px; font-weight: 700;
+    color: var(--olive);
+    margin-bottom: 5px;
+  }
+  .zone-box:not(.induction) .zone-name { color: var(--text); }
+  .zone-desc { font-size: 12px; color: var(--muted); line-height: 1.4; }
+
+  /* ── 유튜브 ── */
+  .yt-wrap {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #000;
+  }
+  .yt-wrap iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+  }
+
+  /* ── PDF 버튼 ── */
+  .pdf-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--olive-light);
+    border: 1.5px solid var(--olive-mid);
+    border-radius: 10px;
+    padding: 13px 16px;
+    text-decoration: none;
+    color: var(--olive);
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.15s;
+  }
+  .pdf-btn:hover { background: #e4e8d4; }
+  .pdf-icon {
+    width: 28px; height: 28px;
+    background: var(--olive);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 13px; flex-shrink: 0;
+  }
+  .pdf-sub { font-size: 11px; color: var(--muted); font-weight: 400; margin-top: 1px; }
+
+  /* ── 금지 마크 ── */
+  .prohibit-grid {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .prohibit-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    width: 80px;
+  }
+  .p-svg { width: 52px; height: 52px; }
+  .p-label { font-size: 11px; font-weight: 700; text-align: center; color: var(--text); }
+
+  /* ── 안내 목록 ── */
+  .rule-list { display: flex; flex-direction: column; gap: 14px; }
+  .rule-item { display: flex; gap: 10px; align-items: flex-start; }
+  .rule-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--olive-mid);
+    flex-shrink: 0; margin-top: 6px;
+  }
+  .rule-text { font-size: 14px; line-height: 1.6; color: var(--text); }
+  .rule-text b { color: var(--olive); font-weight: 700; }
+
+  /* ── 푸터 ── */
+  .site-footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 11px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+  }
+
+  /* 언어별 숨김 */
+  [data-lang] { display: none; }
+</style>
+</head>
+<body>
+
+<div class="site-header">
+  <div class="site-title">당당홈 🏠</div>
+  <div class="site-sub" id="header-sub">가전 사용 안내</div>
+</div>
+
+<!-- 언어 선택 -->
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="setLang('ko')">한국어</button>
+  <button class="lang-btn" onclick="setLang('en')">English</button>
+  <button class="lang-btn" onclick="setLang('ja')">日本語</button>
+</div>
+
+<!-- 가전 탭 -->
+<div class="appliance-tabs">
+  <button class="app-tab active" onclick="setApp('laundry')" id="tab-laundry">
+    <span data-lang="ko">세탁기</span>
+    <span data-lang="en">Washer</span>
+    <span data-lang="ja">洗濯機</span>
+  </button>
+  <button class="app-tab" onclick="setApp('induction')" id="tab-induction">
+    <span data-lang="ko">인덕션</span>
+    <span data-lang="en">Cooktop</span>
+    <span data-lang="ja">IHクッキングヒーター</span>
+  </button>
+  <button class="app-tab" onclick="setApp('dehumidifier')" id="tab-dehumidifier">
+    <span data-lang="ko">제습기</span>
+    <span data-lang="en">Dehumidifier</span>
+    <span data-lang="ja">除湿機</span>
+  </button>
+  <button class="app-tab" onclick="setApp('rules')" id="tab-rules">
+    <span data-lang="ko">주의사항</span>
+    <span data-lang="en">House Rules</span>
+    <span data-lang="ja">注意事項</span>
+  </button>
+</div>
+
+<div class="content">
+
+  <!-- ① 세탁기 -->
+  <div class="appliance-panel active" id="panel-laundry">
+
+    <div class="card">
+      <div class="card-title">
+        <span data-lang="ko">사용 방법 · 삼성 드럼세탁기</span>
+        <span data-lang="en">How to Use · Samsung Drum Washer</span>
+        <span data-lang="ja">使い方 · サムスン ドラム洗濯機</span>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <span data-lang="ko">세탁물을 넣고 문을 <b>딸깍</b> 소리 나도록 닫기</span>
+            <span data-lang="en">Load laundry and close the door until it <b>clicks</b></span>
+            <span data-lang="ja">洗濯物を入れ、<b>カチッ</b>と音がするまでドアを閉める</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-text">
+            <span data-lang="ko">서랍 <b>왼쪽 칸</b>에 세제 넣기</span>
+            <span data-lang="en">Put detergent in the <b>left compartment</b> of the drawer</span>
+            <span data-lang="ja">引き出しの<b>左側</b>に洗剤を入れる</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-text">
+            <span data-lang="ko">전원 켜고 <b>표준</b> 선택 후 시작</span>
+            <span data-lang="en">Power on → select <b>Standard</b> → press Start</span>
+            <span data-lang="ja">電源を入れ、<b>標準</b>を選択してスタートを押す</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-text">
+            <span data-lang="ko">완료 후 <b>즉시</b> 꺼내기</span>
+            <span data-lang="en">Remove laundry <b>immediately</b> after the cycle ends</span>
+            <span data-lang="ja">終了後は<b>すぐに</b>取り出す</span>
+          </div>
+        </div>
+      </div>
+      <div class="warn">
+        <span data-lang="ko">사용 후 문을 열어두면 냄새 방지에 좋아요</span>
+        <span data-lang="en">Leave the door open after use to prevent odor</span>
+        <span data-lang="ja">使用後はドアを開けておくと臭いの防止になります</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <span data-lang="ko">영상 안내</span>
+        <span data-lang="en">Video Guide</span>
+        <span data-lang="ja">動画ガイド</span>
+      </div>
+      <div class="yt-wrap">
+        <iframe src="https://www.youtube.com/embed/Pkq90KxMx5M" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ② 인덕션 -->
+  <div class="appliance-panel" id="panel-induction">
+
+    <div class="card">
+      <div class="card-title">
+        <span data-lang="ko">사용 방법 · 키친아트 인덕션/하이라이트</span>
+        <span data-lang="en">How to Use · Kitchen Art Induction / Highlight</span>
+        <span data-lang="ja">使い方 · キッチンアート IH／ハイライト</span>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <span data-lang="ko">전원 버튼을 <b>길게</b> 눌러 켜기</span>
+            <span data-lang="en"><b>Hold</b> the power button to turn on</span>
+            <span data-lang="ja">電源ボタンを<b>長押し</b>してオンにする</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-text">
+            <span data-lang="ko">냄비 올리고 <b>+/−</b> 버튼으로 화력 조절</span>
+            <span data-lang="en">Place pot and adjust heat with <b>+/−</b> buttons</span>
+            <span data-lang="ja">鍋を置いて<b>+/−</b>ボタンで火力調節</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-text">
+            <span data-lang="ko">사용 후 전원 버튼 <b>길게</b> 눌러 끄기</span>
+            <span data-lang="en"><b>Hold</b> the power button to turn off after use</span>
+            <span data-lang="ja">使用後は電源ボタンを<b>長押し</b>してオフにする</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="zone-grid">
+        <div class="zone-box induction">
+          <div class="zone-name">
+            <span data-lang="ko">인덕션 구역</span>
+            <span data-lang="en">Induction Zone</span>
+            <span data-lang="ja">IHゾーン</span>
+          </div>
+          <div class="zone-desc">
+            <span data-lang="ko">코일 마크 있는 냄비만</span>
+            <span data-lang="en">IH-compatible pots only</span>
+            <span data-lang="ja">IH対応鍋のみ使用可</span>
+          </div>
+        </div>
+        <div class="zone-box">
+          <div class="zone-name">
+            <span data-lang="ko">하이라이트 구역</span>
+            <span data-lang="en">Highlight Zone</span>
+            <span data-lang="ja">ハイライトゾーン</span>
+          </div>
+          <div class="zone-desc">
+            <span data-lang="ko">일반 냄비도 사용 가능</span>
+            <span data-lang="en">Regular pots also work</span>
+            <span data-lang="ja">普通の鍋も使用可能</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="warn">
+        <b>
+          <span data-lang="ko">하이라이트 구역은 사용 후에도 열이 오래 남아요!</span>
+          <span data-lang="en">Highlight zone stays hot after use!</span>
+          <span data-lang="ja">ハイライトゾーンは使用後も長時間熱いです！</span>
+        </b>
+        <br>
+        <span data-lang="ko">바로 만지면 화상 위험 — 식힌 후 사용하세요</span>
+        <span data-lang="en">Do not touch immediately — burn hazard</span>
+        <span data-lang="ja">すぐに触ると火傷の危険があります — 冷ましてから触れてください</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <span data-lang="ko">영상 안내</span>
+        <span data-lang="en">Video Guide</span>
+        <span data-lang="ja">動画ガイド</span>
+      </div>
+      <div class="yt-wrap">
+        <iframe src="https://www.youtube.com/embed/0Q4t8np-3BE" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ③ 제습기 -->
+  <div class="appliance-panel" id="panel-dehumidifier">
+
+    <div class="card">
+      <div class="card-title">
+        <span data-lang="ko">사용 방법 · 위닉스 제습기</span>
+        <span data-lang="en">How to Use · Winix Dehumidifier</span>
+        <span data-lang="ja">使い方 · WINIX 除湿機</span>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <span data-lang="ko"><b>전원</b> 눌러 켜기 — <b>자동 운전</b> 모드 권장</span>
+            <span data-lang="en">Press <b>power</b> — <b>Auto mode</b> recommended</span>
+            <span data-lang="ja"><b>電源</b>を押してオン — <b>自動運転</b>モード推奨</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-text">
+            <span data-lang="ko">물통이 차면 자동으로 멈춰요</span>
+            <span data-lang="en">Stops automatically when the tank is full</span>
+            <span data-lang="ja">タンクがいっぱいになると自動停止します</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-text">
+            <span data-lang="ko"><b>물통 표시등</b>에 불이 들어오면 물통을 꺼내 비워주세요</span>
+            <span data-lang="en">When the <b>tank indicator light</b> turns on, remove and empty the tank</span>
+            <span data-lang="ja"><b>タンクランプ</b>が点灯したらタンクを取り出して水を捨てる</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-text">
+            <span data-lang="ko">물통 다시 끼우면 자동 재작동</span>
+            <span data-lang="en">Reinsert the tank to resume operation</span>
+            <span data-lang="ja">タンクを戻すと自動的に再起動します</span>
+          </div>
+        </div>
+      </div>
+      <div class="warn">
+        <span data-lang="ko">꾸준히 켜두시면 훨씬 쾌적해요 — 반지하 특성상 습기가 찰 수 있어요</span>
+        <span data-lang="en">Keep it running for comfort — semi-basement rooms can get humid</span>
+        <span data-lang="ja">常時運転がおすすめです — 半地下のため湿気がこもりやすいです</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <span data-lang="ko">영상 안내</span>
+        <span data-lang="en">Video Guide</span>
+        <span data-lang="ja">動画ガイド</span>
+      </div>
+      <div class="yt-wrap">
+        <iframe src="https://www.youtube.com/embed/tRrwQ7_xoeU" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <span data-lang="ko">사용 설명서 PDF</span>
+        <span data-lang="en">User Manual PDF</span>
+        <span data-lang="ja">取扱説明書 PDF</span>
+      </div>
+      <a class="pdf-btn" href="https://www.winix.com/kr/customer/manual" target="_blank">
+        <div class="pdf-icon">📄</div>
+        <div>
+          <div>
+            <span data-lang="ko">위닉스 공식 사용설명서</span>
+            <span data-lang="en">Winix Official Manual</span>
+            <span data-lang="ja">WINIX 公式取扱説明書</span>
+          </div>
+          <div class="pdf-sub">winix.com</div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- ④ 주의사항 -->
+  <div class="appliance-panel" id="panel-rules">
+
+    <div class="card">
+      <div class="card-title">
+        <span data-lang="ko">금지사항</span>
+        <span data-lang="en">Prohibited</span>
+        <span data-lang="ja">禁止事項</span>
+      </div>
+      <div class="prohibit-grid">
+        <div class="prohibit-item">
+          <svg class="p-svg" viewBox="0 0 52 52" fill="none">
+            <circle cx="26" cy="26" r="24" stroke="#2C2C2C" stroke-width="2"/>
+            <rect x="11" y="23" width="20" height="5" rx="1.5" fill="#2C2C2C"/>
+            <rect x="31" y="22" width="8" height="7" rx="1.5" fill="#2C2C2C"/>
+            <path d="M30 18 Q32 13 34 16" stroke="#2C2C2C" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <line x1="6" y1="6" x2="46" y2="46" stroke="#2C2C2C" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <div class="p-label">
+            <span data-lang="ko">흡연 금지</span>
+            <span data-lang="en">No Smoking</span>
+            <span data-lang="ja">禁煙</span>
+          </div>
+        </div>
+        <div class="prohibit-item">
+          <svg class="p-svg" viewBox="0 0 52 52" fill="none">
+            <circle cx="26" cy="26" r="24" stroke="#2C2C2C" stroke-width="2"/>
+            <ellipse cx="26" cy="30" rx="7" ry="6" fill="#2C2C2C"/>
+            <ellipse cx="18" cy="22" rx="3" ry="3.5" fill="#2C2C2C"/>
+            <ellipse cx="34" cy="22" rx="3" ry="3.5" fill="#2C2C2C"/>
+            <ellipse cx="22" cy="18" rx="2.5" ry="3" fill="#2C2C2C"/>
+            <ellipse cx="30" cy="18" rx="2.5" ry="3" fill="#2C2C2C"/>
+            <line x1="6" y1="6" x2="46" y2="46" stroke="#2C2C2C" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <div class="p-label">
+            <span data-lang="ko">반려동물 금지</span>
+            <span data-lang="en">No Pets</span>
+            <span data-lang="ja">ペット禁止</span>
+          </div>
+        </div>
+        <div class="prohibit-item">
+          <svg class="p-svg" viewBox="0 0 52 52" fill="none">
+            <circle cx="26" cy="26" r="24" stroke="#2C2C2C" stroke-width="2"/>
+            <rect x="16" y="24" width="20" height="16" rx="2" fill="#2C2C2C"/>
+            <rect x="13" y="20" width="26" height="5" rx="1.5" fill="#2C2C2C"/>
+            <rect x="20" y="15" width="12" height="5" rx="1.5" fill="#2C2C2C" opacity="0.7"/>
+            <line x1="6" y1="6" x2="46" y2="46" stroke="#2C2C2C" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <div class="p-label">
+            <span data-lang="ko">무단투기 금지</span>
+            <span data-lang="en">No Littering</span>
+            <span data-lang="ja">ごみの不法投棄禁止</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <span data-lang="ko">안내사항</span>
+        <span data-lang="en">Guidelines</span>
+        <span data-lang="ja">ご案内</span>
+      </div>
+      <div class="rule-list">
+        <div class="rule-item">
+          <div class="rule-dot"></div>
+          <div class="rule-text">
+            <span data-lang="ko"><b>밤 10시 이후 새벽 소음을 자제해 주세요.</b> 조용한 동네라 민원 발생 시 계약이 해지될 수 있어요</span>
+            <span data-lang="en"><b>Please keep noise down after 10 PM.</b> This is a quiet neighborhood — noise complaints may result in contract termination</span>
+            <span data-lang="ja"><b>夜10時以降は深夜の騒音にご注意ください。</b>静かな住宅地のため、苦情が発生した場合、契約が解除される場合があります</span>
+          </div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-dot"></div>
+          <div class="rule-text">
+            <span data-lang="ko"><b>창문을 열면 벌레가 들어올 수 있어요.</b> 방충망 꼭 확인 후 열어주세요. 공기청정기·제습기를 켜두면 창문 없이도 쾌적해요</span>
+            <span data-lang="en"><b>Opening windows may let insects in.</b> Please check the screen before opening. The air purifier and dehumidifier keep it comfortable without opening windows</span>
+            <span data-lang="ja"><b>窓を開けると虫が入ることがあります。</b>防虫網を確認してから開けてください。空気清浄機・除湿機を使えば窓を開けなくても快適に過ごせます</span>
+          </div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-dot"></div>
+          <div class="rule-text">
+            <span data-lang="ko"><b>분리수거 필수!</b> 일반 쓰레기 / 음식물 / 재활용을 분리해서 건물 입구 오른쪽 수거함에 버려주세요</span>
+            <span data-lang="en"><b>Sorting waste is required!</b> Separate general / food / recyclables and dispose in the bins on the right side of the entrance</span>
+            <span data-lang="ja"><b>ゴミの分別は必須です！</b>一般ゴミ／生ゴミ／リサイクルを分別して、建物入口右側のゴミ箱に捨ててください</span>
+          </div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-dot"></div>
+          <div class="rule-text">
+            <span data-lang="ko">물건이 훼손되거나 오염된 경우 수리·청소 비용은 본인 부담이에요</span>
+            <span data-lang="en">Damage or excessive cleaning will be charged to the guest</span>
+            <span data-lang="ja">備品の破損・汚損が生じた場合は修理・清掃費用をご負担いただきます</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="text-align:center; padding: 16px;">
+      <div style="font-size:12px; color:var(--muted);">
+        <span data-lang="ko">문의는 삼삼엠투 앱으로 해주세요</span>
+        <span data-lang="en">Contact us via the 33M2 app</span>
+        <span data-lang="ja">お問い合わせは33M2アプリからお願いします</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="site-footer">
+  당당홈 · 서초구 강남대로107길 17-7 · 삼삼엠투
+</div>
+
+<script>
+  let currentLang = 'ko';
+  let currentApp = 'laundry';
+
+  // 앵커 기반 초기 가전 탭 설정 (QR용)
+  function initFromHash() {
+    const hash = location.hash.replace('#', '');
+    const validApps = ['laundry', 'induction', 'dehumidifier', 'rules'];
+    if (validApps.includes(hash)) {
+      setApp(hash);
+    }
+  }
+
+  function setLang(lang) {
+    currentLang = lang;
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      el.style.display = (el.dataset.lang === lang) ? '' : 'none';
+    });
+    document.querySelectorAll('.lang-btn').forEach((btn, i) => {
+      btn.classList.toggle('active', ['ko','en','ja'][i] === lang);
+    });
+    const subs = {
+      ko: '가전 사용 안내',
+      en: 'Appliance Guide',
+      ja: '家電使用ガイド'
+    };
+    document.getElementById('header-sub').textContent = subs[lang];
+  }
+
+  function setApp(app) {
+    currentApp = app;
+    document.querySelectorAll('.appliance-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.app-tab').forEach(t => t.classList.remove('active'));
+    const panel = document.getElementById('panel-' + app);
+    const tab = document.getElementById('tab-' + app);
+    if (panel) panel.classList.add('active');
+    if (tab) tab.classList.add('active');
+    history.replaceState(null, '', '#' + app);
+  }
+
+  // 초기화
+  setLang('ko');
+  initFromHash();
+</script>
+</body>
+</html>
