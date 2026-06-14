@@ -399,8 +399,10 @@
   .info-text { font-size: 13px; color: var(--text); line-height: 1.55; }
   .info-sub { font-size: 11px; color: var(--sub); margin-top: 2px; }
 
-  /* 언어 숨김 */
-  [data-lang] { display: none; }
+  /* 언어 제어 */
+  body:not(.lang-ko) [data-lang="ko"] { display: none !important; }
+  body:not(.lang-en) [data-lang="en"] { display: none !important; }
+  body:not(.lang-ja) [data-lang="ja"] { display: none !important; }
 
   .footer {
     text-align: center;
@@ -412,7 +414,7 @@
   }
 </style>
 </head>
-<body>
+<body class="lang-ko">
 
 <!-- 헤더 -->
 <header class="header">
@@ -798,9 +800,8 @@
 
   function setLang(lang) {
     currentLang = lang;
-    document.querySelectorAll('[data-lang]').forEach(el => {
-      el.style.display = (el.dataset.lang === lang) ? '' : 'none';
-    });
+    document.body.classList.remove('lang-ko', 'lang-en', 'lang-ja');
+    document.body.classList.add('lang-' + lang);
     document.querySelectorAll('.lang-btn').forEach((btn, i) => {
       btn.classList.toggle('active', ['ko','en','ja'][i] === lang);
     });
