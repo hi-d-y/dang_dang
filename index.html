@@ -443,7 +443,7 @@
 <!-- 헤더 -->
 <header class="header">
   <div class="header-inner">
-    <div class="logo">당당홈 가이드 <span data-lang="ko">가이드</span><span data-lang="en">Guide</span><span data-lang="ja">ガイド</span></div>
+    <div class="logo"><span style="color:#111827">당당홈</span> <span style="color:#5C6E2E">가이드</span> <span data-lang="ko">가이드</span><span data-lang="en">Guide</span><span data-lang="ja">ガイド</span></div>
     <div class="lang-switcher">
       <button class="lang-btn active" onclick="setLang('ko')">한</button>
       <button class="lang-btn" onclick="setLang('en')">EN</button>
@@ -511,11 +511,13 @@
           <div class="prohibit-item">
             <svg class="p-svg" viewBox="0 0 44 44" fill="none">
               <circle cx="22" cy="22" r="20" stroke="#374151" stroke-width="1.8"/>
-              <!-- 재활용 화살표 심볼 -->
-              <path d="M22 13 L26 18 L24 18 C24 23 27 25 30 24 L29 27 C25 29 21 26 20 21 L18 21 Z" fill="#374151"/>
-              <path d="M22 31 L18 26 L20 26 C20 21 17 19 14 20 L15 17 C19 15 23 18 24 23 L26 23 Z" fill="#374151"/>
+              <!-- 스피커 + 소음 심볼 -->
+              <rect x="10" y="17" width="7" height="10" rx="1.5" fill="#374151"/>
+              <path d="M17 17 L24 12 L24 32 L17 27 Z" fill="#374151"/>
+              <path d="M27 16 Q31 22 27 28" stroke="#374151" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <line x1="5" y1="5" x2="39" y2="39" stroke="#374151" stroke-width="2.2" stroke-linecap="round"/>
             </svg>
-            <div class="p-label"><span data-lang="ko">분리수거 필수</span><span data-lang="en">Sort Waste</span><span data-lang="ja">ゴミ分別必須</span></div>
+            <div class="p-label"><span data-lang="ko">새벽소음 금지</span><span data-lang="en">No Late Noise</span><span data-lang="ja">深夜騒音禁止</span></div>
           </div>
         </div>
       </div>
@@ -528,54 +530,118 @@
       </div>
       <div class="card-body">
         <div class="rule-list">
+
           <div class="rule-item">
             <div class="rule-dot"></div>
             <div class="rule-text">
-              <span data-lang="ko"><b>실내 흡연 절대 금지.</b> 적발 시 원상복구 비용(도배 등) 전액 청구됩니다</span>
-              <span data-lang="en"><b>Absolutely no smoking indoors.</b> If caught, full restoration costs (wallpaper etc.) will be charged</span>
-              <span data-lang="ja"><b>室内での喫煙は厳禁です。</b>発覚した場合、原状回復費用（壁紙など）を全額請求します</span>
+              <span data-lang="ko">
+                <b>실내 흡연은 절대 금지입니다.</b><br>
+                적발 시 원상복구 비용(도배 등)이 청구되며, 계약이 즉시 해지될 수 있어요.
+              </span>
+              <span data-lang="en">
+                <b>Smoking indoors is strictly prohibited.</b><br>
+                If caught, restoration costs (wallpaper etc.) will be charged and the contract may be terminated immediately.
+              </span>
+              <span data-lang="ja">
+                <b>室内での喫煙は厳禁です。</b><br>
+                発覚した場合、原状回復費用（壁紙など）を請求し、契約が即時解除となる場合があります。
+              </span>
             </div>
           </div>
+
           <div class="rule-item">
             <div class="rule-dot"></div>
             <div class="rule-text">
-              <span data-lang="ko"><b>반려동물 동반 절대 금지.</b> 적발 시 청소·복구 비용 전액 청구됩니다</span>
-              <span data-lang="en"><b>No pets allowed.</b> If caught, full cleaning and restoration costs will be charged</span>
-              <span data-lang="ja"><b>ペットの同伴は厳禁です。</b>発覚した場合、清掃・復旧費用を全額請求します</span>
+              <span data-lang="ko">
+                <b>반려동물 동반은 절대 금지입니다.</b><br>
+                적발 시 청소·복구 비용이 청구되며, 계약이 즉시 해지될 수 있어요.
+              </span>
+              <span data-lang="en">
+                <b>Pets are strictly prohibited.</b><br>
+                If caught, cleaning and restoration costs will be charged and the contract may be terminated immediately.
+              </span>
+              <span data-lang="ja">
+                <b>ペットの同伴は厳禁です。</b><br>
+                発覚した場合、清掃・復旧費用を請求し、契約が即時解除となる場合があります。
+              </span>
             </div>
           </div>
+
           <div class="rule-item">
             <div class="rule-dot"></div>
             <div class="rule-text">
-              <span data-lang="ko"><b>밤 10시 이후 새벽 소음을 자제해 주세요.</b> 조용한 동네라 민원 발생 시 계약이 해지될 수 있어요</span>
-              <span data-lang="en"><b>Please keep noise down after 10 PM.</b> This is a quiet neighborhood — noise complaints may result in contract termination</span>
-              <span data-lang="ja"><b>夜10時以降は騒音にご注意ください。</b>静かな住宅地のため、苦情が続く場合は契約解除となる場合があります</span>
+              <span data-lang="ko">
+                <b>밤 10시 이후에는 조용히 부탁드려요.</b><br>
+                주변이 매우 조용한 동네라 소음 민원이 발생하면 계약이 해지될 수 있어요.
+              </span>
+              <span data-lang="en">
+                <b>Please keep quiet after 10 PM.</b><br>
+                This is a very quiet neighborhood — noise complaints may result in contract termination.
+              </span>
+              <span data-lang="ja">
+                <b>夜10時以降はお静かにお願いします。</b><br>
+                非常に静かな住宅地のため、騒音苦情が発生した場合、契約解除となる場合があります。
+              </span>
             </div>
           </div>
+
           <div class="rule-item">
             <div class="rule-dot"></div>
             <div class="rule-text">
-              <span data-lang="ko"><b>창문을 열면 벌레가 들어올 수 있어요.</b> 방충망 확인 후 열어주세요. 공기청정기·제습기를 켜두면 창문 없이도 쾌적해요</span>
-              <span data-lang="en"><b>Opening windows may let insects in.</b> Check the screen before opening. The air purifier and dehumidifier keep it comfortable without opening windows</span>
-              <span data-lang="ja"><b>窓を開けると虫が入ることがあります。</b>防虫網を確認してから開けてください。空気清浄機・除湿機で窓なしでも快適に過ごせます</span>
+              <span data-lang="ko">
+                <b>창문을 열면 벌레가 들어올 수 있어요.</b><br>
+                반지하 특성상 방충망을 꼭 확인한 후 열어주세요.<br>
+                공기청정기·제습기를 켜두시면 창문 없이도 충분히 쾌적해요.
+              </span>
+              <span data-lang="en">
+                <b>Opening windows may let insects in.</b><br>
+                Due to the semi-basement level, please always check the screen before opening.<br>
+                The air purifier and dehumidifier keep the room comfortable without opening windows.
+              </span>
+              <span data-lang="ja">
+                <b>窓を開けると虫が入ることがあります。</b><br>
+                半地下の特性上、必ず防虫網を確認してから開けてください。<br>
+                空気清浄機・除湿機を使えば窓を開けなくても快適に過ごせます。
+              </span>
             </div>
           </div>
+
           <div class="rule-item">
             <div class="rule-dot"></div>
             <div class="rule-text">
-              <span data-lang="ko">물건 훼손·오염 시 수리·청소 비용은 본인 부담이에요</span>
-              <span data-lang="en">Damage or excessive cleaning will be charged to the guest</span>
-              <span data-lang="ja">備品の破損・汚損は修理・清掃費用をご負担いただきます</span>
+              <span data-lang="ko">
+                <b>물건이 훼손되거나 오염된 경우</b> 수리·청소 비용은 본인 부담이에요.<br>
+                소중하게 사용해 주시면 감사하겠습니다.
+              </span>
+              <span data-lang="en">
+                <b>Any damage or excessive soiling</b> will result in repair or cleaning charges.<br>
+                Please treat the space with care.
+              </span>
+              <span data-lang="ja">
+                <b>備品の破損・汚損</b>は修理・清掃費用をご負担いただきます。<br>
+                大切にお使いいただけると幸いです。
+              </span>
             </div>
           </div>
+
           <div class="rule-item">
             <div class="rule-dot"></div>
             <div class="rule-text">
-              <span data-lang="ko"><b>퇴실 청소비</b> — 1~3주 거주 시 3만원 / 1달 이상 5만원 (퇴실 시 청구)</span>
-              <span data-lang="en"><b>Checkout cleaning fee</b> — 1–3 weeks: ₩30,000 / Over 1 month: ₩50,000</span>
-              <span data-lang="ja"><b>退室清掃費</b> — 1〜3週間: 30,000ウォン / 1か月以上: 50,000ウォン</span>
+              <span data-lang="ko">
+                <b>퇴실 청소비</b>가 별도로 발생해요.<br>
+                1~3주 거주: 30,000원 / 1달 이상 거주: 50,000원
+              </span>
+              <span data-lang="en">
+                <b>A checkout cleaning fee</b> applies.<br>
+                1–3 weeks: ₩30,000 / Over 1 month: ₩50,000
+              </span>
+              <span data-lang="ja">
+                <b>退室清掃費</b>が別途発生します。<br>
+                1〜3週間: 30,000ウォン / 1か月以上: 50,000ウォン
+              </span>
             </div>
           </div>
+
         </div>
       </div>
     </div>
@@ -588,43 +654,50 @@
       <div class="card-body" style="padding: 0 18px 4px;">
 
         <div class="info-item">
-          <span class="info-badge badge-check"><span data-lang="ko">일반쓰레기</span><span data-lang="en">General</span><span data-lang="ja">一般ゴミ</span></span>
+          <span class="info-badge badge-check" style="white-space:nowrap"><span data-lang="ko">일반쓰레기</span><span data-lang="en">General</span><span data-lang="ja">一般ゴミ</span></span>
           <div>
-            <div class="info-text"><span data-lang="ko">1주일 당 <b>20L 봉투 1장</b> 제공</span><span data-lang="en"><b>One 20L bag</b> provided per week</span><span data-lang="ja">1週間あたり<b>20L袋1枚</b>提供</span></div>
-            <div class="info-sub"><span data-lang="ko">추가 구입처: 근처 편의점·마트</span><span data-lang="en">Extra bags available at nearby convenience stores/marts</span><span data-lang="ja">追加購入: 近くのコンビニ・スーパー</span></div>
+            <div class="info-text"><span data-lang="ko">1주일 당 <b>20L 봉투 1장</b> 제공해 드려요</span><span data-lang="en"><b>One 20L bag</b> provided per week</span><span data-lang="ja">1週間あたり<b>20L袋1枚</b>提供</span></div>
+            <div class="info-sub"><span data-lang="ko">추가 구입: 근처 편의점·마트에서 구입 가능해요</span><span data-lang="en">Extra bags available at nearby convenience stores or marts</span><span data-lang="ja">追加購入: 近くのコンビニ・スーパーで購入可能</span></div>
           </div>
         </div>
 
         <div class="info-item">
-          <span class="info-badge badge-check"><span data-lang="ko">음식물</span><span data-lang="en">Food</span><span data-lang="ja">生ゴミ</span></span>
+          <span class="info-badge badge-check" style="white-space:nowrap"><span data-lang="ko">음식물</span><span data-lang="en">Food</span><span data-lang="ja">生ゴミ</span></span>
           <div>
-            <div class="info-text"><span data-lang="ko">1주일 당 <b>2L 봉투 1장</b> 제공</span><span data-lang="en"><b>One 2L bag</b> provided per week</span><span data-lang="ja">1週間あたり<b>2L袋1枚</b>提供</span></div>
-            <div class="info-sub"><span data-lang="ko">모자라면 호스트에게 요청해 주세요</span><span data-lang="en">Request more from the host if needed</span><span data-lang="ja">不足の場合はホストにご連絡ください</span></div>
+            <div class="info-text"><span data-lang="ko">1주일 당 <b>2L 봉투 1장</b> 제공해 드려요</span><span data-lang="en"><b>One 2L bag</b> provided per week</span><span data-lang="ja">1週間あたり<b>2L袋1枚</b>提供</span></div>
+            <div class="info-sub"><span data-lang="ko">부족하시면 호스트에게 편하게 요청해 주세요</span><span data-lang="en">Request more from the host if needed</span><span data-lang="ja">不足の場合はホストにご連絡ください</span></div>
           </div>
         </div>
 
-        <div class="info-item" style="border-bottom:none; padding-bottom:14px;">
-          <span class="info-badge badge-inc"><span data-lang="ko">보관장소</span><span data-lang="en">Location</span><span data-lang="ja">保管場所</span></span>
+        <div class="info-item">
+          <span class="info-badge badge-check" style="white-space:nowrap"><span data-lang="ko">재활용</span><span data-lang="en">Recycling</span><span data-lang="ja">リサイクル</span></span>
+          <div>
+            <div class="info-text"><span data-lang="ko">깨끗하게 <b>씻어서 말린 뒤</b> 종류별로 분리해서 버려주세요</span><span data-lang="en"><b>Rinse and dry</b> items before sorting by type</span><span data-lang="ja">きれいに<b>洗って乾かしてから</b>種類別に分別してください</span></div>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <span class="info-badge badge-inc" style="white-space:nowrap"><span data-lang="ko">봉투위치</span><span data-lang="en">Bags</span><span data-lang="ja">袋の場所</span></span>
           <div class="info-text"><span data-lang="ko">쓰레기봉투는 <b>왼쪽 신발장 안</b>에 있어요</span><span data-lang="en">Trash bags are in the <b>left shoe cabinet</b></span><span data-lang="ja">ゴミ袋は<b>左側のシューズボックス内</b>にあります</span></div>
         </div>
 
-      </div>
-    </div>
-
-    <!-- 재활용 배출 위치 -->
-    <div class="card">
-      <div class="card-head">
-        <div class="card-label"><span data-lang="ko">재활용 배출 위치</span><span data-lang="en">Recycling Location</span><span data-lang="ja">リサイクル排出場所</span></div>
-      </div>
-      <div class="card-body" style="padding: 0 18px 4px;">
         <div class="info-item">
-          <span class="info-badge badge-out"><span data-lang="ko">오른쪽</span><span data-lang="en">Right</span><span data-lang="ja">右側</span></span>
-          <div class="info-text"><span data-lang="ko">공동현관 나와서 바로 오른쪽 — <b>음식물쓰레기함</b> 및 <b>종이</b> 배출</span><span data-lang="en">Exit main entrance, turn right — <b>food waste bin</b> and <b>paper</b></span><span data-lang="ja">共用玄関を出てすぐ右 — <b>生ゴミ箱</b>と<b>紙類</b></span></div>
+          <span class="info-badge badge-out" style="white-space:nowrap"><span data-lang="ko">배출장소</span><span data-lang="en">Bin Location</span><span data-lang="ja">排出場所</span></span>
+          <div class="info-text">
+            <span data-lang="ko">공동현관을 나와 <b>바로 오른쪽 분리수거 공간</b>에서 버려주세요</span>
+            <span data-lang="en">Exit the main entrance and dispose at the <b>recycling area immediately to the right</b></span>
+            <span data-lang="ja">共用玄関を出てすぐ<b>右側の分別ゴミスペース</b>に捨ててください</span>
+          </div>
         </div>
-        <div class="info-item" style="border-bottom:none; padding-bottom:14px;">
-          <span class="info-badge badge-out"><span data-lang="ko">맞은편</span><span data-lang="en">Across</span><span data-lang="ja">向かい側</span></span>
-          <div class="info-text"><span data-lang="ko">맞은편 — <b>일반쓰레기봉투</b>, <b>유리·고철·캔</b>, <b>페트</b>, <b>비닐</b></span><span data-lang="en">Across — <b>general waste bags</b>, <b>glass·metal·cans</b>, <b>PET bottles</b>, <b>plastic film</b></span><span data-lang="ja">向かい側 — <b>一般ゴミ袋</b>、<b>ガラス・金属・缶</b>、<b>ペットボトル</b>、<b>ビニール</b></span></div>
+
+        <div class="info-item" style="border-bottom:none; padding-bottom: 14px;">
+          <span class="info-badge badge-out" style="white-space:nowrap"><span data-lang="ko">수거시간</span><span data-lang="en">Collection</span><span data-lang="ja">収集時間</span></span>
+          <div>
+            <div class="info-text"><span data-lang="ko">쓰레기 수거는 <b>새벽</b>에 이루어져요</span><span data-lang="en">Waste is collected in the <b>early morning</b></span><span data-lang="ja">ゴミ収集は<b>早朝</b>に行われます</span></div>
+            <div class="info-sub"><span data-lang="ko">공휴일로 넘어가는 새벽에는 수거하지 않으니 참고해 주세요</span><span data-lang="en">No collection on the morning before public holidays</span><span data-lang="ja">祝日前の早朝は収集がありませんのでご注意ください</span></div>
+          </div>
         </div>
+
       </div>
     </div>
 
@@ -691,6 +764,15 @@
         </div>
       </div>
     </div>
+    <div class="card">
+      <div class="card-body" style="text-align:center; padding: 14px 18px;">
+        <div style="font-size:12px; color: var(--sub);">
+          <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
+          <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
+          <span data-lang="ja">ご質問・ご要望は33M2アプリのチャットをご利用ください</span>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- 세탁기 -->
@@ -708,7 +790,16 @@
         </div>
         <div class="alert"><span data-lang="ko">사용 후 문을 열어두면 냄새 방지에 좋아요</span><span data-lang="en">Leave the door open after use to prevent odor</span><span data-lang="ja">使用後はドアを開けておくと臭いの防止になります</span></div>
       </div>
+      <div class="card">
+      <div class="card-body" style="text-align:center; padding: 14px 18px;">
+        <div style="font-size:12px; color: var(--sub);">
+          <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
+          <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
+          <span data-lang="ja">ご質問・ご要望は33M2アプリのチャットをご利用ください</span>
+        </div>
+      </div>
     </div>
+  </div>
 
     <div class="card">
       <div class="card-head"><div class="card-label"><span data-lang="ko">사용설명서</span><span data-lang="en">Manual</span><span data-lang="ja">取扱説明書</span></div></div>
@@ -747,7 +838,16 @@
         </div>
         <div class="alert"><b><span data-lang="ko">하이라이트 구역은 사용 후에도 열이 오래 남습니다.</span><span data-lang="en">Highlight zone stays hot after use.</span><span data-lang="ja">ハイライトゾーンは使用後も長時間熱いです。</span></b> <span data-lang="ko">바로 만지면 화상 위험!</span><span data-lang="en">Do not touch immediately — burn hazard!</span><span data-lang="ja">すぐに触ると火傷の危険があります！</span></div>
       </div>
+      <div class="card">
+      <div class="card-body" style="text-align:center; padding: 14px 18px;">
+        <div style="font-size:12px; color: var(--sub);">
+          <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
+          <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
+          <span data-lang="ja">ご質問・ご要望は33M2アプリのチャットをご利用ください</span>
+        </div>
+      </div>
     </div>
+  </div>
 
     <div class="card">
       <div class="card-head"><div class="card-label"><span data-lang="ko">사용설명서</span><span data-lang="en">Manual</span><span data-lang="ja">取扱説明書</span></div></div>
@@ -776,7 +876,16 @@
         </div>
         <div class="alert"><span data-lang="ko">반지하 특성상 공기청정기를 꾸준히 켜두시면 훨씬 쾌적해요</span><span data-lang="en">Keeping it running helps maintain air quality in this semi-basement room</span><span data-lang="ja">半地下のため、常時運転がおすすめです</span></div>
       </div>
+      <div class="card">
+      <div class="card-body" style="text-align:center; padding: 14px 18px;">
+        <div style="font-size:12px; color: var(--sub);">
+          <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
+          <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
+          <span data-lang="ja">ご質問・ご要望は33M2アプリのチャットをご利用ください</span>
+        </div>
+      </div>
     </div>
+  </div>
 
     <div class="card">
       <div class="card-head"><div class="card-label"><span data-lang="ko">사용설명서</span><span data-lang="en">Manual</span><span data-lang="ja">取扱説明書</span></div></div>
@@ -828,6 +937,15 @@
         </a>
       </div>
     </div>
+    <div class="card">
+      <div class="card-body" style="text-align:center; padding: 14px 18px;">
+        <div style="font-size:12px; color: var(--sub);">
+          <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
+          <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
+          <span data-lang="ja">ご質問・ご要望は33M2アプリのチャットをご利用ください</span>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- 주변 편의시설 -->
@@ -850,7 +968,16 @@
           <div class="info-text"><span data-lang="ko">건물 근처 버스 정류장 이용 가능</span><span data-lang="en">Bus stop near the building</span><span data-lang="ja">建物近くにバス停あり</span></div>
         </div>
       </div>
+      <div class="card">
+      <div class="card-body" style="text-align:center; padding: 14px 18px;">
+        <div style="font-size:12px; color: var(--sub);">
+          <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
+          <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
+          <span data-lang="ja">ご質問・ご要望は33M2アプリのチャットをご利用ください</span>
+        </div>
+      </div>
     </div>
+  </div>
 
     <div class="card">
       <div class="card-head">
@@ -881,7 +1008,7 @@
 </main>
 
 <footer class="footer">
-  문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요 · Questions or requests? Please use the chat in the 33M2 app
+  dang dang home
 </footer>
 
 <script>
