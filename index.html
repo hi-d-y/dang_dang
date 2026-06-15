@@ -565,6 +565,11 @@
     border-bottom: none;
     padding: 7px 0;
   }
+
+  /* ── 지도 ── */
+  @media (max-width: 480px) {
+    .map-iframe { height: 220px !important; }
+  }
 </style>
 </head>
 <body class="lang-ko">
@@ -759,7 +764,7 @@
             <div class="rule-dot"></div>
             <div class="rule-text">
               <span data-lang="ko">
-                <b>퇴실 시 <b>청소비가 별도로 발생해요.<br>
+                <b>퇴실 시 청소비</b>가 별도로 발생해요.<br>
                 1~3주 거주: 30,000원 / 1달 이상 거주: 50,000원
               </span>
               <span data-lang="en">
@@ -1056,6 +1061,35 @@
 
     <!-- 편의시설 -->
   <div class="panel" id="panel-facilities">
+    <!-- 지도 카드 -->
+    <div class="card">
+      <div class="card-head">
+        <div class="card-label"><span data-lang="ko">위치</span><span data-lang="en">Location</span></div>
+      </div>
+      <div class="card-body" style="padding:14px;">
+        <div style="border-radius:10px; overflow:hidden; border:1px solid var(--border);">
+          <iframe
+            src="https://map.kakao.com/link/embed/CHORYANG_VILLA,37.5138,127.0182"
+            width="100%"
+            height="280"
+            style="display:block; border:none;"
+            title="당당홈 위치">
+          </iframe>
+        </div>
+        <a href="https://map.kakao.com/link/search/서울특별시 서초구 강남대로107길 17-7"
+           target="_blank"
+           class="link-btn"
+           style="margin-top:10px; display:flex; justify-content:center; font-size:12px; padding:9px 20px;">
+          <span data-lang="ko">카카오맵에서 열기</span>
+          <span data-lang="en">Open in Kakao Maps</span>
+        </a>
+        <div style="margin-top:10px; font-size:12px; color:var(--sub); text-align:center;">
+          <span data-lang="ko">서울특별시 서초구 강남대로107길 17-7</span>
+          <span data-lang="en">17-7 Gangnamdaero 107-gil, Seocho-gu, Seoul</span>
+        </div>
+      </div>
+    </div>
+
     <div class="card">
       <div class="card-head">
         <div class="card-label"><span data-lang="ko">편의시설</span><span data-lang="en">Facilities</span></div>
@@ -1075,7 +1109,13 @@
         </div>
         <div class="info-item" style="border-bottom:none; padding-bottom:14px;">
           <span class="info-badge badge-inc"><span data-lang="ko">빨래방</span><span data-lang="en">Laundry</span></span>
-          <div class="info-text"><span data-lang="ko">근처 셀프 빨래방 이용 가능</span><span data-lang="en">Self-service laundromat nearby</span></div>
+          <div>
+            <div class="info-text"><span data-lang="ko">근처 셀프 빨래방 이용 가능</span><span data-lang="en">Self-service laundromat nearby</span></div>
+            <a href="https://kko.to/hYSMqH4V9J" target="_blank" style="display:inline-flex; align-items:center; gap:4px; margin-top:4px; font-size:11px; color:var(--olive); text-decoration:none; font-weight:600;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span data-lang="ko">지도에서 보기</span><span data-lang="en">View on map</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -1368,6 +1408,35 @@
 
     <!-- 편의시설 -->
   <div class="panel" id="panel-facilities">
+    <!-- 지도 카드 -->
+    <div class="card">
+      <div class="card-head">
+        <div class="card-label"><span data-lang="ko">위치</span><span data-lang="en">Location</span></div>
+      </div>
+      <div class="card-body" style="padding:14px;">
+        <div style="border-radius:10px; overflow:hidden; border:1px solid var(--border);">
+          <iframe
+            src="https://map.kakao.com/link/embed/CHORYANG_VILLA,37.5138,127.0182"
+            width="100%"
+            height="280"
+            style="display:block; border:none;"
+            title="당당홈 위치">
+          </iframe>
+        </div>
+        <a href="https://map.kakao.com/link/search/서울특별시 서초구 강남대로107길 17-7"
+           target="_blank"
+           class="link-btn"
+           style="margin-top:10px; display:flex; justify-content:center; font-size:12px; padding:9px 20px;">
+          <span data-lang="ko">카카오맵에서 열기</span>
+          <span data-lang="en">Open in Kakao Maps</span>
+        </a>
+        <div style="margin-top:10px; font-size:12px; color:var(--sub); text-align:center;">
+          <span data-lang="ko">서울특별시 서초구 강남대로107길 17-7</span>
+          <span data-lang="en">17-7 Gangnamdaero 107-gil, Seocho-gu, Seoul</span>
+        </div>
+      </div>
+    </div>
+
     <div class="card">
       <div class="card-head">
         <div class="card-label"><span data-lang="ko">편의시설</span><span data-lang="en">Facilities</span></div>
@@ -1387,7 +1456,13 @@
         </div>
         <div class="info-item" style="border-bottom:none; padding-bottom:14px;">
           <span class="info-badge badge-inc"><span data-lang="ko">빨래방</span><span data-lang="en">Laundry</span></span>
-          <div class="info-text"><span data-lang="ko">근처 셀프 빨래방 이용 가능</span><span data-lang="en">Self-service laundromat nearby</span></div>
+          <div>
+            <div class="info-text"><span data-lang="ko">근처 셀프 빨래방 이용 가능</span><span data-lang="en">Self-service laundromat nearby</span></div>
+            <a href="https://kko.to/hYSMqH4V9J" target="_blank" style="display:inline-flex; align-items:center; gap:4px; margin-top:4px; font-size:11px; color:var(--olive); text-decoration:none; font-weight:600;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span data-lang="ko">지도에서 보기</span><span data-lang="en">View on map</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -1399,9 +1474,7 @@
   
 </main>
 
-<footer class="footer">
-  <span data-lang="ko">문의 또는 요청사항은 호스트에게 연락해 주세요</span><span data-lang="en">For any questions or requests, please contact the host</span>
-</footer>
+
 
 <script>
   let currentLang = 'ko';
