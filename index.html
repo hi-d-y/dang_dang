@@ -926,7 +926,10 @@
             <div class="step-text"><span data-lang="ko">전원 켜기</span><span data-lang="en">Turn on the power</span></div>
           </div>
           <div class="step">
-            <div class="step-num" style="background:#1D4ED8; border-color:#1D4ED8; color:white; font-size:10px;">✓</div>
+            <div style="display:flex; align-items:center; gap:5px; flex-shrink:0; margin-top:1px;">
+              <div class="step-num" style="background:#DBEAFE; border-color:#93C5FD; color:#1D4ED8;">2</div>
+              <div style="width:18px; height:18px; border-radius:50%; background:#1D4ED8; display:flex; align-items:center; justify-content:center; font-size:10px; color:white; flex-shrink:0;">✓</div>
+            </div>
             <div class="step-text">
               <span data-lang="ko"><b>[선택] 버튼</b>으로 화력 또는 온도 선택<br><span style="font-size:12px;color:var(--sub);">타이머는 화력/온도 모드 사용 중에 조작 가능</span></span>
               <span data-lang="en">Press <b>[Select]</b> to choose heat or temperature mode<br><span style="font-size:12px;color:var(--sub);">Timer can be set while in heat/temperature mode</span></span>
@@ -964,7 +967,10 @@
             <div class="step-text"><span data-lang="ko">전원 켜기</span><span data-lang="en">Turn on the power</span></div>
           </div>
           <div class="step">
-            <div class="step-num" style="background:#DC2626; border-color:#DC2626; color:white; font-size:10px;">✓</div>
+            <div style="display:flex; align-items:center; gap:5px; flex-shrink:0; margin-top:1px;">
+              <div class="step-num" style="background:#FEE2E2; border-color:#FCA5A5; color:#DC2626;">2</div>
+              <div style="width:18px; height:18px; border-radius:50%; background:#DC2626; display:flex; align-items:center; justify-content:center; font-size:10px; color:white; flex-shrink:0;">✓</div>
+            </div>
             <div class="step-text">
               <span data-lang="ko"><b>[선택] 버튼</b>으로 강 또는 약 선택<br><span style="font-size:12px;color:var(--sub);">타이머는 화력(강/약) 모드 사용 중에 조작 가능</span></span>
               <span data-lang="en">Press <b>[Select]</b> to choose high or low heat<br><span style="font-size:12px;color:var(--sub);">Timer can be set while in heat (high/low) mode</span></span>
@@ -1223,7 +1229,18 @@
   function initFromHash() {
     const hash = location.hash.replace('#', '');
     const valid = ['info','waste','transit','facilities','washer','induction','airpurifier','dehumidifier'];
-    if (valid.includes(hash)) setPanel(hash);
+    if (valid.includes(hash)) {
+      // 대분류 먼저 설정
+      const infoIds = ['info','waste','transit','facilities'];
+      const mainTab = infoIds.includes(hash) ? 'info' : 'appliance';
+      document.querySelectorAll('.nav-main-tab').forEach((btn, i) => {
+        btn.classList.toggle('active', ['info','appliance'][i] === mainTab);
+      });
+      document.getElementById('sub-info').style.display = (mainTab === 'info') ? '' : 'none';
+      document.getElementById('sub-appliance').style.display = (mainTab === 'appliance') ? '' : 'none';
+      // 패널 설정
+      setPanel(hash);
+    }
   }
 
   setLang('ko');
@@ -1548,7 +1565,18 @@
   function initFromHash() {
     const hash = location.hash.replace('#', '');
     const valid = ['info','waste','transit','facilities','washer','induction','airpurifier','dehumidifier'];
-    if (valid.includes(hash)) setPanel(hash);
+    if (valid.includes(hash)) {
+      // 대분류 먼저 설정
+      const infoIds = ['info','waste','transit','facilities'];
+      const mainTab = infoIds.includes(hash) ? 'info' : 'appliance';
+      document.querySelectorAll('.nav-main-tab').forEach((btn, i) => {
+        btn.classList.toggle('active', ['info','appliance'][i] === mainTab);
+      });
+      document.getElementById('sub-info').style.display = (mainTab === 'info') ? '' : 'none';
+      document.getElementById('sub-appliance').style.display = (mainTab === 'appliance') ? '' : 'none';
+      // 패널 설정
+      setPanel(hash);
+    }
   }
 
   setLang('ko');
