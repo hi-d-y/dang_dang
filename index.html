@@ -583,6 +583,10 @@
     font-weight: 600;
   }
   .map-link:hover { text-decoration: underline; }
+
+  /* ── info-item 세로 가운데 정렬 ── */
+  .info-item { align-items: center; }
+  .no-divider .info-item { align-items: center; }
 </style>
 </head>
 <body class="lang-ko">
@@ -862,10 +866,9 @@
       <div class="card-body">
         <div class="steps">
           <div class="step"><div class="step-num">1</div><div class="step-text"><span data-lang="ko">세탁기 뒤편의 <b>전원선을 콘센트에 꽂고</b>, 배수호스는 <b>아래쪽으로 내려</b> 주세요</span><span data-lang="en">Plug in the <b>power cord</b> at the back, and make sure the <b>drain hose points downward</b></span></div></div>
-          <div class="step"><div class="step-num">2</div><div class="step-text"><span data-lang="ko">세탁물을 넣어주세요. <b>통의 2/3 이상</b> 채우면 세탁 효율이 떨어져요</span><span data-lang="en">Load the laundry. Filling more than <b>2/3 of the drum</b> reduces wash quality</span></div></div>
-          <div class="step"><div class="step-num">3</div><div class="step-text"><span data-lang="ko"><b>시트지 세제</b>를 적당량 넣어주세요 — 섬유유연제 겸용이라 별도 유연제는 필요 없어요</span><span data-lang="en">Add an appropriate amount of <b>sheet detergent</b> — it works as a softener too, no separate softener needed</span></div></div>
-          <div class="step"><div class="step-num">4</div><div class="step-text"><span data-lang="ko">전원 켜고 원하는 <b>코스를 선택</b>한 후 시작</span><span data-lang="en">Power on, <b>select a wash cycle</b>, then press Start</span></div></div>
-          <div class="step"><div class="step-num">5</div><div class="step-text"><span data-lang="ko">완료 후 <b>즉시</b> 꺼내주세요</span><span data-lang="en">Remove laundry <b>immediately</b> after the cycle ends</span></div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-text"><span data-lang="ko">세탁물과 세제를 적당량 넣어주세요. <b>통의 2/3 이상</b> 채우면 세탁 효율이 떨어져요</span><span data-lang="en">Add laundry and an appropriate amount of detergent. Filling more than <b>2/3 of the drum</b> reduces wash quality</span></div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-text"><span data-lang="ko">전원 켜고 원하는 <b>코스를 선택</b>한 후 시작</span><span data-lang="en">Power on, <b>select a wash cycle</b>, then press Start</span></div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-text"><span data-lang="ko">기계음이 들리면 문을 열고 <b>섬유유연제를 넣어주세요</b></span><span data-lang="en">When you hear a chime, open the door and <b>add fabric softener</b></span></div></div>
         </div>
         <div class="alert"><span data-lang="ko">사용 후 문을 열어두면 내부 <b>습기 제거</b>에 도움이 돼요</span><span data-lang="en">Leave the door open after use to help <b>remove moisture</b> inside</span></div>
       </div>
@@ -894,69 +897,90 @@
   <!-- 인덕션 -->
   <div class="panel" id="panel-induction">
 
+    <!-- 이미지 + 구역 표시 -->
     <div class="card" style="overflow:hidden; padding:0;">
-      <img src="induction.png" alt="인덕션/하이라이트" style="width:100%; display:block; border-radius:var(--radius);">
+      <img src="induction.png" alt="인덕션/하이라이트" style="width:100%; display:block;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; border-top:1px solid var(--border);">
+        <div style="padding:10px 14px; text-align:center; border-right:1px solid var(--border); background:var(--olive-light);">
+          <div style="font-size:11px; font-weight:700; color:var(--olive);">⬡ <span data-lang="ko">인덕션 구역</span><span data-lang="en">Induction Zone</span></div>
+          <div style="font-size:10px; color:var(--sub); margin-top:2px;"><span data-lang="ko">코일 마크 냄비만</span><span data-lang="en">IH pots only</span></div>
+        </div>
+        <div style="padding:10px 14px; text-align:center;">
+          <div style="font-size:11px; font-weight:700; color:#DC2626;">● <span data-lang="ko">하이라이트 구역</span><span data-lang="en">Highlight Zone</span></div>
+          <div style="font-size:10px; color:var(--sub); margin-top:2px;"><span data-lang="ko">모든 냄비 사용 가능</span><span data-lang="en">All pots available</span></div>
+        </div>
+      </div>
     </div>
 
+    <!-- 인덕션 사용방법 -->
     <div class="card">
       <div class="card-head">
-        <div class="card-label" style="display:flex; align-items:center; gap:8px;">
-          <span style="font-size:13px;">⬡</span>
-          <span><span data-lang="ko">인덕션 구역 · 사용 방법</span><span data-lang="en">Induction Zone · How to Use</span></span>
-        </div>
+        <div class="card-label"><span data-lang="ko">인덕션 구역 · 사용 방법</span><span data-lang="en">Induction Zone · How to Use</span></div>
       </div>
       <div class="card-body">
         <div class="steps">
-          <div class="step"><div class="step-num">1</div><div class="step-text"><span data-lang="ko">전원 켜기</span><span data-lang="en">Turn on the power</span></div></div>
-          <div class="step"><div class="step-num">2</div><div class="step-text"><span data-lang="ko"><b>[선택] 버튼</b>으로 화력 또는 온도 선택<br><span style="font-size:12px;color:var(--sub);">타이머는 화력/온도 모드 사용 중에 조작 가능</span></span><span data-lang="en">Press <b>[Select]</b> to choose heat or temperature mode<br><span style="font-size:12px;color:var(--sub);">Timer can be set while in heat/temperature mode</span></span></div></div>
-          <div class="step"><div class="step-num">3</div><div class="step-text"><span data-lang="ko"><b>⊕[올림] / ⊖[내림]</b> 버튼으로 조절</span><span data-lang="en">Adjust with <b>⊕[Up] / ⊖[Down]</b> buttons</span></div></div>
-        </div>
-        <div class="alert" style="margin-top:14px;">
-          <div style="margin-bottom:5px;"><span data-lang="ko"><b>인덕션 매트 사용 추천</b></span><span data-lang="en"><b>Induction mat recommended</b></span></div>
-          <div style="font-size:12px;color:#3A4E1A;"><span data-lang="ko">미니 후라이팬은 인덕션에서 사용 불가 — 하이라이트 구역을 이용해 주세요</span><span data-lang="en">Mini frying pans don't work on induction — use the highlight zone instead</span></div>
-        </div>
-        <div style="margin-top:10px;padding:10px 12px;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:8px;font-size:12px;color:#1E40AF;">
-          <span data-lang="ko"><b>인덕션 전용 냄비·팬만 사용 가능해요.</b> 바닥에 코일 마크가 있는 것을 확인해 주세요</span>
-          <span data-lang="en"><b>Induction-compatible cookware only.</b> Check for the coil symbol on the bottom</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-head">
-        <div class="card-label" style="display:flex; align-items:center; gap:8px;">
-          <span style="font-size:13px;color:#DC2626;">●</span>
-          <span><span data-lang="ko">하이라이트 구역 · 사용 방법</span><span data-lang="en">Highlight Zone · How to Use</span></span>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="steps">
-          <div class="step"><div class="step-num">1</div><div class="step-text"><span data-lang="ko">전원 켜기</span><span data-lang="en">Turn on the power</span></div></div>
-          <div class="step"><div class="step-num">2</div><div class="step-text"><span data-lang="ko"><b>[선택] 버튼</b>으로 강 또는 약 선택<br><span style="font-size:12px;color:var(--sub);">타이머는 화력(강/약) 모드 사용 중에 조작 가능</span></span><span data-lang="en">Press <b>[Select]</b> to choose high or low heat<br><span style="font-size:12px;color:var(--sub);">Timer can be set while in heat (high/low) mode</span></span></div></div>
-          <div class="step"><div class="step-num">3</div><div class="step-text"><span data-lang="ko"><b>⊕[올림] / ⊖[내림]</b> 버튼으로 조절</span><span data-lang="en">Adjust with <b>⊕[Up] / ⊖[Down]</b> buttons</span></div></div>
-        </div>
-        <div style="margin-top:14px;padding:10px 12px;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;font-size:12px;color:#166534;">
-          <span data-lang="ko"><b>구비된 모든 조리도구 사용 가능해요.</b> 인덕션 매트는 절대 사용 금지입니다</span>
-          <span data-lang="en"><b>All cookware in the room can be used.</b> Do NOT use an induction mat on this zone</span>
-        </div>
-        <div class="alert" style="margin-top:10px;">
-          <span data-lang="ko"><b>사용 후에도 열이 오래 남아 있어요.</b> 바로 만지면 화상 위험! 반드시 식힌 후 만져주세요</span>
-          <span data-lang="en"><b>The surface stays hot long after use.</b> Burn hazard — do not touch until fully cooled</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-head"><div class="card-label"><span data-lang="ko">사용설명서</span><span data-lang="en">Manual</span></div></div>
-      <div class="card-body">
-        <a class="link-btn" href="https://m.kitchenart.co.kr/" target="_blank">
-          <div class="link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#5C6E2E" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg></div>
-          <div class="link-text">
-            <div class="link-title"><span data-lang="ko">키친아트 공식 홈페이지</span><span data-lang="en">Kitchen Art Official Site</span></div>
-            <div class="link-sub">kitchenart.co.kr · KWS-2050</div>
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-text"><span data-lang="ko">전원 켜기</span><span data-lang="en">Turn on the power</span></div>
           </div>
-          <div class="link-arrow">→</div>
-        </a>
+          <div class="step">
+            <div class="step-num" style="background:var(--olive); border-color:var(--olive); color:white; font-size:10px;">✓</div>
+            <div class="step-text">
+              <span data-lang="ko"><b>[선택] 버튼</b>으로 화력 또는 온도 선택<br><span style="font-size:12px;color:var(--sub);">타이머는 화력/온도 모드 사용 중에 조작 가능</span></span>
+              <span data-lang="en">Press <b>[Select]</b> to choose heat or temperature mode<br><span style="font-size:12px;color:var(--sub);">Timer can be set while in heat/temperature mode</span></span>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-text"><span data-lang="ko"><b>⊕[올림] / ⊖[내림]</b> 버튼으로 조절</span><span data-lang="en">Adjust with <b>⊕[Up] / ⊖[Down]</b> buttons</span></div>
+          </div>
+        </div>
+        <div style="margin-top:14px; display:flex; flex-direction:column; gap:8px;">
+          <div style="padding:10px 12px; background:var(--olive-light); border-radius:8px; font-size:12px; color:#3A4E1A; display:flex; gap:8px; align-items:flex-start;">
+            <span style="flex-shrink:0;">✅</span>
+            <span><span data-lang="ko"><b>인덕션 매트 사용 추천.</b> 미니 후라이팬은 인덕션에서 사용 불가 — 하이라이트 구역을 이용해 주세요</span><span data-lang="en"><b>Induction mat recommended.</b> Mini frying pans don't work on induction — use the highlight zone instead</span></span>
+          </div>
+          <div style="padding:10px 12px; background:#EFF6FF; border-radius:8px; font-size:12px; color:#1E40AF; display:flex; gap:8px; align-items:flex-start;">
+            <span style="flex-shrink:0;">ℹ️</span>
+            <span><span data-lang="ko"><b>인덕션 전용 냄비·팬만 사용 가능해요.</b> 바닥에 코일 마크가 있는 것을 확인해 주세요</span><span data-lang="en"><b>Induction-compatible cookware only.</b> Check for the coil symbol on the bottom</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 하이라이트 사용방법 -->
+    <div class="card">
+      <div class="card-head">
+        <div class="card-label"><span data-lang="ko">하이라이트 구역 · 사용 방법</span><span data-lang="en">Highlight Zone · How to Use</span></div>
+      </div>
+      <div class="card-body">
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-text"><span data-lang="ko">전원 켜기</span><span data-lang="en">Turn on the power</span></div>
+          </div>
+          <div class="step">
+            <div class="step-num" style="background:var(--olive); border-color:var(--olive); color:white; font-size:10px;">✓</div>
+            <div class="step-text">
+              <span data-lang="ko"><b>[선택] 버튼</b>으로 강 또는 약 선택<br><span style="font-size:12px;color:var(--sub);">타이머는 화력(강/약) 모드 사용 중에 조작 가능</span></span>
+              <span data-lang="en">Press <b>[Select]</b> to choose high or low heat<br><span style="font-size:12px;color:var(--sub);">Timer can be set while in heat (high/low) mode</span></span>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-text"><span data-lang="ko"><b>⊕[올림] / ⊖[내림]</b> 버튼으로 조절</span><span data-lang="en">Adjust with <b>⊕[Up] / ⊖[Down]</b> buttons</span></div>
+          </div>
+        </div>
+        <div style="margin-top:14px; display:flex; flex-direction:column; gap:8px;">
+          <div style="padding:10px 12px; background:#F0FDF4; border-radius:8px; font-size:12px; color:#166534; display:flex; gap:8px; align-items:flex-start;">
+            <span style="flex-shrink:0;">✅</span>
+            <span><span data-lang="ko"><b>구비된 모든 조리도구 사용 가능해요.</b> 인덕션 매트는 절대 사용 금지입니다</span><span data-lang="en"><b>All cookware in the room can be used.</b> Do NOT use an induction mat on this zone</span></span>
+          </div>
+          <div style="padding:10px 12px; background:#FEF2F2; border-radius:8px; font-size:12px; color:#991B1B; display:flex; gap:8px; align-items:flex-start;">
+            <span style="flex-shrink:0;">🔥</span>
+            <span><span data-lang="ko"><b>사용 후에도 열이 오래 남아 있어요.</b> 반드시 식힌 후 만져주세요 — 화상 위험</span><span data-lang="en"><b>The surface stays hot long after use.</b> Do not touch until fully cooled — burn hazard</span></span>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -974,8 +998,8 @@
         </div>
         <div class="alert"><span data-lang="ko">반지하 특성상 공기청정기를 꾸준히 켜두시면 훨씬 쾌적해요</span><span data-lang="en">Keeping it running helps maintain air quality in this semi-basement room</span></div>
         <div style="margin-top:10px; padding:10px 12px; background:#FEF3C7; border:1px solid #FCD34D; border-radius:8px; font-size:13px; color:#92400E; line-height:1.55;">
-          <span data-lang="ko"><b>필터교체 표시등이 켜지면</b> 삼삼엠투 앱 채팅창으로 호스트에게 알려주세요. 필터 교체는 호스트가 진행해 드려요</span>
-          <span data-lang="en">If the <b>filter replacement indicator</b> lights up, please notify the host via the 33M2 app chat. The host will take care of it</span>
+          <span data-lang="ko"><b>필터교체 표시등이 켜지면</b> 호스트에게 알려주세요. 필터 교체는 호스트가 진행해 드려요</span>
+          <span data-lang="en">If the <b>filter replacement indicator</b> lights up, please notify the host. The host will take care of the filter replacement</span>
         </div>
       </div>
     </div>
@@ -993,9 +1017,15 @@
           <div class="step"><div class="step-num">3</div><div class="step-text"><span data-lang="ko"><b>물통 표시등</b>에 불이 들어오면 물통을 꺼내 비워주세요</span><span data-lang="en">When the <b>tank indicator</b> lights up, remove and empty the tank</span></div></div>
           <div class="step"><div class="step-num">4</div><div class="step-text"><span data-lang="ko">물통 다시 끼우면 자동 재작동</span><span data-lang="en">Reinsert the tank to resume</span></div></div>
         </div>
-        <div class="alert">
-          <div style="margin-bottom:6px;"><span data-lang="ko">번거롭더라도 <b>물통이 차면 꼭 물을 비워주세요.</b> 물통이 가득 차면 제습이 멈춰요</span><span data-lang="en">It may be a hassle, but <b>please empty the tank when it's full.</b> The unit stops when the tank is full</span></div>
-          <div><span data-lang="ko">반지하 특성상 제습기를 꾸준히 켜두시면 훨씬 쾌적해요</span><span data-lang="en">Keep it running for comfort — semi-basement rooms can get humid</span></div>
+        <div style="display:flex; flex-direction:column; gap:8px; margin-top:14px;">
+          <div style="padding:10px 12px; background:var(--olive-light); border-radius:8px; font-size:12px; color:#3A4E1A; display:flex; gap:8px; align-items:flex-start;">
+            <span style="flex-shrink:0;">💧</span>
+            <span><span data-lang="ko"><b>물통 표시등이 켜지면 반드시 비워주세요.</b> 물통이 가득 차면 제습이 멈춥니다</span><span data-lang="en"><b>Empty the tank when the indicator lights up.</b> The unit stops when the tank is full</span></span>
+          </div>
+          <div style="padding:10px 12px; background:#EFF6FF; border-radius:8px; font-size:12px; color:#1E40AF; display:flex; gap:8px; align-items:flex-start;">
+            <span style="flex-shrink:0;">ℹ️</span>
+            <span><span data-lang="ko">반지하 특성상 습기가 많으니 <b>꾸준히 켜두시는 걸 추천해요</b></span><span data-lang="en">This is a semi-basement room, so <b>keeping it running is recommended</b></span></span>
+          </div>
         </div>
       </div>
     </div>
@@ -1069,7 +1099,7 @@
             <span class="bus-badge bus-branch"><span data-lang="ko">지선</span><span data-lang="en">Branch</span></span>
             <span class="bus-badge bus-express"><span data-lang="ko">광역</span><span data-lang="en">Express</span></span>
           </div>
-          <div class="info-text"><span data-lang="ko">강남 방향 — 도보 10분 거리</span><span data-lang="en">Toward Gangnam — 10 min walk</span></div>
+          <div class="info-text"><span data-lang="ko">강남 방향 · 한남 방향 — 도보 10분 거리</span><span data-lang="en">Toward Gangnam · Hannam — 10 min walk</span></div>
         </div>
       </div>
     </div>
@@ -1315,8 +1345,8 @@
         </div>
         <div class="alert"><span data-lang="ko">반지하 특성상 공기청정기를 꾸준히 켜두시면 훨씬 쾌적해요</span><span data-lang="en">Keeping it running helps maintain air quality in this semi-basement room</span></div>
         <div style="margin-top:10px; padding:10px 12px; background:#FEF3C7; border:1px solid #FCD34D; border-radius:8px; font-size:13px; color:#92400E; line-height:1.55;">
-          <span data-lang="ko"><b>필터교체 표시등이 켜지면</b> 삼삼엠투 앱 채팅창으로 호스트에게 알려주세요. 필터 교체는 호스트가 진행해 드려요</span>
-          <span data-lang="en">If the <b>filter replacement indicator</b> lights up, please notify the host via the 33M2 app chat. The host will take care of it</span>
+          <span data-lang="ko"><b>필터교체 표시등이 켜지면</b> 호스트에게 알려주세요. 필터 교체는 호스트가 진행해 드려요</span>
+          <span data-lang="en">If the <b>filter replacement indicator</b> lights up, please notify the host. The host will take care of the filter replacement</span>
         </div>
       </div>
     </div>
@@ -1334,9 +1364,15 @@
           <div class="step"><div class="step-num">3</div><div class="step-text"><span data-lang="ko"><b>물통 표시등</b>에 불이 들어오면 물통을 꺼내 비워주세요</span><span data-lang="en">When the <b>tank indicator</b> lights up, remove and empty the tank</span></div></div>
           <div class="step"><div class="step-num">4</div><div class="step-text"><span data-lang="ko">물통 다시 끼우면 자동 재작동</span><span data-lang="en">Reinsert the tank to resume</span></div></div>
         </div>
-        <div class="alert">
-          <div style="margin-bottom:6px;"><span data-lang="ko">번거롭더라도 <b>물통이 차면 꼭 물을 비워주세요.</b> 물통이 가득 차면 제습이 멈춰요</span><span data-lang="en">It may be a hassle, but <b>please empty the tank when it's full.</b> The unit stops when the tank is full</span></div>
-          <div><span data-lang="ko">반지하 특성상 제습기를 꾸준히 켜두시면 훨씬 쾌적해요</span><span data-lang="en">Keep it running for comfort — semi-basement rooms can get humid</span></div>
+        <div style="display:flex; flex-direction:column; gap:8px; margin-top:14px;">
+          <div style="padding:10px 12px; background:var(--olive-light); border-radius:8px; font-size:12px; color:#3A4E1A; display:flex; gap:8px; align-items:flex-start;">
+            <span style="flex-shrink:0;">💧</span>
+            <span><span data-lang="ko"><b>물통 표시등이 켜지면 반드시 비워주세요.</b> 물통이 가득 차면 제습이 멈춥니다</span><span data-lang="en"><b>Empty the tank when the indicator lights up.</b> The unit stops when the tank is full</span></span>
+          </div>
+          <div style="padding:10px 12px; background:#EFF6FF; border-radius:8px; font-size:12px; color:#1E40AF; display:flex; gap:8px; align-items:flex-start;">
+            <span style="flex-shrink:0;">ℹ️</span>
+            <span><span data-lang="ko">반지하 특성상 습기가 많으니 <b>꾸준히 켜두시는 걸 추천해요</b></span><span data-lang="en">This is a semi-basement room, so <b>keeping it running is recommended</b></span></span>
+          </div>
         </div>
       </div>
     </div>
