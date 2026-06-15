@@ -570,6 +570,19 @@
   @media (max-width: 480px) {
     .map-iframe { height: 220px !important; }
   }
+
+  /* ── 지도 링크 ── */
+  .map-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    margin-top: 3px;
+    font-size: 11px;
+    color: var(--olive);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .map-link:hover { text-decoration: underline; }
 </style>
 </head>
 <body class="lang-ko">
@@ -817,17 +830,17 @@
           </thead>
           <tbody>
             <tr>
-              <td><span data-lang="ko">일반쓰레기</span><span data-lang="en">General</span></td>
+              <td style="text-align:center"><span data-lang="ko">일반쓰레기</span><span data-lang="en">General</span></td>
               <td style="text-align:center"><span data-lang="ko"><b>10L 2장/주</b></span><span data-lang="en"><b>10L × 2/wk</b></span></td>
               <td class="waste-note" style="max-width:130px; white-space:normal; word-break:keep-all;"><span data-lang="ko">추가로 필요한 경우, 편의점에서 낱장 구매 가능합니다</span><span data-lang="en">Extra bags available per sheet at nearby convenience stores</span></td>
             </tr>
             <tr>
-              <td><span data-lang="ko">음식물쓰레기</span><span data-lang="en">Food Waste</span></td>
+              <td style="text-align:center"><span data-lang="ko">음식물쓰레기</span><span data-lang="en">Food Waste</span></td>
               <td style="text-align:center"><span data-lang="ko"><b>2L 2장/주</b></span><span data-lang="en"><b>2L × 2/wk</b></span></td>
               <td class="waste-note" style="max-width:130px; white-space:normal; word-break:keep-all;"><span data-lang="ko">편의점에서 낱장 구매가 어려우니 부족하시면 호스트에게 추가 요청해 주세요</span><span data-lang="en">Hard to buy individually — request more from the host if needed</span></td>
             </tr>
             <tr>
-              <td><span data-lang="ko">재활용쓰레기</span><span data-lang="en">Recycling</span></td>
+              <td style="text-align:center"><span data-lang="ko">재활용쓰레기</span><span data-lang="en">Recycling</span></td>
               <td style="text-align:center; padding:8px 8px 8px 0;">—</td>
               <td class="waste-note" style="padding:8px 8px 8px 0;"><span data-lang="ko">깨끗이 씻어 말린 후 분리 배출해 주세요</span><span data-lang="en">Rinse and dry, then sort and dispose</span></td>
             </tr>
@@ -1027,11 +1040,11 @@
         </div>
         <div class="info-item">
           <span class="subway-badge s3">3</span>
-          <div class="info-text"><span data-lang="ko"><b>잠원역</b> 도보 10분</span><span data-lang="en"><b>Jamwon Station</b> — 10 min walk</span></div>
+          <div class="info-text"><span data-lang="ko"><b>잠원역</b> 4번출구 도보 20분</span><span data-lang="en"><b>Jamwon Station</b> Exit 4 — 20 min walk</span></div>
         </div>
         <div class="info-item" style="border-bottom:none; padding-bottom:14px;">
           <span class="subway-badge s7">7</span>
-          <div class="info-text"><span data-lang="ko"><b>논현역</b> 도보 15분</span><span data-lang="en"><b>Nonhyeon Station</b> — 15 min walk</span></div>
+          <div class="info-text"><span data-lang="ko"><b>논현역</b> 8번출구 도보 15분</span><span data-lang="en"><b>Nonhyeon Station</b> Exit 8 — 15 min walk</span></div>
         </div>
       </div>
     </div>
@@ -1044,15 +1057,19 @@
           <div class="info-text"><span data-lang="ko"><b>6009번</b> — 도보 3분 거리</span><span data-lang="en"><b>No.6009</b> — 3 min walk</span></div>
         </div>
         <div class="info-item">
-          <span class="bus-badge bus-express"><span data-lang="ko">광역</span><span data-lang="en">Express</span></span>
-          <div class="info-text"><span data-lang="ko">도보 10분 거리</span><span data-lang="en">10 min walk</span></div>
+          <div style="display:flex; gap:4px; flex-shrink:0; margin-top:2px;">
+            <span class="bus-badge bus-trunk"><span data-lang="ko">간선</span><span data-lang="en">Trunk</span></span>
+            <span class="bus-badge bus-branch"><span data-lang="ko">지선</span><span data-lang="en">Branch</span></span>
+          </div>
+          <div class="info-text"><span data-lang="ko"><b>142번</b>(간선) · <b>4312번</b>(지선) — 도보 3분 거리</span><span data-lang="en"><b>No.142</b> (Trunk) · <b>No.4312</b> (Branch) — 3 min walk</span></div>
         </div>
         <div class="info-item" style="border-bottom:none; padding-bottom:14px;">
           <div style="display:flex; gap:4px; flex-shrink:0; margin-top:2px;">
-            <span class="bus-badge bus-branch"><span data-lang="ko">지선</span><span data-lang="en">Branch</span></span>
             <span class="bus-badge bus-trunk"><span data-lang="ko">간선</span><span data-lang="en">Trunk</span></span>
+            <span class="bus-badge bus-branch"><span data-lang="ko">지선</span><span data-lang="en">Branch</span></span>
+            <span class="bus-badge bus-express"><span data-lang="ko">광역</span><span data-lang="en">Express</span></span>
           </div>
-          <div class="info-text"><span data-lang="ko">도보 5~10분 거리</span><span data-lang="en">5–10 min walk</span></div>
+          <div class="info-text"><span data-lang="ko">강남 방향 — 도보 10분 거리</span><span data-lang="en">Toward Gangnam — 10 min walk</span></div>
         </div>
       </div>
     </div>
@@ -1061,70 +1078,71 @@
 
     <!-- 편의시설 -->
   <div class="panel" id="panel-facilities">
-    <!-- 지도 카드 -->
-    <div class="card">
-      <div class="card-head">
-        <div class="card-label"><span data-lang="ko">위치</span><span data-lang="en">Location</span></div>
-      </div>
-      <div class="card-body" style="padding:14px;">
-        <div style="border-radius:10px; overflow:hidden; border:1px solid var(--border);">
-          <iframe
-            src="https://map.kakao.com/link/embed/CHORYANG_VILLA,37.5138,127.0182"
-            width="100%"
-            height="280"
-            style="display:block; border:none;"
-            title="당당홈 위치">
-          </iframe>
-        </div>
-        <a href="https://map.kakao.com/link/search/서울특별시 서초구 강남대로107길 17-7"
-           target="_blank"
-           class="link-btn"
-           style="margin-top:10px; display:flex; justify-content:center; font-size:12px; padding:9px 20px;">
-          <span data-lang="ko">카카오맵에서 열기</span>
-          <span data-lang="en">Open in Kakao Maps</span>
-        </a>
-        <div style="margin-top:10px; font-size:12px; color:var(--sub); text-align:center;">
-          <span data-lang="ko">서울특별시 서초구 강남대로107길 17-7</span>
-          <span data-lang="en">17-7 Gangnamdaero 107-gil, Seocho-gu, Seoul</span>
-        </div>
-      </div>
-    </div>
 
     <div class="card">
-      <div class="card-head">
-        <div class="card-label"><span data-lang="ko">편의시설</span><span data-lang="en">Facilities</span></div>
-      </div>
-      <div class="card-body" style="padding:0 18px 4px;">
+      <div class="card-head"><div class="card-label"><span data-lang="ko">편의시설</span><span data-lang="en">Facilities</span></div></div>
+      <div class="card-body" style="padding: 0 18px 4px;">
+
         <div class="info-item">
           <span class="info-badge badge-inc"><span data-lang="ko">편의점</span><span data-lang="en">Conv.</span></span>
-          <div class="info-text"><span data-lang="ko">도보 5분 이내 GS25, CU 등</span><span data-lang="en">GS25, CU etc. within 5 min walk</span></div>
-        </div>
-        <div class="info-item">
-          <span class="info-badge badge-inc"><span data-lang="ko">마트</span><span data-lang="en">Mart</span></span>
-          <div class="info-text"><span data-lang="ko">근처 슈퍼·마트 도보 이용 가능</span><span data-lang="en">Local supermarket within walking distance</span></div>
-        </div>
-        <div class="info-item">
-          <span class="info-badge badge-inc"><span data-lang="ko">다이소</span><span data-lang="en">Daiso</span></span>
-          <div class="info-text"><span data-lang="ko">근처 다이소 이용 가능</span><span data-lang="en">Daiso (100-yen style store) nearby</span></div>
-        </div>
-        <div class="info-item" style="border-bottom:none; padding-bottom:14px;">
-          <span class="info-badge badge-inc"><span data-lang="ko">빨래방</span><span data-lang="en">Laundry</span></span>
           <div>
-            <div class="info-text"><span data-lang="ko">근처 셀프 빨래방 이용 가능</span><span data-lang="en">Self-service laundromat nearby</span></div>
-            <a href="https://kko.to/hYSMqH4V9J" target="_blank" style="display:inline-flex; align-items:center; gap:4px; margin-top:4px; font-size:11px; color:var(--olive); text-decoration:none; font-weight:600;">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div class="info-text"><span data-lang="ko">CU 잠원크레신점</span><span data-lang="en">CU Jamwon Creshin</span></div>
+            <a href="https://kko.to/pXUwWqz7R8" target="_blank" class="map-link">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               <span data-lang="ko">지도에서 보기</span><span data-lang="en">View on map</span>
             </a>
           </div>
         </div>
+
+        <div class="info-item">
+          <span class="info-badge badge-inc"><span data-lang="ko">마트</span><span data-lang="en">Mart</span></span>
+          <div>
+            <div class="info-text"><span data-lang="ko">이마트에브리데이 강남시장점</span><span data-lang="en">Emart Everyday Gangnam Market</span></div>
+            <a href="https://kko.to/4gGjKbzcLT" target="_blank" class="map-link">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span data-lang="ko">지도에서 보기</span><span data-lang="en">View on map</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <span class="info-badge badge-inc"><span data-lang="ko">다이소</span><span data-lang="en">Daiso</span></span>
+          <div>
+            <div class="info-text"><span data-lang="ko">다이소 신사역점</span><span data-lang="en">Daiso Sinsa Station</span></div>
+            <a href="https://kko.to/2gVUtWfJ7T" target="_blank" class="map-link">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span data-lang="ko">지도에서 보기</span><span data-lang="en">View on map</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <span class="info-badge badge-inc"><span data-lang="ko">빨래방</span><span data-lang="en">Laundry</span></span>
+          <div>
+            <div class="info-text"><span data-lang="ko">워시앤조이 셀프빨래방 신사잠원점</span><span data-lang="en">Wash&Joy Self Laundry Sinsa-Jamwon</span></div>
+            <a href="https://kko.to/hYSMqH4V9J" target="_blank" class="map-link">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span data-lang="ko">지도에서 보기</span><span data-lang="en">View on map</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="info-item" style="border-bottom:none; padding-bottom:14px;">
+          <span class="info-badge badge-inc"><span data-lang="ko">주차장</span><span data-lang="en">Parking</span></span>
+          <div>
+            <div class="info-text"><span data-lang="ko">잠원동방음언덕형 공영주차장</span><span data-lang="en">Jamwon-dong Bangeum Hill Public Parking</span></div>
+            <a href="https://kko.to/oLvdXnOvuW" target="_blank" class="map-link">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span data-lang="ko">지도에서 보기</span><span data-lang="en">View on map</span>
+            </a>
+          </div>
+        </div>
+
       </div>
     </div>
 
-
-    
   </div>
 
-  
 </main>
 
 <footer class="footer">
@@ -1409,33 +1427,7 @@
     <!-- 편의시설 -->
   <div class="panel" id="panel-facilities">
     <!-- 지도 카드 -->
-    <div class="card">
-      <div class="card-head">
-        <div class="card-label"><span data-lang="ko">위치</span><span data-lang="en">Location</span></div>
-      </div>
-      <div class="card-body" style="padding:14px;">
-        <div style="border-radius:10px; overflow:hidden; border:1px solid var(--border);">
-          <iframe
-            src="https://map.kakao.com/link/embed/CHORYANG_VILLA,37.5138,127.0182"
-            width="100%"
-            height="280"
-            style="display:block; border:none;"
-            title="당당홈 위치">
-          </iframe>
-        </div>
-        <a href="https://map.kakao.com/link/search/서울특별시 서초구 강남대로107길 17-7"
-           target="_blank"
-           class="link-btn"
-           style="margin-top:10px; display:flex; justify-content:center; font-size:12px; padding:9px 20px;">
-          <span data-lang="ko">카카오맵에서 열기</span>
-          <span data-lang="en">Open in Kakao Maps</span>
-        </a>
-        <div style="margin-top:10px; font-size:12px; color:var(--sub); text-align:center;">
-          <span data-lang="ko">서울특별시 서초구 강남대로107길 17-7</span>
-          <span data-lang="en">17-7 Gangnamdaero 107-gil, Seocho-gu, Seoul</span>
-        </div>
-      </div>
-    </div>
+    
 
     <div class="card">
       <div class="card-head">
