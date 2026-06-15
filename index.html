@@ -594,7 +594,7 @@
 <!-- 헤더 -->
 <header class="header">
   <div class="header-inner">
-    <div class="logo"><span style="color:#111827">당당홈</span> <span style="color:#5C6E2E">가이드</span></div>
+    <div class="logo"><span style="color:#111827">당당홈</span> <span style="color:#5C6E2E"><span data-lang="ko">가이드</span><span data-lang="en">Guide</span></span></div>
     <div class="lang-switcher">
       <button class="lang-btn active" onclick="setLang('ko')">한</button>
       <button class="lang-btn" onclick="setLang('en')">EN</button>
@@ -875,7 +875,7 @@
     </div>
     <div class="card">
       <div class="card-head"><div class="card-label"><span data-lang="ko">사용설명서</span><span data-lang="en">Manual</span></div></div>
-      <div class="card-body" style="padding: 14px;">
+      <div class="card-body">
         <div style="border-radius:8px; overflow:hidden; background:#f3f4f6;">
           <iframe
             src="washer.pdf"
@@ -901,84 +901,92 @@
     <div class="card" style="overflow:hidden; padding:0;">
       <img src="induction.png" alt="인덕션/하이라이트" style="width:100%; display:block;">
       <div style="display:grid; grid-template-columns:1fr 1fr; border-top:1px solid var(--border);">
-        <div style="padding:10px 14px; text-align:center; border-right:1px solid var(--border); background:var(--olive-light);">
-          <div style="font-size:11px; font-weight:700; color:var(--olive);">⬡ <span data-lang="ko">인덕션 구역</span><span data-lang="en">Induction Zone</span></div>
+        <div style="padding:10px 14px; text-align:center; border-right:1px solid var(--border); background:#EFF6FF;">
+          <div style="font-size:11px; font-weight:700; color:#1D4ED8;">● <span data-lang="ko">인덕션 구역</span><span data-lang="en">Induction Zone</span></div>
           <div style="font-size:10px; color:var(--sub); margin-top:2px;"><span data-lang="ko">코일 마크 냄비만</span><span data-lang="en">IH pots only</span></div>
         </div>
-        <div style="padding:10px 14px; text-align:center;">
+        <div style="padding:10px 14px; text-align:center; background:#FEF2F2;">
           <div style="font-size:11px; font-weight:700; color:#DC2626;">● <span data-lang="ko">하이라이트 구역</span><span data-lang="en">Highlight Zone</span></div>
           <div style="font-size:10px; color:var(--sub); margin-top:2px;"><span data-lang="ko">모든 냄비 사용 가능</span><span data-lang="en">All pots available</span></div>
         </div>
       </div>
     </div>
 
-    <!-- 인덕션 사용방법 -->
+    <!-- 인덕션 구역 -->
     <div class="card">
       <div class="card-head">
-        <div class="card-label"><span data-lang="ko">인덕션 구역 · 사용 방법</span><span data-lang="en">Induction Zone · How to Use</span></div>
+        <div class="card-label" style="color:#1D4ED8;">
+          ● <span data-lang="ko">인덕션 구역 · 사용 방법</span><span data-lang="en">Induction Zone · How to Use</span>
+        </div>
       </div>
       <div class="card-body">
         <div class="steps">
           <div class="step">
-            <div class="step-num">1</div>
+            <div class="step-num" style="background:#DBEAFE; border-color:#93C5FD; color:#1D4ED8;">1</div>
             <div class="step-text"><span data-lang="ko">전원 켜기</span><span data-lang="en">Turn on the power</span></div>
           </div>
           <div class="step">
-            <div class="step-num" style="background:var(--olive); border-color:var(--olive); color:white; font-size:10px;">✓</div>
+            <div class="step-num" style="background:#1D4ED8; border-color:#1D4ED8; color:white; font-size:10px;">✓</div>
             <div class="step-text">
               <span data-lang="ko"><b>[선택] 버튼</b>으로 화력 또는 온도 선택<br><span style="font-size:12px;color:var(--sub);">타이머는 화력/온도 모드 사용 중에 조작 가능</span></span>
               <span data-lang="en">Press <b>[Select]</b> to choose heat or temperature mode<br><span style="font-size:12px;color:var(--sub);">Timer can be set while in heat/temperature mode</span></span>
             </div>
           </div>
           <div class="step">
-            <div class="step-num">3</div>
+            <div class="step-num" style="background:#DBEAFE; border-color:#93C5FD; color:#1D4ED8;">3</div>
             <div class="step-text"><span data-lang="ko"><b>⊕[올림] / ⊖[내림]</b> 버튼으로 조절</span><span data-lang="en">Adjust with <b>⊕[Up] / ⊖[Down]</b> buttons</span></div>
           </div>
         </div>
         <div style="margin-top:14px; display:flex; flex-direction:column; gap:8px;">
-          <div style="padding:10px 12px; background:var(--olive-light); border-radius:8px; font-size:12px; color:#3A4E1A; display:flex; gap:8px; align-items:flex-start;">
+          <div style="padding:10px 12px; background:#EFF6FF; border-radius:8px; font-size:12px; color:#1E40AF; display:flex; gap:8px; align-items:flex-start;">
             <span style="flex-shrink:0;">✅</span>
-            <span><span data-lang="ko"><b>인덕션 매트 사용 추천.</b> 미니 후라이팬은 인덕션에서 사용 불가 — 하이라이트 구역을 이용해 주세요</span><span data-lang="en"><b>Induction mat recommended.</b> Mini frying pans don't work on induction — use the highlight zone instead</span></span>
+            <span><span data-lang="ko"><b>인덕션 매트 사용을 추천드려요.</b> 매트가 없으면 냄비가 움직일 수 있어요</span><span data-lang="en"><b>Induction mat recommended.</b> Without a mat, the pot may slide around</span></span>
           </div>
           <div style="padding:10px 12px; background:#EFF6FF; border-radius:8px; font-size:12px; color:#1E40AF; display:flex; gap:8px; align-items:flex-start;">
             <span style="flex-shrink:0;">ℹ️</span>
-            <span><span data-lang="ko"><b>인덕션 전용 냄비·팬만 사용 가능해요.</b> 바닥에 코일 마크가 있는 것을 확인해 주세요</span><span data-lang="en"><b>Induction-compatible cookware only.</b> Check for the coil symbol on the bottom</span></span>
+            <span><span data-lang="ko"><b>인덕션 전용 냄비·팬만 사용 가능해요.</b> 미니 후라이팬만 사용 불가해요</span><span data-lang="en"><b>Induction-compatible cookware only.</b> Mini frying pans cannot be used</span></span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- 하이라이트 사용방법 -->
+    <!-- 하이라이트 구역 -->
     <div class="card">
       <div class="card-head">
-        <div class="card-label"><span data-lang="ko">하이라이트 구역 · 사용 방법</span><span data-lang="en">Highlight Zone · How to Use</span></div>
+        <div class="card-label" style="color:#DC2626;">
+          ● <span data-lang="ko">하이라이트 구역 · 사용 방법</span><span data-lang="en">Highlight Zone · How to Use</span>
+        </div>
       </div>
       <div class="card-body">
         <div class="steps">
           <div class="step">
-            <div class="step-num">1</div>
+            <div class="step-num" style="background:#FEE2E2; border-color:#FCA5A5; color:#DC2626;">1</div>
             <div class="step-text"><span data-lang="ko">전원 켜기</span><span data-lang="en">Turn on the power</span></div>
           </div>
           <div class="step">
-            <div class="step-num" style="background:var(--olive); border-color:var(--olive); color:white; font-size:10px;">✓</div>
+            <div class="step-num" style="background:#DC2626; border-color:#DC2626; color:white; font-size:10px;">✓</div>
             <div class="step-text">
               <span data-lang="ko"><b>[선택] 버튼</b>으로 강 또는 약 선택<br><span style="font-size:12px;color:var(--sub);">타이머는 화력(강/약) 모드 사용 중에 조작 가능</span></span>
               <span data-lang="en">Press <b>[Select]</b> to choose high or low heat<br><span style="font-size:12px;color:var(--sub);">Timer can be set while in heat (high/low) mode</span></span>
             </div>
           </div>
           <div class="step">
-            <div class="step-num">3</div>
+            <div class="step-num" style="background:#FEE2E2; border-color:#FCA5A5; color:#DC2626;">3</div>
             <div class="step-text"><span data-lang="ko"><b>⊕[올림] / ⊖[내림]</b> 버튼으로 조절</span><span data-lang="en">Adjust with <b>⊕[Up] / ⊖[Down]</b> buttons</span></div>
           </div>
         </div>
         <div style="margin-top:14px; display:flex; flex-direction:column; gap:8px;">
           <div style="padding:10px 12px; background:#F0FDF4; border-radius:8px; font-size:12px; color:#166534; display:flex; gap:8px; align-items:flex-start;">
             <span style="flex-shrink:0;">✅</span>
-            <span><span data-lang="ko"><b>구비된 모든 조리도구 사용 가능해요.</b> 인덕션 매트는 절대 사용 금지입니다</span><span data-lang="en"><b>All cookware in the room can be used.</b> Do NOT use an induction mat on this zone</span></span>
+            <span><span data-lang="ko"><b>구비된 모든 조리도구 사용 가능해요.</b></span><span data-lang="en"><b>All cookware provided in the room can be used.</b></span></span>
           </div>
           <div style="padding:10px 12px; background:#FEF2F2; border-radius:8px; font-size:12px; color:#991B1B; display:flex; gap:8px; align-items:flex-start;">
             <span style="flex-shrink:0;">🔥</span>
-            <span><span data-lang="ko"><b>사용 후에도 열이 오래 남아 있어요.</b> 반드시 식힌 후 만져주세요 — 화상 위험</span><span data-lang="en"><b>The surface stays hot long after use.</b> Do not touch until fully cooled — burn hazard</span></span>
+            <span><span data-lang="ko"><b>인덕션 매트를 올리면 불이 날 수 있으니 절대 사용하지 마세요.</b></span><span data-lang="en"><b>Never use an induction mat — it can cause a fire.</b></span></span>
+          </div>
+          <div style="padding:10px 12px; background:#FEF2F2; border-radius:8px; font-size:12px; color:#991B1B; display:flex; gap:8px; align-items:flex-start;">
+            <span style="flex-shrink:0;">⚠️</span>
+            <span><span data-lang="ko"><b>인덕션과 다르게 사용 후에도 열이 오래 남아 있어요.</b> 화상에 주의해 주세요</span><span data-lang="en"><b>Unlike induction, the surface stays hot long after use.</b> Please be careful of burns</span></span>
           </div>
         </div>
       </div>
@@ -1039,7 +1047,7 @@
     </div>
     <div class="card">
       <div class="card-head"><div class="card-label"><span data-lang="ko">사용설명서</span><span data-lang="en">Manual</span></div></div>
-      <div class="card-body" style="padding: 14px;">
+      <div class="card-body">
         <div style="border-radius:8px; overflow:hidden; background:#f3f4f6;">
           <iframe
             src="dehumidifier.pdf"
@@ -1386,7 +1394,7 @@
     </div>
     <div class="card">
       <div class="card-head"><div class="card-label"><span data-lang="ko">사용설명서</span><span data-lang="en">Manual</span></div></div>
-      <div class="card-body" style="padding: 14px;">
+      <div class="card-body">
         <div style="border-radius:8px; overflow:hidden; background:#f3f4f6;">
           <iframe
             src="dehumidifier.pdf"
