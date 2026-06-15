@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>당당홈 가이드</title>
+
+  <!-- Open Graph (카카오톡·문자 미리보기) -->
+  <meta property="og:title" content="당당홈 가이드">
+  <meta property="og:description" content="가전 사용법, 분리수거, 교통편 등 입실 안내를 확인하세요">
+  <meta property="og:image" content="https://hi-d-y.github.io/dang_dang/og_image.jpg">
+  <meta property="og:url" content="https://hi-d-y.github.io/dang_dang/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+  <meta name="description" content="가전 사용법, 분리수거, 교통편 등 입실 안내를 확인하세요">
 <style>
   :root {
     --olive: #5C6E2E;
@@ -520,13 +529,13 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    font-size: 14px;
+    font-size: 11px;
     font-weight: 700;
     flex-shrink: 0;
-    margin-top: 2px;
+    margin-top: 4px;
     color: white;
   }
   .s3 { background: #EF7C1C; }
@@ -750,7 +759,7 @@
             <div class="rule-dot"></div>
             <div class="rule-text">
               <span data-lang="ko">
-                <b>퇴실 청소비</b>가 별도로 발생해요.<br>
+                <b>퇴실 시 <b>청소비가 별도로 발생해요.<br>
                 1~3주 거주: 30,000원 / 1달 이상 거주: 50,000원
               </span>
               <span data-lang="en">
@@ -766,21 +775,12 @@
     </div>
 
 
-    <div class="card">
-      <div class="card-body" style="text-align:center; padding: 14px 18px;">
-        <div style="font-size:12px; color: var(--sub);">
-          <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
-          <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
-          
-        </div>
-      </div>
-    </div>
+    
   </div>
 
   <!-- 분리수거 -->
   <div class="panel" id="panel-waste">
 
-    <!-- 카드1: 배출장소·수거시간 (순서 바꿈) -->
     <div class="card">
       <div class="card-body" style="padding: 0 18px 4px;">
         <div class="info-item">
@@ -800,47 +800,37 @@
       </div>
     </div>
 
-    <!-- 카드2: 쓰레기봉투 안내 -->
     <div class="card">
       <div class="card-body">
         <table class="waste-table">
           <thead>
             <tr>
-              <th><span data-lang="ko">종류</span><span data-lang="en">Type</span></th>
-              <th><span data-lang="ko">제공</span><span data-lang="en">Provided</span></th>
+              <th style="text-align:center"><span data-lang="ko">종류</span><span data-lang="en">Type</span></th>
+              <th style="text-align:center"><span data-lang="ko">제공</span><span data-lang="en">Provided</span></th>
               <th><span data-lang="ko">안내</span><span data-lang="en">Note</span></th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><span data-lang="ko">일반쓰레기</span><span data-lang="en">General</span></td>
-              <td><span data-lang="ko"><b>20L 1장/주</b></span><span data-lang="en"><b>20L × 1/wk</b></span></td>
-              <td class="waste-note"><span data-lang="ko">근처 편의점에서 낱장 구입 가능합니다</span><span data-lang="en">Available per sheet at nearby convenience stores</span></td>
+              <td style="text-align:center"><span data-lang="ko"><b>10L 2장/주</b></span><span data-lang="en"><b>10L × 2/wk</b></span></td>
+              <td class="waste-note" style="max-width:130px; white-space:normal; word-break:keep-all;"><span data-lang="ko">추가로 필요한 경우, 편의점에서 낱장 구매 가능합니다</span><span data-lang="en">Extra bags available per sheet at nearby convenience stores</span></td>
             </tr>
             <tr>
               <td><span data-lang="ko">음식물쓰레기</span><span data-lang="en">Food Waste</span></td>
-              <td><span data-lang="ko"><b>2L 1장/주</b></span><span data-lang="en"><b>2L × 1/wk</b></span></td>
-              <td class="waste-note"><span data-lang="ko">편의점에서 낱장 구매가 어려우니 부족하시면 호스트에게 편하게 추가 요청해 주세요</span><span data-lang="en">Hard to buy individually — feel free to request more from the host if needed</span></td>
+              <td style="text-align:center"><span data-lang="ko"><b>2L 2장/주</b></span><span data-lang="en"><b>2L × 2/wk</b></span></td>
+              <td class="waste-note" style="max-width:130px; white-space:normal; word-break:keep-all;"><span data-lang="ko">편의점에서 낱장 구매가 어려우니 부족하시면 호스트에게 추가 요청해 주세요</span><span data-lang="en">Hard to buy individually — request more from the host if needed</span></td>
             </tr>
-            <tr style="height:auto;">
-              <td style="padding: 8px 8px 8px 0;"><span data-lang="ko">재활용쓰레기</span><span data-lang="en">Recycling</span></td>
-              <td style="padding: 8px 8px 8px 0;">—</td>
-              <td class="waste-note" style="padding: 8px 8px 8px 0;"><span data-lang="ko">깨끗이 씻어 말린 후 분리 배출</span><span data-lang="en">Rinse, dry, then sort by type</span></td>
+            <tr>
+              <td><span data-lang="ko">재활용쓰레기</span><span data-lang="en">Recycling</span></td>
+              <td style="text-align:center; padding:8px 8px 8px 0;">—</td>
+              <td class="waste-note" style="padding:8px 8px 8px 0;"><span data-lang="ko">깨끗이 씻어 말린 후 분리 배출해 주세요</span><span data-lang="en">Rinse and dry, then sort and dispose</span></td>
             </tr>
           </tbody>
         </table>
         <div style="margin-top:12px; padding-top:12px; border-top:1px solid var(--border); font-size:13px; color:var(--text);">
-          <span data-lang="ko">제공되는 쓰레기봉투는 <b>왼쪽 신발장 안</b>에 있어요</span>
+          <span data-lang="ko">제공되는 쓰레기봉투는 <b>왼쪽 신발장 안</b>에 있습니다</span>
           <span data-lang="en">Provided trash bags are in the <b>left shoe cabinet</b></span>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-body" style="text-align:center; padding: 14px 18px;">
-        <div style="font-size:12px; color: var(--sub);">
-          <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
-          <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
         </div>
       </div>
     </div>
@@ -878,14 +868,6 @@
           <a href="washer.pdf" target="_blank" class="link-btn" style="display:inline-flex; justify-content:center; font-size:12px; padding:9px 20px;">
             <span data-lang="ko">새 탭에서 열기</span><span data-lang="en">Open in new tab</span>
           </a>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body" style="text-align:center; padding: 14px 18px;">
-        <div style="font-size:12px; color: var(--sub);">
-          <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
-          <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
         </div>
       </div>
     </div>
@@ -960,14 +942,6 @@
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-body" style="text-align:center; padding: 14px 18px;">
-        <div style="font-size:12px; color: var(--sub);">
-          <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
-          <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
-        </div>
-      </div>
-    </div>
   </div>
 
     <!-- 공기청정기 -->
@@ -988,14 +962,6 @@
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-body" style="text-align:center; padding: 14px 18px;">
-        <div style="font-size:12px; color: var(--sub);">
-          <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
-          <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
-        </div>
-      </div>
-    </div>
   </div>
 
   <!-- 제습기 -->
@@ -1042,73 +1008,46 @@
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="card-body" style="text-align:center; padding: 14px 18px;">
-        <div style="font-size:12px; color: var(--sub);">
-          <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
-          <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
-        </div>
-      </div>
-    </div>
   </div>
 
   <!-- 교통편 -->
   <div class="panel" id="panel-transit">
 
-    <!-- 지하철 카드 -->
     <div class="card">
       <div class="card-head"><div class="card-label"><span data-lang="ko">지하철</span><span data-lang="en">Subway</span></div></div>
       <div class="card-body no-divider" style="padding: 0 18px 4px;">
-
         <div class="info-item">
-          <span class="subway-badge s3"><span data-lang="ko">③</span><span data-lang="en">3</span></span>
+          <span class="subway-badge s3">3</span>
           <div class="info-text"><span data-lang="ko"><b>신사역</b> 5번출구 도보 5분</span><span data-lang="en"><b>Sinsa Station</b> Exit 5 — 5 min walk</span></div>
         </div>
         <div class="info-item">
-          <span class="subway-badge s3"><span data-lang="ko">③</span><span data-lang="en">3</span></span>
+          <span class="subway-badge s3">3</span>
           <div class="info-text"><span data-lang="ko"><b>잠원역</b> 도보 10분</span><span data-lang="en"><b>Jamwon Station</b> — 10 min walk</span></div>
         </div>
         <div class="info-item" style="border-bottom:none; padding-bottom:14px;">
-          <span class="subway-badge s7"><span data-lang="ko">⑦</span><span data-lang="en">7</span></span>
+          <span class="subway-badge s7">7</span>
           <div class="info-text"><span data-lang="ko"><b>논현역</b> 도보 15분</span><span data-lang="en"><b>Nonhyeon Station</b> — 15 min walk</span></div>
         </div>
-
       </div>
     </div>
 
-    <!-- 버스 카드 -->
     <div class="card">
       <div class="card-head"><div class="card-label"><span data-lang="ko">버스</span><span data-lang="en">Bus</span></div></div>
       <div class="card-body" style="padding: 0 18px 4px;">
-
         <div class="info-item">
           <span class="bus-badge bus-airport"><span data-lang="ko">공항</span><span data-lang="en">Airport</span></span>
-          <div class="info-text"><span data-lang="ko">공항버스 정류장 도보 5분 이내</span><span data-lang="en">Airport bus stop within 5 min walk</span></div>
+          <div class="info-text"><span data-lang="ko"><b>6009번</b> — 도보 3분 거리</span><span data-lang="en"><b>No.6009</b> — 3 min walk</span></div>
         </div>
-
         <div class="info-item">
           <span class="bus-badge bus-express"><span data-lang="ko">광역</span><span data-lang="en">Express</span></span>
-          <div class="info-text"><span data-lang="ko">광역버스 정류장 근처 이용 가능</span><span data-lang="en">Express bus stop available nearby</span></div>
+          <div class="info-text"><span data-lang="ko">도보 10분 거리</span><span data-lang="en">10 min walk</span></div>
         </div>
-
-        <div class="info-item">
-          <span class="bus-badge bus-branch"><span data-lang="ko">지선</span><span data-lang="en">Branch</span></span>
-          <div class="info-text"><span data-lang="ko">지선버스 건물 앞 정류장 이용 가능</span><span data-lang="en">Branch bus stop in front of building</span></div>
-        </div>
-
         <div class="info-item" style="border-bottom:none; padding-bottom:14px;">
-          <span class="bus-badge bus-trunk"><span data-lang="ko">간선</span><span data-lang="en">Trunk</span></span>
-          <div class="info-text"><span data-lang="ko">간선버스 정류장 도보 3분 이내</span><span data-lang="en">Trunk bus stop within 3 min walk</span></div>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-body" style="text-align:center; padding: 14px 18px;">
-        <div style="font-size:12px; color: var(--sub);">
-          <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
-          <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
+          <div style="display:flex; gap:4px; flex-shrink:0; margin-top:2px;">
+            <span class="bus-badge bus-branch"><span data-lang="ko">지선</span><span data-lang="en">Branch</span></span>
+            <span class="bus-badge bus-trunk"><span data-lang="ko">간선</span><span data-lang="en">Trunk</span></span>
+          </div>
+          <div class="info-text"><span data-lang="ko">도보 5~10분 거리</span><span data-lang="en">5–10 min walk</span></div>
         </div>
       </div>
     </div>
@@ -1142,22 +1081,14 @@
     </div>
 
 
-    <div class="card">
-      <div class="card-body" style="text-align:center; padding: 14px 18px;">
-        <div style="font-size:12px; color: var(--sub);">
-          <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
-          <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
-          
-        </div>
-      </div>
-    </div>
+    
   </div>
 
   
 </main>
 
 <footer class="footer">
-  dang dang home
+  <span data-lang="ko">문의 또는 요청사항은 호스트에게 연락해 주세요</span><span data-lang="en">For any questions or requests, please contact the host</span>
 </footer>
 
 <script>
@@ -1312,14 +1243,6 @@
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-body" style="text-align:center; padding: 14px 18px;">
-        <div style="font-size:12px; color: var(--sub);">
-          <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
-          <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
-        </div>
-      </div>
-    </div>
   </div>
 
     <!-- 공기청정기 -->
@@ -1340,14 +1263,6 @@
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-body" style="text-align:center; padding: 14px 18px;">
-        <div style="font-size:12px; color: var(--sub);">
-          <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
-          <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
-        </div>
-      </div>
-    </div>
   </div>
 
   <!-- 제습기 -->
@@ -1391,14 +1306,6 @@
           <a href="dehumidifier.pdf" target="_blank" class="link-btn" style="display:inline-flex; justify-content:center; font-size:12px; padding:9px 20px;">
             <span data-lang="ko">새 탭에서 열기</span><span data-lang="en">Open in new tab</span>
           </a>
-        </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body" style="text-align:center; padding: 14px 18px;">
-        <div style="font-size:12px; color: var(--sub);">
-          <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
-          <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
         </div>
       </div>
     </div>
@@ -1456,14 +1363,6 @@
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-body" style="text-align:center; padding: 14px 18px;">
-        <div style="font-size:12px; color: var(--sub);">
-          <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
-          <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
-        </div>
-      </div>
-    </div>
 
   </div>
 
@@ -1494,22 +1393,14 @@
     </div>
 
 
-    <div class="card">
-      <div class="card-body" style="text-align:center; padding: 14px 18px;">
-        <div style="font-size:12px; color: var(--sub);">
-          <span data-lang="ko">문의 또는 요청사항은 삼삼엠투 앱 내 채팅창을 이용해 주세요</span>
-          <span data-lang="en">Questions or requests? Please use the chat in the 33M2 app</span>
-          
-        </div>
-      </div>
-    </div>
+    
   </div>
 
   
 </main>
 
 <footer class="footer">
-  dang dang home
+  <span data-lang="ko">문의 또는 요청사항은 호스트에게 연락해 주세요</span><span data-lang="en">For any questions or requests, please contact the host</span>
 </footer>
 
 <script>
