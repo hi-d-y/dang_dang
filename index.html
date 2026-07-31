@@ -144,7 +144,7 @@
     width: 100%;
   }
 
-  .nav-sub-info { grid-template-columns: repeat(4, 1fr); }
+  .nav-sub-info { grid-template-columns: repeat(5, 1fr); }
   .nav-sub-appliance { grid-template-columns: repeat(4, 1fr); }
 
   .nav-sub-tab {
@@ -644,6 +644,9 @@
     </button>
     <button class="nav-sub-tab" id="tab-facilities" onclick="setPanel('facilities')">
       <span data-lang="ko">편의시설</span><span data-lang="en">Nearby</span>
+    </button>
+    <button class="nav-sub-tab" id="tab-faq" onclick="setPanel('faq')">
+      <span data-lang="ko">FAQ</span><span data-lang="en">FAQ</span>
     </button>
   </div>
   <!-- 중분류: 가전제품 -->
@@ -1225,6 +1228,77 @@
 
   </div>
 
+  <!-- FAQ -->
+  <div class="panel" id="panel-faq">
+
+    <div class="card">
+      <div class="card-head"><div class="card-label"><span data-lang="ko">얼리 체크인 / 레이트 체크아웃이 가능한가요?</span><span data-lang="en">Early Check-in / Late Check-out?</span></div></div>
+      <div class="card-body">
+        <div class="rule-list">
+          <div class="rule-item">
+            <div class="rule-dot"></div>
+            <div class="rule-text">
+              <span data-lang="ko">아쉽게도 얼리 체크인과 레이트 체크아웃은 어렵습니다. 다만 아래와 같이 <b>짐을 맡겨두시는 것은 가능해요.</b></span>
+              <span data-lang="en">Unfortunately, early check-in and late check-out are not available. However, you may leave your luggage as follows.</span>
+            </div>
+          </div>
+        </div>
+        <div style="margin: 12px 0; display:flex; flex-direction:column; gap:8px;">
+          <div style="display:flex; align-items:center; gap:10px; padding:10px 14px; background:var(--olive-light); border-radius:8px; font-size:13px;">
+            <span style="font-weight:700; color:var(--olive); flex-shrink:0;"><span data-lang="ko">체크인 전</span><span data-lang="en">Before Check-in</span></span>
+            <span style="color:var(--text);"><span data-lang="ko">오전 11시부터 짐 보관 가능</span><span data-lang="en">Luggage storage from 11:00 AM</span></span>
+          </div>
+          <div style="display:flex; align-items:center; gap:10px; padding:10px 14px; background:var(--olive-light); border-radius:8px; font-size:13px;">
+            <span style="font-weight:700; color:var(--olive); flex-shrink:0;"><span data-lang="ko">체크아웃 후</span><span data-lang="en">After Check-out</span></span>
+            <span style="color:var(--text);"><span data-lang="ko">오후 3시까지 짐 보관 가능</span><span data-lang="en">Luggage storage until 3:00 PM</span></span>
+          </div>
+        </div>
+        <div style="padding:10px 12px; background:#FEF3C7; border-radius:8px; font-size:12px; color:#92400E; display:flex; gap:8px; align-items:flex-start;">
+          <span style="flex-shrink:0;">⚠️</span>
+          <span><span data-lang="ko">청소 및 관리 여건에 따라 짐이 인근 사무실로 잠시 이동될 수 있어요. 보관 중 발생하는 도난·분실에 대해서는 호스트가 책임지지 않으니 귀중품은 반드시 직접 소지해 주세요.</span><span data-lang="en">Due to cleaning and management circumstances, luggage may be temporarily moved to a nearby office. The host is not responsible for any theft or loss during storage — please keep valuables with you at all times.</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div class="card-label"><span data-lang="ko">제공·구비 물품 안내</span><span data-lang="en">Provided Items</span></div></div>
+      <div class="card-body" style="padding: 0 18px 4px;">
+
+        <div class="info-item">
+          <span class="info-badge badge-inc" style="white-space:nowrap"><span data-lang="ko">기본옵션</span><span data-lang="en">Amenities</span></span>
+          <div class="info-text"><span data-lang="ko">냉장고 · 세탁기 · 에어컨 · 인덕션 · 하이라이트 · 침대 · 와이파이 · 싱크대 · 도어락 · 식탁 · 전자레인지 · 옷장 · 신발장 · 화장대 · 커튼 · 공기청정기 · 드라이기</span><span data-lang="en">Fridge · Washer · AC · Induction · Highlight · Bed · WiFi · Sink · Door lock · Dining table · Microwave · Wardrobe · Shoe rack · Vanity · Curtains · Air purifier · Hair dryer</span></div>
+        </div>
+
+        <div class="info-item">
+          <span class="info-badge badge-inc" style="white-space:nowrap"><span data-lang="ko">수건</span><span data-lang="en">Towels</span></span>
+          <div>
+            <div class="info-text"><span data-lang="ko">기본 <b>5장</b> 제공됩니다</span><span data-lang="en"><b>5 towels</b> provided</span></div>
+            <div class="info-sub"><span data-lang="ko">사용 후 세탁기로 직접 세탁하여 사용해 주세요</span><span data-lang="en">Please wash them yourself using the washing machine</span></div>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <span class="info-badge badge-inc" style="white-space:nowrap"><span data-lang="ko">쓰레기봉투</span><span data-lang="en">Trash Bags</span></span>
+          <div>
+            <div class="info-text"><span data-lang="ko">일반쓰레기 <b>10L 1장</b> (최초 1회 제공) · 음식물쓰레기 <b>1L 2장/주</b></span><span data-lang="en">General <b>10L × 1</b> (once only) · Food waste <b>1L × 2/week</b></span></div>
+            <div class="info-sub"><span data-lang="ko">봉투는 <b>왼쪽 신발장 안</b>에 있어요. 일반봉투 추가 시 근처 편의점에서 낱장 구매 가능 / 음식물봉투 부족 시 채팅으로 요청해 주세요</span><span data-lang="en">Bags are in the <b>left shoe cabinet</b>. Buy extra general bags at nearby stores / Request more food waste bags via chat</span></div>
+          </div>
+        </div>
+
+        <div class="info-item" style="border-bottom:none; padding-bottom:14px;">
+          <span class="info-badge badge-inc" style="white-space:nowrap"><span data-lang="ko">어메니티</span><span data-lang="en">Toiletries</span></span>
+          <div>
+            <div class="info-text"><span data-lang="ko">별도 제공은 없어요</span><span data-lang="en">Not separately provided</span></div>
+            <div class="info-sub"><span data-lang="ko">이전 입주자분들이 남기고 가신 물품들을 <b>주방 하부장</b>에 모아뒀으니 필요하신 것은 자유롭게 사용하셔도 됩니다</span><span data-lang="en">Items left by previous guests are kept in the <b>kitchen cabinet below</b> — feel free to use anything there</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+
 </main>
 
 <footer class="footer">
@@ -1266,10 +1340,10 @@
 
   function initFromHash() {
     const hash = location.hash.replace('#', '');
-    const valid = ['info','waste','transit','facilities','washer','induction','airpurifier','dehumidifier'];
+    const valid = ['info','waste','transit','facilities','faq','washer','induction','airpurifier','dehumidifier'];
     if (valid.includes(hash)) {
       // 대분류 먼저 설정
-      const infoIds = ['info','waste','transit','facilities'];
+      const infoIds = ['info','waste','transit','facilities','faq'];
       const mainTab = infoIds.includes(hash) ? 'info' : 'appliance';
       document.querySelectorAll('.nav-main-tab').forEach((btn, i) => {
         btn.classList.toggle('active', ['info','appliance'][i] === mainTab);
@@ -1568,6 +1642,77 @@
   </div>
 
   
+  <!-- FAQ -->
+  <div class="panel" id="panel-faq">
+
+    <div class="card">
+      <div class="card-head"><div class="card-label"><span data-lang="ko">얼리 체크인 / 레이트 체크아웃이 가능한가요?</span><span data-lang="en">Early Check-in / Late Check-out?</span></div></div>
+      <div class="card-body">
+        <div class="rule-list">
+          <div class="rule-item">
+            <div class="rule-dot"></div>
+            <div class="rule-text">
+              <span data-lang="ko">아쉽게도 얼리 체크인과 레이트 체크아웃은 어렵습니다. 다만 아래와 같이 <b>짐을 맡겨두시는 것은 가능해요.</b></span>
+              <span data-lang="en">Unfortunately, early check-in and late check-out are not available. However, you may leave your luggage as follows.</span>
+            </div>
+          </div>
+        </div>
+        <div style="margin: 12px 0; display:flex; flex-direction:column; gap:8px;">
+          <div style="display:flex; align-items:center; gap:10px; padding:10px 14px; background:var(--olive-light); border-radius:8px; font-size:13px;">
+            <span style="font-weight:700; color:var(--olive); flex-shrink:0;"><span data-lang="ko">체크인 전</span><span data-lang="en">Before Check-in</span></span>
+            <span style="color:var(--text);"><span data-lang="ko">오전 11시부터 짐 보관 가능</span><span data-lang="en">Luggage storage from 11:00 AM</span></span>
+          </div>
+          <div style="display:flex; align-items:center; gap:10px; padding:10px 14px; background:var(--olive-light); border-radius:8px; font-size:13px;">
+            <span style="font-weight:700; color:var(--olive); flex-shrink:0;"><span data-lang="ko">체크아웃 후</span><span data-lang="en">After Check-out</span></span>
+            <span style="color:var(--text);"><span data-lang="ko">오후 3시까지 짐 보관 가능</span><span data-lang="en">Luggage storage until 3:00 PM</span></span>
+          </div>
+        </div>
+        <div style="padding:10px 12px; background:#FEF3C7; border-radius:8px; font-size:12px; color:#92400E; display:flex; gap:8px; align-items:flex-start;">
+          <span style="flex-shrink:0;">⚠️</span>
+          <span><span data-lang="ko">청소 및 관리 여건에 따라 짐이 인근 사무실로 잠시 이동될 수 있어요. 보관 중 발생하는 도난·분실에 대해서는 호스트가 책임지지 않으니 귀중품은 반드시 직접 소지해 주세요.</span><span data-lang="en">Due to cleaning and management circumstances, luggage may be temporarily moved to a nearby office. The host is not responsible for any theft or loss during storage — please keep valuables with you at all times.</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><div class="card-label"><span data-lang="ko">제공·구비 물품 안내</span><span data-lang="en">Provided Items</span></div></div>
+      <div class="card-body" style="padding: 0 18px 4px;">
+
+        <div class="info-item">
+          <span class="info-badge badge-inc" style="white-space:nowrap"><span data-lang="ko">기본옵션</span><span data-lang="en">Amenities</span></span>
+          <div class="info-text"><span data-lang="ko">냉장고 · 세탁기 · 에어컨 · 인덕션 · 하이라이트 · 침대 · 와이파이 · 싱크대 · 도어락 · 식탁 · 전자레인지 · 옷장 · 신발장 · 화장대 · 커튼 · 공기청정기 · 드라이기</span><span data-lang="en">Fridge · Washer · AC · Induction · Highlight · Bed · WiFi · Sink · Door lock · Dining table · Microwave · Wardrobe · Shoe rack · Vanity · Curtains · Air purifier · Hair dryer</span></div>
+        </div>
+
+        <div class="info-item">
+          <span class="info-badge badge-inc" style="white-space:nowrap"><span data-lang="ko">수건</span><span data-lang="en">Towels</span></span>
+          <div>
+            <div class="info-text"><span data-lang="ko">기본 <b>5장</b> 제공됩니다</span><span data-lang="en"><b>5 towels</b> provided</span></div>
+            <div class="info-sub"><span data-lang="ko">사용 후 세탁기로 직접 세탁하여 사용해 주세요</span><span data-lang="en">Please wash them yourself using the washing machine</span></div>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <span class="info-badge badge-inc" style="white-space:nowrap"><span data-lang="ko">쓰레기봉투</span><span data-lang="en">Trash Bags</span></span>
+          <div>
+            <div class="info-text"><span data-lang="ko">일반쓰레기 <b>10L 1장</b> (최초 1회 제공) · 음식물쓰레기 <b>1L 2장/주</b></span><span data-lang="en">General <b>10L × 1</b> (once only) · Food waste <b>1L × 2/week</b></span></div>
+            <div class="info-sub"><span data-lang="ko">봉투는 <b>왼쪽 신발장 안</b>에 있어요. 일반봉투 추가 시 근처 편의점에서 낱장 구매 가능 / 음식물봉투 부족 시 채팅으로 요청해 주세요</span><span data-lang="en">Bags are in the <b>left shoe cabinet</b>. Buy extra general bags at nearby stores / Request more food waste bags via chat</span></div>
+          </div>
+        </div>
+
+        <div class="info-item" style="border-bottom:none; padding-bottom:14px;">
+          <span class="info-badge badge-inc" style="white-space:nowrap"><span data-lang="ko">어메니티</span><span data-lang="en">Toiletries</span></span>
+          <div>
+            <div class="info-text"><span data-lang="ko">별도 제공은 없어요</span><span data-lang="en">Not separately provided</span></div>
+            <div class="info-sub"><span data-lang="ko">이전 입주자분들이 남기고 가신 물품들을 <b>주방 하부장</b>에 모아뒀으니 필요하신 것은 자유롭게 사용하셔도 됩니다</span><span data-lang="en">Items left by previous guests are kept in the <b>kitchen cabinet below</b> — feel free to use anything there</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+
 </main>
 
 
@@ -1607,10 +1752,10 @@
 
   function initFromHash() {
     const hash = location.hash.replace('#', '');
-    const valid = ['info','waste','transit','facilities','washer','induction','airpurifier','dehumidifier'];
+    const valid = ['info','waste','transit','facilities','faq','washer','induction','airpurifier','dehumidifier'];
     if (valid.includes(hash)) {
       // 대분류 먼저 설정
-      const infoIds = ['info','waste','transit','facilities'];
+      const infoIds = ['info','waste','transit','facilities','faq'];
       const mainTab = infoIds.includes(hash) ? 'info' : 'appliance';
       document.querySelectorAll('.nav-main-tab').forEach((btn, i) => {
         btn.classList.toggle('active', ['info','appliance'][i] === mainTab);
