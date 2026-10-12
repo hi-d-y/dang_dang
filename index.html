@@ -611,6 +611,55 @@
 </head>
 <body class="lang-ko">
 
+<!-- 방 선택 화면 -->
+<div id="room-select-screen" style="
+  position:fixed; inset:0; z-index:9999;
+  background:#FAFAF8;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  padding:32px 24px;
+">
+  <div style="text-align:center; margin-bottom:44px;">
+    <div style="font-size:52px; margin-bottom:14px;">🏠</div>
+    <div style="font-size:26px; font-weight:700; color:#1C1C1C; font-family:'맑은 고딕',sans-serif;">당당홈</div>
+    <div style="font-size:14px; color:#888; margin-top:8px;">이용하실 방을 선택해 주세요</div>
+    <div style="font-size:12px; color:#aaa; margin-top:4px;">Please select your room</div>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:16px; width:100%; max-width:320px;">
+    <button onclick="selectRoom('1f')" style="
+      padding:24px 24px; background:white;
+      border:2px solid #5C6E2E; border-radius:16px;
+      cursor:pointer; text-align:left; transition:background 0.15s;
+    " onmouseover="this.style.background='#EEF2E4'" onmouseout="this.style.background='white'">
+      <div style="font-size:20px; font-weight:700; color:#5C6E2E; font-family:'맑은 고딕',sans-serif;">1층 · 101호</div>
+      <div style="font-size:13px; color:#888; margin-top:4px;">1F · Unit 101</div>
+    </button>
+    <button onclick="selectRoom('2f')" style="
+      padding:24px 24px; background:white;
+      border:2px solid #5C6E2E; border-radius:16px;
+      cursor:pointer; text-align:left; transition:background 0.15s;
+    " onmouseover="this.style.background='#EEF2E4'" onmouseout="this.style.background='white'">
+      <div style="font-size:20px; font-weight:700; color:#5C6E2E; font-family:'맑은 고딕',sans-serif;">2층 · 201호</div>
+      <div style="font-size:13px; color:#888; margin-top:4px;">2F · Unit 201</div>
+    </button>
+  </div>
+</div>
+
+<!-- 방 배지 -->
+<div id="room-badge" style="
+  display:none; position:fixed;
+  top:12px; left:50%; transform:translateX(-50%);
+  z-index:500; background:#5C6E2E; color:white;
+  font-size:11px; font-weight:600;
+  padding:4px 14px; border-radius:20px;
+  cursor:pointer; white-space:nowrap;
+  box-shadow:0 2px 8px rgba(0,0,0,0.15);
+" onclick="changeRoom()">
+  <span id="room-badge-text"></span> · 변경
+</div>
+
+
+
 <!-- 헤더 -->
 <header class="header">
   <div class="header-inner">
@@ -958,7 +1007,7 @@
 
     <!-- 이미지 + 구역 표시 -->
     <div class="card" style="overflow:hidden; padding:0;">
-      <img src="induction.png" alt="인덕션/하이라이트" style="width:100%; display:block;">
+      <img id="induction-img" src="induction.png" alt="인덕션/하이라이트" style="width:100%; display:block;">
       <div style="display:grid; grid-template-columns:1fr 1fr; border-top:1px solid var(--border);">
         <div style="padding:10px 14px; text-align:center; border-right:1px solid var(--border); background:#EFF6FF;">
           <div style="font-size:11px; font-weight:700; color:#1D4ED8;">● <span data-lang="ko">인덕션 구역</span><span data-lang="en">Induction Zone</span></div>
@@ -1381,13 +1430,83 @@
   setLang('ko');
   initFromHash();
 </script>
+
+
+<script>
+function selectRoom(room) {
+  sessionStorage.setItem('dangdang_room', room);
+  document.getElementById('room-select-screen').style.display = 'none';
+  document.getElementById('room-badge').style.display = 'block';
+  applyRoom(room);
+}
+
+function changeRoom() {
+  document.getElementById('room-select-screen').style.display = 'flex';
+  document.getElementById('room-badge').style.display = 'none';
+}
+
+function applyRoom(room) {
+  const badge = document.getElementById('room-badge-text');
+
+  // 인덕션 이미지 교체
+  const imgs = ['induction-img', 'induction-img-2'];
+  imgs.forEach(function(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.src = (room === '1f') ? 'induction.png' : 'induction_2f.png';
+  });
+
+  // 2층: 가전제품 사용법 탭 숨기기
+  const applianceMainTab = document.getElementById('main-tab-appliance');
+  const applianceSub = document.getElementById('sub-appliance');
+  const appliancePanels = ['washer','induction','airpurifier','dehumidifier'];
+
+  if (room === '2f') {
+    // 가전 대분류 탭 숨기기
+    if (applianceMainTab) applianceMainTab.style.display = 'none';
+    if (applianceSub) applianceSub.style.display = 'none';
+    // 가전 패널들 숨기기
+    appliancePanels.forEach(function(id) {
+      const el = document.getElementById('panel-' + id);
+      if (el) el.style.display = 'none';
+    });
+    // 혹시 가전 탭이 활성화되어 있으면 안내사항으로 이동
+    if (applianceMainTab && applianceMainTab.classList.contains('active')) {
+      setMainTab('info');
+    }
+    // nav-main을 1칸으로
+    document.querySelector('.nav-main').style.gridTemplateColumns = '1fr';
+    badge.textContent = '2층 201호';
+  } else {
+    // 가전 대분류 탭 보이기
+    if (applianceMainTab) applianceMainTab.style.display = '';
+    if (applianceSub) applianceSub.style.display = '';
+    // 가전 패널들 보이기
+    appliancePanels.forEach(function(id) {
+      const el = document.getElementById('panel-' + id);
+      if (el) el.style.display = '';
+    });
+    // nav-main 원래대로
+    document.querySelector('.nav-main').style.gridTemplateColumns = '';
+    badge.textContent = '1층 101호';
+  }
+}
+
+// 로드 시 기존 선택 복원
+document.addEventListener('DOMContentLoaded', function() {
+  const saved = sessionStorage.getItem('dangdang_room');
+  if (saved) {
+    selectRoom(saved);
+  }
+});
+</script>
 </body>
 </html>  <!-- 인덕션/하이라이트 -->
   <div class="panel" id="panel-induction">
 
     <!-- 이미지 카드 -->
     <div class="card" style="overflow:hidden; padding:0;">
-      <img src="induction.png" alt="인덕션/하이라이트" style="width:100%; display:block; border-radius:var(--radius);">
+      <img id="induction-img-2" src="induction.png" alt="인덕션/하이라이트" style="width:100%; display:block; border-radius:var(--radius);">
     </div>
 
     <!-- 인덕션 카드 -->
@@ -1792,6 +1911,76 @@
 
   setLang('ko');
   initFromHash();
+</script>
+
+
+<script>
+function selectRoom(room) {
+  sessionStorage.setItem('dangdang_room', room);
+  document.getElementById('room-select-screen').style.display = 'none';
+  document.getElementById('room-badge').style.display = 'block';
+  applyRoom(room);
+}
+
+function changeRoom() {
+  document.getElementById('room-select-screen').style.display = 'flex';
+  document.getElementById('room-badge').style.display = 'none';
+}
+
+function applyRoom(room) {
+  const badge = document.getElementById('room-badge-text');
+
+  // 인덕션 이미지 교체
+  const imgs = ['induction-img', 'induction-img-2'];
+  imgs.forEach(function(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.src = (room === '1f') ? 'induction.png' : 'induction_2f.png';
+  });
+
+  // 2층: 가전제품 사용법 탭 숨기기
+  const applianceMainTab = document.getElementById('main-tab-appliance');
+  const applianceSub = document.getElementById('sub-appliance');
+  const appliancePanels = ['washer','induction','airpurifier','dehumidifier'];
+
+  if (room === '2f') {
+    // 가전 대분류 탭 숨기기
+    if (applianceMainTab) applianceMainTab.style.display = 'none';
+    if (applianceSub) applianceSub.style.display = 'none';
+    // 가전 패널들 숨기기
+    appliancePanels.forEach(function(id) {
+      const el = document.getElementById('panel-' + id);
+      if (el) el.style.display = 'none';
+    });
+    // 혹시 가전 탭이 활성화되어 있으면 안내사항으로 이동
+    if (applianceMainTab && applianceMainTab.classList.contains('active')) {
+      setMainTab('info');
+    }
+    // nav-main을 1칸으로
+    document.querySelector('.nav-main').style.gridTemplateColumns = '1fr';
+    badge.textContent = '2층 201호';
+  } else {
+    // 가전 대분류 탭 보이기
+    if (applianceMainTab) applianceMainTab.style.display = '';
+    if (applianceSub) applianceSub.style.display = '';
+    // 가전 패널들 보이기
+    appliancePanels.forEach(function(id) {
+      const el = document.getElementById('panel-' + id);
+      if (el) el.style.display = '';
+    });
+    // nav-main 원래대로
+    document.querySelector('.nav-main').style.gridTemplateColumns = '';
+    badge.textContent = '1층 101호';
+  }
+}
+
+// 로드 시 기존 선택 복원
+document.addEventListener('DOMContentLoaded', function() {
+  const saved = sessionStorage.getItem('dangdang_room');
+  if (saved) {
+    selectRoom(saved);
+  }
+});
 </script>
 </body>
 </html>
