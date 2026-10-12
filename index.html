@@ -820,10 +820,10 @@
             </div>
           </div>
 
-          <div class="rule-item">
+          <div class="rule-item" id="rule-window-item">
             <div class="rule-dot"></div>
             <div class="rule-text">
-              <span data-lang="ko">
+              <span id="rule-window" data-lang="ko">
                 <b>창문을 열면 벌레가 들어올 수 있어요.</b><br>
                 반지하 특성상 방충망을 꼭 확인한 후 열어주세요.<br>
                 공기청정기·제습기를 켜두시면 창문 없이도 충분히 쾌적해요.
@@ -933,7 +933,7 @@
           </tbody>
         </table>
         <div style="margin-top:12px; padding-top:12px; border-top:1px solid var(--border); font-size:13px; color:var(--text);">
-          <span data-lang="ko">제공되는 쓰레기봉투는 <b>주방 상부장 오른편</b>에 있습니다</span>
+          <span data-lang="ko">제공되는 쓰레기봉투는 <b><span class="text-1f">주방 상부장 오른편</b>에 있습니다</span><span class="text-2f" style="display:none;">주방 상부장 왼편</b>에 있습니다</span>
           <span data-lang="en">Provided trash bags are in the <b>upper right kitchen cabinet</b></span>
         </div>
       </div>
@@ -984,7 +984,7 @@
     </div>
       <div class="card-head"><div class="card-label"><span data-lang="ko">사용설명서</span><span data-lang="en">Manual</span></div></div>
       <div class="card-body">
-        <div style="border-radius:8px; overflow:hidden; background:#f3f4f6;">
+        <div class="pdf-viewer-wrap" id="washer-pdf-wrap" style="border-radius:8px; overflow:hidden; background:#f3f4f6;">
           <iframe
             src="washer.pdf"
             width="100%"
@@ -1167,7 +1167,7 @@
     <div class="card">
       <div class="card-head"><div class="card-label"><span data-lang="ko">사용설명서</span><span data-lang="en">Manual</span></div></div>
       <div class="card-body">
-        <div style="border-radius:8px; overflow:hidden; background:#f3f4f6;">
+        <div class="pdf-viewer-wrap" id="dehumidifier-pdf-wrap" style="border-radius:8px; overflow:hidden; background:#f3f4f6;">
           <iframe
             src="dehumidifier.pdf"
             width="100%"
@@ -1338,7 +1338,7 @@
 
         <div class="info-item" style="align-items:flex-start;">
           <span class="info-badge badge-inc" style="white-space:nowrap; flex-shrink:0; margin-top:2px;">기본옵션</span>
-          <div class="info-text"><span data-lang="ko">냉장고 · 인덕션(하이라이트) · 전자레인지 · 밥솥<br>세탁기 · 공기청정기 · 제습기 · 드라이기</span><span data-lang="en">Fridge · Induction(Highlight) · Microwave · Rice cooker<br>Washer · Air purifier · Dehumidifier · Hair dryer</span></div>
+          <div class="info-text"><span class="text-1f" data-lang="ko">냉장고 · 인덕션(하이라이트) · 전자레인지 · 밥솥<br>세탁기 · 공기청정기 · 제습기 · 드라이기</span><span class="text-1f" data-lang="en">Fridge · Induction(Highlight) · Microwave · Rice cooker<br>Washer · Air purifier · Dehumidifier · Hair dryer</span><span class="text-2f" style="display:none;" data-lang="ko">냉장고 · 인덕션(하이라이트) · 전자레인지 · 밥솥<br>세탁기 · 커피포트 · 드라이기</span><span class="text-2f" style="display:none;" data-lang="en">Fridge · Induction(Highlight) · Microwave · Rice cooker<br>Washer · Coffee kettle · Hair dryer</span></div>
         </div>
 
         <div class="info-item" style="align-items:flex-start;">
@@ -1357,7 +1357,7 @@
           </div>
         </div>
 
-        <div class="info-item" style="border-bottom:none; padding-bottom:14px; align-items:flex-start;">
+        <div id="faq-amenity" class="info-item" style="border-bottom:none; padding-bottom:14px; align-items:flex-start;">
           <span class="info-badge badge-inc" style="white-space:nowrap; flex-shrink:0; margin-top:2px;">어메니티</span>
           <div>
             <div class="info-text"><span data-lang="ko">별도로 제공하지 않습니다</span><span data-lang="en">Not separately provided</span></div>
@@ -1490,6 +1490,23 @@ function applyRoom(room) {
     document.querySelector('.nav-main').style.gridTemplateColumns = '';
     badge.textContent = '1층 101호';
   }
+
+  // ── 방별 콘텐츠 처리 ──
+  // 1f/2f 텍스트 토글
+  document.querySelectorAll('.text-1f').forEach(function(el) {
+    el.style.display = (room === '1f') ? '' : 'none';
+  });
+  document.querySelectorAll('.text-2f').forEach(function(el) {
+    el.style.display = (room === '2f') ? '' : 'none';
+  });
+
+  // 어메니티 숨기기/보이기
+  var amenity = document.getElementById('faq-amenity');
+  if (amenity) amenity.style.display = (room === '2f') ? 'none' : '';
+
+  // 창문 벌레 항목 숨기기/보이기
+  var windowItem = document.getElementById('rule-window-item');
+  if (windowItem) windowItem.style.display = (room === '2f') ? 'none' : '';
 }
 
 // 로드 시 기존 선택 복원
@@ -1499,6 +1516,24 @@ document.addEventListener('DOMContentLoaded', function() {
     selectRoom(saved);
   }
 });
+</script>
+
+<script>
+// 카카오톡 인앱브라우저에서 PDF iframe 숨기기
+(function() {
+  var ua = navigator.userAgent || '';
+  var isKakao = ua.indexOf('KAKAOTALK') !== -1 || ua.indexOf('kakaotalk') !== -1;
+  var isAndroid = ua.indexOf('Android') !== -1;
+  var isIOS = /iPad|iPhone|iPod/.test(ua);
+  // 카카오톡 또는 모바일 환경에서 PDF iframe 숨기기
+  if (isKakao || (isAndroid && ua.indexOf('wv') !== -1)) {
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.pdf-viewer-wrap').forEach(function(el) {
+        el.style.display = 'none';
+      });
+    });
+  }
+})();
 </script>
 </body>
 </html>  <!-- 인덕션/하이라이트 -->
@@ -1671,7 +1706,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="card">
       <div class="card-head"><div class="card-label"><span data-lang="ko">사용설명서</span><span data-lang="en">Manual</span></div></div>
       <div class="card-body">
-        <div style="border-radius:8px; overflow:hidden; background:#f3f4f6;">
+        <div class="pdf-viewer-wrap" id="dehumidifier-pdf-wrap" style="border-radius:8px; overflow:hidden; background:#f3f4f6;">
           <iframe
             src="dehumidifier.pdf"
             width="100%"
@@ -1822,7 +1857,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         <div class="info-item" style="align-items:flex-start;">
           <span class="info-badge badge-inc" style="white-space:nowrap; flex-shrink:0; margin-top:2px;">기본옵션</span>
-          <div class="info-text"><span data-lang="ko">냉장고 · 인덕션(하이라이트) · 전자레인지 · 밥솥<br>세탁기 · 공기청정기 · 제습기 · 드라이기</span><span data-lang="en">Fridge · Induction(Highlight) · Microwave · Rice cooker<br>Washer · Air purifier · Dehumidifier · Hair dryer</span></div>
+          <div class="info-text"><span class="text-1f" data-lang="ko">냉장고 · 인덕션(하이라이트) · 전자레인지 · 밥솥<br>세탁기 · 공기청정기 · 제습기 · 드라이기</span><span class="text-1f" data-lang="en">Fridge · Induction(Highlight) · Microwave · Rice cooker<br>Washer · Air purifier · Dehumidifier · Hair dryer</span><span class="text-2f" style="display:none;" data-lang="ko">냉장고 · 인덕션(하이라이트) · 전자레인지 · 밥솥<br>세탁기 · 커피포트 · 드라이기</span><span class="text-2f" style="display:none;" data-lang="en">Fridge · Induction(Highlight) · Microwave · Rice cooker<br>Washer · Coffee kettle · Hair dryer</span></div>
         </div>
 
         <div class="info-item" style="align-items:flex-start;">
@@ -1841,7 +1876,7 @@ document.addEventListener('DOMContentLoaded', function() {
           </div>
         </div>
 
-        <div class="info-item" style="border-bottom:none; padding-bottom:14px; align-items:flex-start;">
+        <div id="faq-amenity" class="info-item" style="border-bottom:none; padding-bottom:14px; align-items:flex-start;">
           <span class="info-badge badge-inc" style="white-space:nowrap; flex-shrink:0; margin-top:2px;">어메니티</span>
           <div>
             <div class="info-text"><span data-lang="ko">별도로 제공하지 않습니다</span><span data-lang="en">Not separately provided</span></div>
@@ -1972,6 +2007,23 @@ function applyRoom(room) {
     document.querySelector('.nav-main').style.gridTemplateColumns = '';
     badge.textContent = '1층 101호';
   }
+
+  // ── 방별 콘텐츠 처리 ──
+  // 1f/2f 텍스트 토글
+  document.querySelectorAll('.text-1f').forEach(function(el) {
+    el.style.display = (room === '1f') ? '' : 'none';
+  });
+  document.querySelectorAll('.text-2f').forEach(function(el) {
+    el.style.display = (room === '2f') ? '' : 'none';
+  });
+
+  // 어메니티 숨기기/보이기
+  var amenity = document.getElementById('faq-amenity');
+  if (amenity) amenity.style.display = (room === '2f') ? 'none' : '';
+
+  // 창문 벌레 항목 숨기기/보이기
+  var windowItem = document.getElementById('rule-window-item');
+  if (windowItem) windowItem.style.display = (room === '2f') ? 'none' : '';
 }
 
 // 로드 시 기존 선택 복원
@@ -1981,6 +2033,24 @@ document.addEventListener('DOMContentLoaded', function() {
     selectRoom(saved);
   }
 });
+</script>
+
+<script>
+// 카카오톡 인앱브라우저에서 PDF iframe 숨기기
+(function() {
+  var ua = navigator.userAgent || '';
+  var isKakao = ua.indexOf('KAKAOTALK') !== -1 || ua.indexOf('kakaotalk') !== -1;
+  var isAndroid = ua.indexOf('Android') !== -1;
+  var isIOS = /iPad|iPhone|iPod/.test(ua);
+  // 카카오톡 또는 모바일 환경에서 PDF iframe 숨기기
+  if (isKakao || (isAndroid && ua.indexOf('wv') !== -1)) {
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.pdf-viewer-wrap').forEach(function(el) {
+        el.style.display = 'none';
+      });
+    });
+  }
+})();
 </script>
 </body>
 </html>
