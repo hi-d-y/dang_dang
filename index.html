@@ -933,7 +933,7 @@
           </tbody>
         </table>
         <div style="margin-top:12px; padding-top:12px; border-top:1px solid var(--border); font-size:13px; color:var(--text);">
-          <span data-lang="ko">제공되는 쓰레기봉투는 <b><span class="text-1f">주방 상부장 오른편</b>에 있습니다</span><span class="text-2f" style="display:none;">주방 상부장 왼편</b>에 있습니다</span>
+          <span data-lang="ko">제공되는 쓰레기봉투는 <b><span class="text-1f" style="display:inline;">주방 상부장 오른편</span><span class="text-2f" style="display:none;">주방 상부장 왼편</span></b>에 있습니다</span>
           <span data-lang="en">Provided trash bags are in the <b>upper right kitchen cabinet</b></span>
         </div>
       </div>
@@ -1488,6 +1488,9 @@ function applyRoom(room) {
     });
     // nav-main 원래대로
     document.querySelector('.nav-main').style.gridTemplateColumns = '';
+    // 가전 서브탭은 가전 탭이 활성화된 경우에만 보이기
+    var isApplianceActive = applianceMainTab && applianceMainTab.classList.contains('active');
+    if (applianceSub) applianceSub.style.display = isApplianceActive ? '' : 'none';
     badge.textContent = '1층 101호';
   }
 
@@ -2005,6 +2008,9 @@ function applyRoom(room) {
     });
     // nav-main 원래대로
     document.querySelector('.nav-main').style.gridTemplateColumns = '';
+    // 가전 서브탭은 가전 탭이 활성화된 경우에만 보이기
+    var isApplianceActive2 = applianceMainTab && applianceMainTab.classList.contains('active');
+    if (applianceSub) applianceSub.style.display = isApplianceActive2 ? '' : 'none';
     badge.textContent = '1층 101호';
   }
 
